@@ -20,13 +20,13 @@ body {
 
 /* Barra Superior */
 header {
-    background-color: #4CAF50;
+    background-color: #b79347;
     color: #fff;
     padding: 10px 0;
 }
 
 header .logo {
-    height: 50px;
+    height: 100px;
 }
 
 nav ul {
@@ -67,7 +67,7 @@ nav ul li a:hover {
 
 /* Barra Inferior (Footer) */
 footer {
-    background-color: #333;
+    background-color: #081050;
     color: #fff;
     padding: 20px 0;
     text-align: center;
