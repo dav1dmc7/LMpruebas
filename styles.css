@@ -9,6 +9,9 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Contenedor común */
@@ -25,14 +28,21 @@ header {
     padding: 10px 0;
 }
 
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 header .logo {
-    height: 100px;
+    height: 70px;
+    margin-right: auto;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: flex-end;
+    margin-left: auto;
 }
 
 nav ul li {
@@ -54,6 +64,7 @@ nav ul li a:hover {
     padding: 50px 0;
     text-align: center;
     background-color: #f4f4f4;
+    flex: 1;
 }
 
 .hero h1 {
@@ -65,12 +76,15 @@ nav ul li a:hover {
     font-size: 1.2em;
 }
 
-/* Barra Inferior (Footer) */
+/* Barra Inferior Fija (Footer) */
 footer {
     background-color: #081050;
     color: #fff;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 footer h2 {
@@ -79,4 +93,11 @@ footer h2 {
 
 footer p {
     margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .icon {
+    margin-right: 5px;
 }
