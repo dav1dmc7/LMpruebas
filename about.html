@@ -33,23 +33,30 @@
 
         <!-- Reseñas -->
         <section class="reseñas">
-            <h2>Reseñas de Nuestros Clientes</h2>
-            <div class="reseña-container">
-                <div class="reseña" id="reseña1">
-                    <p>"Excelente servicio y trato profesional. Muy recomendado."</p>
-                    <p>- Cliente A</p>
-                </div>
-                <div class="reseña" id="reseña2" style="display:none;">
-                    <p>"Me ayudaron a resolver un problema complicado de forma eficiente."</p>
-                    <p>- Cliente B</p>
-                </div>
-                <div class="reseña" id="reseña3" style="display:none;">
-                    <p>"Gran equipo, siempre disponible para responder dudas."</p>
-                    <p>- Cliente C</p>
-                </div>
+            <h2>Deja tu Reseña</h2>
+            
+            <!-- Calificación con Estrellas -->
+            <div class="calificacion">
+                <span class="estrella" onclick="calificar(1)">&#9733;</span>
+                <span class="estrella" onclick="calificar(2)">&#9733;</span>
+                <span class="estrella" onclick="calificar(3)">&#9733;</span>
+                <span class="estrella" onclick="calificar(4)">&#9733;</span>
+                <span class="estrella" onclick="calificar(5)">&#9733;</span>
             </div>
-            <button onclick="siguienteReseña()">Siguiente Reseña</button>
-        </section>
+            
+            <!-- Formulario para la Reseña -->
+            <form id="formulario-reseña" onsubmit="mostrarReseña(event)">
+                <label for="comentario">Tu Reseña:</label>
+                <textarea id="comentario" name="comentario" required></textarea>
+                <button type="submit">Enviar Reseña</button>
+            </form>
+        
+            <!-- Área para Mostrar la Reseña (Temporario) -->
+            <div id="reseñas-lista">
+                <h3>Reseñas de Clientes</h3>
+                <ul id="lista-reseñas"></ul>
+            </div>
+        </section>        
     </main>
 
     <!-- Footer -->
