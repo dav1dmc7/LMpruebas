@@ -1,0 +1,16 @@
+{
+  "name": "lmpruebas",
+  "version": "1.0.0",
+  "description": "Página de mantenimiento web de Lopez Marquez Abogados",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1"
+  }
+}
