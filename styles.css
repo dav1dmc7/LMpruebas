@@ -82,14 +82,17 @@ nav ul li a:hover {
 }
 
 /* Sección de Publicaciones */
-.publicaciones {
-    padding: 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-    overflow-x: auto;
-    white-space: nowrap;
-    margin-bottom: 60px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+@media (max-width: 768px) {
+    .publicaciones {
+        padding-bottom: 80px; /* Añadir más espacio en móvil */
+        padding: 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 60px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 }
 
 .publicaciones h2 {
