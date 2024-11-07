@@ -36,7 +36,7 @@ header nav {
 
 header .logo {
     height: 70px;
-    margin-right: auto;
+    margin-right: 20px;
 }
 
 nav ul {
@@ -76,11 +76,48 @@ nav ul li a:hover {
     font-size: 1.2em;
 }
 
+/* Sección PUBLICACIONES */
+.publicaciones {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.publicaciones h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #081050;
+}
+
+.publicaciones .posts {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.publicaciones .post {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+.publicaciones .post h3 {
+    margin-bottom: 10px;
+    color: #b79347;
+}
+
+.publicaciones .post p {
+    color: #333;
+}
+
 /* Barra Inferior Fija (Footer) */
 footer {
     background-color: #081050;
     color: #fff;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
     position: fixed;
     width: 100%;
@@ -99,5 +136,67 @@ footer p {
 }
 
 footer .icon {
-    margin-right: 5px;
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Asegurar que el main no esté oculto detrás del footer */
+main {
+    padding-bottom: 100px; /* Ajusta según la altura del footer */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .publicaciones {
+        padding: 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+    
+    .publicaciones h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        color: #081050;
+    }
+    
+    .post {
+        margin: 10px 0;
+        font-size: 1.1em;
+    }
+    
+    .post a {
+        color: #b79347;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    .post a:hover {
+        text-decoration: underline;
+    }    
+
+    footer p {
+        flex-direction: column;
+    }
+
+    footer .icon {
+        margin-bottom: 5px;
+    }
 }
