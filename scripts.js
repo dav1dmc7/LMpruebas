@@ -14,3 +14,7 @@ function toggleDetalles(id) {
 }
 
 
+function toggleDetalles(id) {
+    const detalles = document.getElementById(id);
+    detalles.style.display = detalles.style.display === "none" ? "block" : "none";
+}
