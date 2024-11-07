@@ -85,6 +85,8 @@ nav ul li a:hover {
     padding: 20px;
     background-color: #f9f9f9;
     text-align: center;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .publicaciones h2 {
@@ -93,19 +95,15 @@ nav ul li a:hover {
     color: #081050;
 }
 
-/* Ajustes para Taggbox Widget */
 .taggbox-widget {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.taggbox-widget iframe {
-    width: 100%;
-    height: auto;
+    display: inline-block;
+    width: 300px; /* Ajusta el ancho para adaptarse mejor a un layout horizontal */
+    height: 400px;
+    margin-right: 10px; /* Espacio entre widgets */
+    vertical-align: top;
 }
 
 /* Barra Inferior Fija (Footer) */
-f/* Estilos para la barra de contacto */
 footer {
     background-color: #081050;
     color: #fff;
