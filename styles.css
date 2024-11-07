@@ -95,7 +95,7 @@ nav ul li a:hover {
     color: #081050;
 }
 
-.taggbox-widget {
+.taggbox {
     display: inline-block;
     width: 300px; /* Ajuste de ancho para publicaciones */
     height: 400px;
