@@ -97,7 +97,7 @@ nav ul li a:hover {
 
 .taggbox-widget {
     display: inline-block;
-    width: 300px; /* Ajusta el ancho para adaptarse mejor a un layout horizontal */
+    width: 300px; /* Ajuste de ancho para publicaciones */
     height: 400px;
     margin-right: 10px; /* Espacio entre widgets */
     vertical-align: top;
