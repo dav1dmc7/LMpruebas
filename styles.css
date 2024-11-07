@@ -105,6 +105,93 @@ nav ul li a:hover {
     margin-right: 10px;
     vertical-align: top;
 }
+/* Estilos para la sección de reseñas */
+.reseñas {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.reseñas h2 {
+    color: #081050;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la calificación con estrellas */
+.calificacion {
+    font-size: 2em;
+    margin: 10px 0;
+    color: white;
+    cursor: pointer;
+}
+
+.estrella {
+    color: white; /* Color base para las estrellas */
+    transition: color 0.3s;
+}
+
+.estrella:hover,
+.estrella:hover ~ .estrella {
+    color: gold; /* Cambia a dorado al pasar el cursor */
+}
+
+/* Estilos para el formulario de reseñas */
+#formulario-reseña {
+    max-width: 600px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#formulario-reseña label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#formulario-reseña textarea {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#formulario-reseña button {
+    background-color: #081050;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#formulario-reseña button:hover {
+    background-color: #060a3d;
+}
+
+/* Estilos para la lista de reseñas */
+#reseñas-lista {
+    text-align: left;
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#reseñas-lista ul {
+    list-style: none;
+    padding: 0;
+}
+
+#reseñas-lista li {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
 
 /* Barra Inferior Fija (Footer) */
 footer {
