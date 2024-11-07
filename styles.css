@@ -87,6 +87,7 @@ nav ul li a:hover {
     text-align: center;
     overflow-x: auto;
     white-space: nowrap;
+    margin-bottom: 60px; /* Margen inferior para separar del footer */
 }
 
 .publicaciones h2 {
@@ -107,7 +108,7 @@ nav ul li a:hover {
 footer {
     background-color: #081050;
     color: #fff;
-    padding: 10px 0;
+    padding: 20px 0;
     text-align: center;
     position: fixed;
     width: 100%;
@@ -116,7 +117,7 @@ footer {
 }
 
 footer h2 {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: 1.2em;
 }
 
