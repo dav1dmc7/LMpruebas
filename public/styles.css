@@ -139,17 +139,17 @@ footer p:hover {
 
 footer p i {
     margin-right: 8px;
-    color: #b79347;
+    color: #b79347; /* Color dorado para los íconos */
 }
 
 footer a {
     color: #fff;
     text-decoration: none;
-    transition: color 0.3s ease; /* Animación de color */
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: #b79347; /* Cambia de color al pasar el cursor */
+    color: #b79347; /* Color dorado al pasar el cursor */
     text-decoration: underline;
 }
 
