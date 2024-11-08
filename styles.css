@@ -261,3 +261,27 @@ footer a:hover {
         font-size: 1em; /* Tamaño de texto reducido */
     }
 }
+
+/* Evita el desplazamiento horizontal en móviles */
+body {
+    overflow-x: hidden;
+}
+
+/* Ajustes específicos para dispositivos móviles */
+@media (max-width: 768px) {
+    /* Asegura que la barra de navegación no cause desbordamiento */
+    nav ul {
+        flex-wrap: wrap; /* Permite que los elementos se acomoden en varias filas si es necesario */
+    }
+
+    nav ul li {
+        flex: 1 1 auto;
+        min-width: 80px; /* Ajusta el tamaño mínimo de los elementos de la barra de navegación */
+    }
+
+    /* Ajuste para centrar mejor el contenido del footer en móviles */
+    footer p {
+        text-align: center;
+        justify-content: center;
+    }
+}
