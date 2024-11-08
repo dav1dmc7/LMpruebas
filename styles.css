@@ -87,7 +87,7 @@ nav ul li a:hover {
     padding: 20px;
     background-color: #f9f9f9;
     text-align: center;
-    margin-bottom: 80px; /* Ajusta el margen inferior para el espacio deseado */
+    margin-bottom: 200px; /* Ajusta el margen inferior para el espacio deseado */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
