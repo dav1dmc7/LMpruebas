@@ -238,11 +238,26 @@ footer a:hover {
     color: #b79347;
 }
 
-/* Responsividad para dispositivos móviles */
+
+/* Ajustes específicos para dispositivos móviles */
 @media (max-width: 768px) {
-    footer p {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 5px;
+    /* Aumenta el margen inferior de la sección de publicaciones en móviles */
+    .publicaciones {
+        margin-bottom: 150px; /* Aumenta el margen para asegurar espacio suficiente */
+    }
+
+    /* Reduce el margen superior del footer en móviles */
+    footer {
+        margin-top: 30px; /* Ajusta el margen para evitar que se solape en móviles */
+        padding: 15px 0; /* Reduce el padding en móvil para mayor espacio visible */
+    }
+
+    /* Ajuste de texto para mejorar legibilidad en móvil */
+    .hero h1 {
+        font-size: 2em; /* Tamaño más pequeño para caber mejor en pantallas pequeñas */
+    }
+
+    .hero p {
+        font-size: 1em; /* Tamaño de texto reducido */
     }
 }
