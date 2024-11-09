@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>López Márquez Abogados - Sobre Nosotros</title>
+    <title>Sobre Nosotros | López Márquez Abogados</title>
+    <meta name="description" content="Conoce más sobre López Márquez Abogados, un despacho especializado en derecho laboral con experiencia y dedicación.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
-                <a href="index.html"><img src="images/logo.png" alt="Logo López Márquez Abogados" class="logo"></a>
+                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
                 <!-- Botón de menú hamburguesa para móviles -->
                 <span class="menu-icon" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
@@ -56,17 +59,16 @@
                 <span class="estrella" onclick="calificar(3)">&#9733;</span>
                 <span class="estrella" onclick="calificar(2)">&#9733;</span>
                 <span class="estrella" onclick="calificar(1)">&#9733;</span>
-            </div>
-                       
+            </div>            
             
             <!-- Formulario para la Reseña -->
-            <form id="formulario-reseña" onsubmit="mostrarReseña(event)">
+            <form id="formulario-reseña" onsubmit="enviarReseña(event)">
                 <label for="comentario">Tu Reseña:</label>
                 <textarea id="comentario" name="comentario" required></textarea>
                 <button type="submit">Enviar Reseña</button>
             </form>
         
-            <!-- Área para Mostrar la Reseña -->
+            <!-- Área para Mostrar las Reseñas -->
             <div id="reseñas-lista">
                 <h3>Reseñas de Clientes</h3>
                 <ul id="lista-reseñas"></ul>
@@ -80,12 +82,13 @@
             <h2>Contacto</h2>
             <p><i class="fas fa-envelope"></i> <a href="mailto:lopezmarquezabogados@gmail.com">lopezmarquezabogados@gmail.com</a></p>
             <p><i class="fas fa-phone-alt"></i> <a href="tel:+34695802513">+34 695 802 513</a></p>
-            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank">@lopez_marquez_abogados</a></p>
-            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank">López Márquez Abogados</a></p>
+            <!-- Redes sociales (ya implementadas) -->
+            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank" rel="noopener">@lopez_marquez_abogados</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
         </div>
     </footer>
 
     <!-- Vinculación de JavaScript -->
-    <script src="scripts.js"></script>
+    <script src="scripts.js" defer></script>
 </body>
 </html>
