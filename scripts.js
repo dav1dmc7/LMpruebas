@@ -56,10 +56,16 @@ function calificar(puntaje) {
     calificacionSeleccionada = puntaje;
     const estrellas = document.querySelectorAll('.estrella');
     estrellas.forEach((estrella, index) => {
-        estrella.style.color = index < puntaje ? 'gold' : 'white';
+        if (index < puntaje) {
+            estrella.classList.add('seleccionada');
+        } else {
+            estrella.classList.remove('seleccionada');
+        }
     });
 }
+
 function toggleMenu() {
     const navLinks = document.getElementById('nav-links');
     navLinks.classList.toggle('show');
 }
+
