@@ -59,3 +59,7 @@ function calificar(puntaje) {
         estrella.style.color = index < puntaje ? 'gold' : 'white';
     });
 }
+function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('show');
+}
