@@ -1,6 +1,6 @@
 // Configuración de Supabase
 const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impua2x1YWJ0a3RhdHZ0c2JmYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxNTMzNTEsImV4cCI6MjA0NTcyOTM1MX0.DKGFbfq3z6-vxrg23SenSXbtBg2f4hZGvIO36ogofGY';
+const supabaseKey = 'TU_SUPABASE_KEY'; // Asegúrate de mantener segura tu clave
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Calificación y Envío de Reseñas a Supabase
@@ -56,7 +56,7 @@ function calificar(puntaje) {
     calificacionSeleccionada = puntaje;
     const estrellas = document.querySelectorAll('.estrella');
     estrellas.forEach((estrella, index) => {
-        if (index < puntaje) {
+        if (index >= 5 - puntaje) {
             estrella.classList.add('seleccionada');
         } else {
             estrella.classList.remove('seleccionada');
@@ -64,9 +64,24 @@ function calificar(puntaje) {
     });
 }
 
-
+// Función para controlar el menú hamburguesa
 function toggleMenu() {
     const navLinks = document.getElementById('nav-links');
     navLinks.classList.toggle('show');
 }
 
+// Validación del formulario de contacto
+function validarFormulario() {
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mensaje = document.getElementById('mensaje').value.trim();
+
+    if (nombre === '' || email === '' || mensaje === '') {
+        alert('Por favor, completa todos los campos del formulario.');
+        return false;
+    }
+
+    // Puedes añadir más validaciones aquí (por ejemplo, formato del email)
+
+    return true;
+}

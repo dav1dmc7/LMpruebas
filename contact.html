@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>López Márquez Abogados - Contacto</title>
+    <title>Contacto | López Márquez Abogados</title>
+    <meta name="description" content="Ponte en contacto con López Márquez Abogados para consultas y asesoramiento legal en derecho laboral.">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
-                <a href="index.html"><img src="images/logo.png" alt="Logo López Márquez Abogados" class="logo"></a>
+                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
                 <!-- Botón de menú hamburguesa para móviles -->
                 <span class="menu-icon" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
@@ -31,7 +34,8 @@
     <main>
         <section class="contenido">
             <h2>Contáctanos</h2>
-            <form name="contact" method="POST" data-netlify="true">
+            <form name="contact" method="POST" data-netlify="true" onsubmit="return validarFormulario()">
+                <input type="hidden" name="form-name" value="contact">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
 
@@ -46,7 +50,7 @@
 
             <h3>Agenda una Cita</h3>
             <p>Puedes programar una cita directamente en nuestro Google Calendar:</p>
-            <a href="https://calendar.google.com/calendar/u/0/r" target="_blank">Agendar Cita en Google Calendar</a>
+            <a href="https://calendar.google.com/calendar/u/0/r" target="_blank" rel="noopener">Agendar Cita en Google Calendar</a>
         </section>
     </main>
 
@@ -56,12 +60,13 @@
             <h2>Contacto</h2>
             <p><i class="fas fa-envelope"></i> <a href="mailto:lopezmarquezabogados@gmail.com">lopezmarquezabogados@gmail.com</a></p>
             <p><i class="fas fa-phone-alt"></i> <a href="tel:+34695802513">+34 695 802 513</a></p>
-            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank">@lopez_marquez_abogados</a></p>
-            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank">López Márquez Abogados</a></p>
+            <!-- Redes sociales (ya implementadas) -->
+            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank" rel="noopener">@lopez_marquez_abogados</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
         </div>
     </footer>
     
     <!-- Vinculación de JavaScript -->
-    <script src="scripts.js"></script>
+    <script src="scripts.js" defer></script>
 </body>
 </html>
