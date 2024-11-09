@@ -12,7 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    overflow-x: hidden; /* Evita el desplazamiento horizontal en móviles */
+    overflow-x: hidden;
 }
 
 /* Contenedor común */
@@ -66,7 +66,7 @@ nav ul li a:hover {
 
 /* Estilos para el ícono de menú hamburguesa */
 .menu-icon {
-    display: none; /* Oculto por defecto */
+    display: none;
     font-size: 1.5em;
     color: #fff;
     cursor: pointer;
@@ -91,12 +91,11 @@ nav ul li a:hover {
 }
 
 /* Sección de Publicaciones */
-/* Ajuste de la sección de publicaciones */
 .publicaciones {
     padding: 20px;
     background-color: #f9f9f9;
     text-align: center;
-    margin-bottom: 200px; /* Ajusta el margen inferior para el espacio deseado */
+    margin-bottom: 200px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -120,6 +119,7 @@ nav ul li a:hover {
     padding: 20px;
     background-color: #f9f9f9;
     margin: 20px 0;
+    margin-bottom: 150px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -132,18 +132,18 @@ nav ul li a:hover {
 .calificacion {
     font-size: 2em;
     margin: 10px 0;
-    color: white;
     cursor: pointer;
 }
 
 .estrella {
-    color: white; /* Color base para las estrellas */
+    color: gray;
     transition: color 0.3s;
 }
 
+.estrella.seleccionada,
 .estrella:hover,
 .estrella:hover ~ .estrella {
-    color: gold; /* Cambia a dorado al pasar el cursor */
+    color: gold;
 }
 
 /* Estilos para el formulario de reseñas */
@@ -202,7 +202,7 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* Barra Inferior Fija (Footer) */
+/* Barra Inferior (Footer) */
 footer {
     background-color: #081050;
     color: #fff;
@@ -212,7 +212,7 @@ footer {
     width: 100%;
     bottom: 0;
     z-index: 1000;
-    margin-top: 400px; /* Añade margen superior para separar del contenido anterior */
+    margin-top: 400px;
 }
 
 footer h2 {
@@ -250,24 +250,26 @@ footer a:hover {
 
 /* Ajustes específicos para dispositivos móviles */
 @media (max-width: 768px) {
-    /* Aumenta el margen inferior de la sección de publicaciones en móviles */
-    .publicaciones {
-        margin-bottom: 150px; /* Aumenta el margen para asegurar espacio suficiente */
+    /* Ajuste de margen inferior en publicaciones y reseñas */
+    .publicaciones,
+    .reseñas {
+        margin-bottom: 150px;
     }
 
-    /* Reduce el margen superior del footer en móviles */
+    /* Ajuste de posición y margen del footer */
     footer {
-        margin-top: 30px; /* Ajusta el margen para evitar que se solape en móviles */
-        padding: 15px 0; /* Reduce el padding en móvil para mayor espacio visible */
+        position: static;
+        margin-top: 30px;
+        padding: 15px 0;
     }
 
-    /* Ajuste de texto para mejorar legibilidad en móvil */
+    /* Ajuste de texto en la sección principal */
     .hero h1 {
-        font-size: 2em; /* Tamaño más pequeño para caber mejor en pantallas pequeñas */
+        font-size: 2em;
     }
 
     .hero p {
-        font-size: 1em; /* Tamaño de texto reducido */
+        font-size: 1em;
     }
 
     /* Mostrar el ícono de menú hamburguesa */
@@ -275,22 +277,21 @@ footer a:hover {
         display: block;
     }
 
-    /* Ocultar el menú por defecto en móvil */
+    /* Estilos para el menú en móviles */
     nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px; /* Debajo de la barra de navegación */
+        top: 60px;
         right: 0;
         background-color: #b79347;
         width: 100%;
         padding: 10px 0;
     }
 
-    /* Clase para mostrar el menú cuando se hace clic en el ícono */
+    /* Mostrar menú al hacer clic en el ícono */
     nav ul.show {
         display: flex;
-        max-height: 500px; /* Ajusta según sea necesario */
     }
 
     nav ul li {
@@ -303,7 +304,7 @@ footer a:hover {
         display: block;
     }
 
-    /* Ajuste para centrar mejor el contenido del footer en móviles */
+    /* Centrar contenido del footer */
     footer p {
         text-align: center;
         justify-content: center;
