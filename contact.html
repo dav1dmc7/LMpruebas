@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <nav>
                 <a href="index.html"><img src="images/logo.png" alt="Logo López Márquez Abogados" class="logo"></a>
-                <ul>
+                <!-- Botón de menú hamburguesa para móviles -->
+                <span class="menu-icon" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </span>
+                <!-- Menú de navegación -->
+                <ul id="nav-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="about.html">Sobre Nosotros</a></li>
                     <li><a href="services.html">Servicios</a></li>

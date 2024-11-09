@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* Evita el desplazamiento horizontal en móviles */
 }
 
 /* Contenedor común */
@@ -63,6 +64,14 @@ nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Estilos para el ícono de menú hamburguesa */
+.menu-icon {
+    display: none; /* Oculto por defecto */
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+}
+
 /* Contenido Principal */
 .hero {
     padding: 50px 0;
@@ -104,6 +113,7 @@ nav ul li a:hover {
     margin-right: 10px;
     vertical-align: top;
 }
+
 /* Estilos para la sección de reseñas */
 .reseñas {
     text-align: center;
@@ -238,7 +248,6 @@ footer a:hover {
     color: #b79347;
 }
 
-
 /* Ajustes específicos para dispositivos móviles */
 @media (max-width: 768px) {
     /* Aumenta el margen inferior de la sección de publicaciones en móviles */
@@ -260,23 +269,38 @@ footer a:hover {
     .hero p {
         font-size: 1em; /* Tamaño de texto reducido */
     }
-}
 
-/* Evita el desplazamiento horizontal en móviles */
-body {
-    overflow-x: hidden;
-}
+    /* Mostrar el ícono de menú hamburguesa */
+    .menu-icon {
+        display: block;
+    }
 
-/* Ajustes específicos para dispositivos móviles */
-@media (max-width: 768px) {
-    /* Asegura que la barra de navegación no cause desbordamiento */
+    /* Ocultar el menú por defecto en móvil */
     nav ul {
-        flex-wrap: wrap; /* Permite que los elementos se acomoden en varias filas si es necesario */
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Debajo de la barra de navegación */
+        right: 0;
+        background-color: #b79347;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    /* Clase para mostrar el menú cuando se hace clic en el ícono */
+    nav ul.show {
+        display: flex;
+        max-height: 500px; /* Ajusta según sea necesario */
     }
 
     nav ul li {
-        flex: 1 1 auto;
-        min-width: 80px; /* Ajusta el tamaño mínimo de los elementos de la barra de navegación */
+        margin: 10px 0;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    nav ul li a {
+        display: block;
     }
 
     /* Ajuste para centrar mejor el contenido del footer en móviles */
