@@ -9,8 +9,6 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -77,7 +75,6 @@ nav ul li a:hover {
     padding: 50px 0;
     text-align: center;
     background-color: #f4f4f4;
-    flex: 1;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -90,12 +87,18 @@ nav ul li a:hover {
     font-size: 1.2em;
 }
 
+/* Sección de Contenido General */
+.contenido {
+    padding: 0 20px; /* Añade padding lateral */
+    margin-bottom: 40px; /* Añade margen inferior */
+}
+
 /* Sección de Publicaciones */
 .publicaciones {
     padding: 20px;
     background-color: #f9f9f9;
     text-align: center;
-    margin-bottom: 200px;
+    margin-bottom: 40px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -107,7 +110,7 @@ nav ul li a:hover {
 
 .taggbox {
     display: inline-block;
-    width: 300px;
+    width: 100%;
     height: 400px;
     margin-right: 10px;
     vertical-align: top;
@@ -118,8 +121,7 @@ nav ul li a:hover {
     text-align: center;
     padding: 20px;
     background-color: #f9f9f9;
-    margin: 20px 0;
-    margin-bottom: 150px;
+    margin: 20px 0 40px 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -152,6 +154,7 @@ nav ul li a:hover {
     margin: 20px auto;
     display: flex;
     flex-direction: column;
+    padding: 0 20px; /* Añade padding lateral */
 }
 
 #formulario-reseña label {
@@ -188,6 +191,7 @@ nav ul li a:hover {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 20px; /* Añade padding lateral */
 }
 
 #reseñas-lista ul {
@@ -202,17 +206,16 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* Barra Inferior (Footer) */
+/* Footer */
 footer {
     background-color: #081050;
     color: #fff;
     padding: 20px 0;
     text-align: center;
-    position: fixed;
+    position: static;
     width: 100%;
-    bottom: 0;
     z-index: 1000;
-    margin-top: 400px;
+    margin-top: 40px;
 }
 
 footer h2 {
@@ -250,20 +253,15 @@ footer a:hover {
 
 /* Ajustes específicos para dispositivos móviles */
 @media (max-width: 768px) {
-    /* Ajuste de margen inferior en publicaciones y reseñas */
     .publicaciones,
     .reseñas {
-        margin-bottom: 150px;
+        margin-bottom: 80px;
     }
 
-    /* Ajuste de posición y margen del footer */
     footer {
-        position: static;
-        margin-top: 30px;
-        padding: 15px 0;
+        margin-top: 20px;
     }
 
-    /* Ajuste de texto en la sección principal */
     .hero h1 {
         font-size: 2em;
     }
@@ -272,12 +270,10 @@ footer a:hover {
         font-size: 1em;
     }
 
-    /* Mostrar el ícono de menú hamburguesa */
     .menu-icon {
         display: block;
     }
 
-    /* Estilos para el menú en móviles */
     nav ul {
         display: none;
         flex-direction: column;
@@ -289,7 +285,6 @@ footer a:hover {
         padding: 10px 0;
     }
 
-    /* Mostrar menú al hacer clic en el ícono */
     nav ul.show {
         display: flex;
     }
@@ -304,7 +299,6 @@ footer a:hover {
         display: block;
     }
 
-    /* Centrar contenido del footer */
     footer p {
         text-align: center;
         justify-content: center;
