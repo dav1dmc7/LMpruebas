@@ -29,13 +29,36 @@ body {
 }
 
 /* Barra Superior */
+/* Header */
 header {
-    background-color: #b79347;
-    color: #fff;
-    padding: 10px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
+/* Selector de idioma */
+.language-selector {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.language-selector a {
+    margin-left: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.language-selector a:first-child {
+    margin-left: 0;
+}
+
+.language-selector a:hover {
+    text-decoration: underline;
+}
+
+/* Ajustes en el nav */
 header nav {
     display: flex;
     align-items: center;
@@ -44,8 +67,21 @@ header nav {
 
 header .logo {
     height: 60px;
-    margin-right: 20px;
+    margin-left: 20px;
 }
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .language-selector {
+        top: 15px;
+        right: 15px;
+    }
+    
+    header nav .logo {
+        margin-left: 15px;
+    }
+}
+
 
 /* Selector de idioma */
 .language-selector {
@@ -495,3 +531,21 @@ footer a:hover {
         justify-content: center;
     }
 }
+/* Mostrar/ocultar submenú en móvil */
+@media (max-width: 768px) {
+    nav ul li .submenu {
+        display: none;
+        position: static;
+        background-color: #a37f3d;
+    }
+
+    nav ul li .submenu li a {
+        padding-left: 30px;
+    }
+
+    /* Mostrar submenú cuando tenga la clase 'show-submenu' */
+    nav ul li .submenu.show-submenu {
+        display: block;
+    }
+}
+

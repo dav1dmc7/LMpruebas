@@ -112,9 +112,14 @@ function setupSubmenuToggle() {
         submenuLink.addEventListener('click', function(e) {
             if (window.innerWidth <= 768) {
                 e.preventDefault();
-                const submenu = this.nextElementSibling;
+                const submenu = submenuParent.querySelector('.submenu');
                 submenu.classList.toggle('show-submenu');
             }
         });
     });
 }
+
+// Llama a setupSubmenuToggle al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    setupSubmenuToggle();
+});
