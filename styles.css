@@ -135,6 +135,13 @@ main {
     margin-bottom: 40px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+.taggbox {
+    width: 100%;
+    /* Elimina la altura fija */
+    /* height: 400px; */
+    /* Añade lo siguiente */
+    min-height: 600px; /* Ajusta este valor según el contenido */
+}
 
 .publicaciones h2 {
     font-size: 1.8em;
