@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios | López Márquez Abogados</title>
-    <meta name="description" content="Descubre los servicios que ofrecemos en López Márquez Abogados, especializados en derecho laboral y asesoría legal.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Descubre los servicios que ofrecemos en López Márquez Abogados en diversas áreas del derecho.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preload" href="../styles.css" as="style">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
+            <!-- Selector de idioma -->
+            <div class="language-selector">
+                <a href="../es/services.html">ES</a> |
+                <a href="../en/services.html">EN</a>
+            </div>
             <nav>
-                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
+                <a href="index.html"><img src="../images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
                 <!-- Botón de menú hamburguesa para móviles -->
                 <span class="menu-icon" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
@@ -23,7 +28,16 @@
                 <ul id="nav-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="services.html">Servicios</a></li>
+                    <li class="submenu-parent">
+                        <a href="#">Servicios</a>
+                        <ul class="submenu">
+                            <li><a href="laboral.html">Laboral</a></li>
+                            <li><a href="civil.html">Civil</a></li>
+                            <li><a href="penal.html">Penal</a></li>
+                            <li><a href="extranjeria.html">Extranjería</a></li>
+                            <li><a href="administrativo.html">Administrativo</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contact.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -33,42 +47,17 @@
     <!-- Contenido Principal -->
     <main>
         <section class="contenido">
-            <h2>Servicios</h2>
-
-            <div class="servicio">
-                <h3>Asesoría Laboral</h3>
-                <p>
-                    Brindamos asesoramiento integral en derecho laboral, abarcando desde la redacción y revisión de contratos hasta la representación en casos de despido y resolución de conflictos laborales. Nuestro equipo está dedicado a proteger tus derechos y asegurar el cumplimiento de las normativas vigentes.
-                </p>
-            </div>
-
-            <div class="servicio">
-                <h3>Representación en Juicios</h3>
-                <p>
-                    Ofrecemos representación legal en procedimientos judiciales y administrativos, defendiendo tus intereses con profesionalismo y dedicación. Analizamos cada caso de manera individual para diseñar estrategias legales efectivas que garanticen los mejores resultados posibles.
-                </p>
-            </div>
-
-            <div class="servicio">
-                <h3>Consultoría Empresarial</h3>
-                <p>
-                    Proporcionamos servicios de consultoría legal para empresas, asistiendo en la gestión de recursos humanos, cumplimiento normativo y prevención de riesgos laborales. Nuestro objetivo es ayudarte a crear un entorno laboral seguro y conforme a la ley, minimizando posibles conflictos y sanciones.
-                </p>
-            </div>
-
-            <div class="servicio">
-                <h3>Negociación Colectiva</h3>
-                <p>
-                    Asesoramos y representamos en procesos de negociación colectiva, ayudando a alcanzar acuerdos beneficiosos y equitativos entre empleadores y trabajadores. Facilitamos el diálogo y promovemos soluciones que favorezcan a ambas partes.
-                </p>
-            </div>
-
-            <div class="servicio">
-                <h3>Formación y Capacitación</h3>
-                <p>
-                    Ofrecemos programas de formación y capacitación en materia laboral para empresas y organizaciones. Nuestro objetivo es mantener a tu equipo actualizado en normativas y buenas prácticas, promoviendo un ambiente laboral productivo y respetuoso.
-                </p>
-            </div>
+            <h2>Nuestros Servicios</h2>
+            <p>
+                En López Márquez Abogados ofrecemos asesoramiento y representación legal en diversas áreas del derecho. Selecciona una de las áreas a continuación para conocer más detalles:
+            </p>
+            <ul class="lista-servicios">
+                <li><a href="laboral.html">Derecho Laboral</a></li>
+                <li><a href="civil.html">Derecho Civil</a></li>
+                <li><a href="penal.html">Derecho Penal</a></li>
+                <li><a href="extranjeria.html">Extranjería</a></li>
+                <li><a href="administrativo.html">Derecho Administrativo</a></li>
+            </ul>
         </section>
     </main>
 
@@ -78,13 +67,13 @@
             <h2>Contacto</h2>
             <p><i class="fas fa-envelope"></i> <a href="mailto:lopezmarquezabogados@gmail.com">lopezmarquezabogados@gmail.com</a></p>
             <p><i class="fas fa-phone-alt"></i> <a href="tel:+34695802513">+34 695 802 513</a></p>
-            <!-- Redes sociales (ya implementadas) -->
+            <!-- Redes sociales -->
             <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank" rel="noopener">@lopez_marquez_abogados</a></p>
             <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
         </div>
     </footer>
 
     <!-- Vinculación de JavaScript -->
-    <script src="scripts.js" defer></script>
+    <script src="../scripts.js" defer></script>
 </body>
 </html>

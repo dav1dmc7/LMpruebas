@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>López Márquez Abogados - Inicio</title>
-    <meta name="description" content="Bienvenido a López Márquez Abogados. Expertos en brindar soluciones legales a tus necesidades en todo el territorio español.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Inicio | López Márquez Abogados</title>
+    <meta name="description" content="Bienvenido a López Márquez Abogados. Ofrecemos servicios legales en diversas áreas del derecho en todo el territorio español.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preload" href="../styles.css" as="style">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container">
+            <!-- Selector de idioma -->
+            <div class="language-selector">
+                <a href="../es/index.html">ES</a> |
+                <a href="../en/index.html">EN</a>
+            </div>
             <nav>
-                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
+                <a href="index.html"><img src="../images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
                 <!-- Botón de menú hamburguesa para móviles -->
                 <span class="menu-icon" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
@@ -24,7 +29,16 @@
                 <ul id="nav-links">
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="about.html">Sobre Nosotros</a></li>
-                    <li><a href="services.html">Servicios</a></li>
+                    <li class="submenu-parent">
+                        <a href="#">Servicios</a>
+                        <ul class="submenu">
+                            <li><a href="laboral.html">Laboral</a></li>
+                            <li><a href="civil.html">Civil</a></li>
+                            <li><a href="penal.html">Penal</a></li>
+                            <li><a href="extranjeria.html">Extranjería</a></li>
+                            <li><a href="administrativo.html">Administrativo</a></li>
+                        </ul>
+                    </li>
                     <li><a href="contact.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -35,7 +49,7 @@
     <main>
         <section class="hero contenido">
             <h1>Bienvenido a López Márquez Abogados</h1>
-            <p>Expertos en brindar soluciones legales a tus necesidades en todo el territorio español.</p>
+            <p>Ofrecemos soluciones legales en diversas áreas del derecho en todo el territorio español.</p>
         </section>
 
         <!-- Publicaciones de LinkedIn en Carrusel -->
@@ -53,13 +67,13 @@
             <h2>Contacto</h2>
             <p><i class="fas fa-envelope"></i> <a href="mailto:lopezmarquezabogados@gmail.com">lopezmarquezabogados@gmail.com</a></p>
             <p><i class="fas fa-phone-alt"></i> <a href="tel:+34695802513">+34 695 802 513</a></p>
-            <!-- Redes sociales (ya implementadas) -->
+            <!-- Redes sociales -->
             <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank" rel="noopener">@lopez_marquez_abogados</a></p>
             <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/l%C3%B3pez-m%C3%A1rquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
         </div>
     </footer>
 
     <!-- Vinculación de JavaScript -->
-    <script src="scripts.js" defer></script>
+    <script src="../scripts.js" defer></script>
 </body>
 </html>
