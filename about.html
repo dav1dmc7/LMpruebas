@@ -1,26 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sobre Nosotros | López Márquez Abogados</title>
-    <meta name="description" content="Conoce más sobre López Márquez Abogados, un despacho multidisciplinar con experiencia y dedicación.">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="preload" href="../styles.css" as="style">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Conoce más sobre López Márquez Abogados, un despacho especializado en múltiples ramas del derecho con experiencia y dedicación.">
+
+    <!-- SEO Multilingüe -->
+    <link rel="alternate" hreflang="es" href="https://lopezmarquezabogados.com/about.html">
+    <link rel="alternate" hreflang="en" href="https://lopezmarquezabogados.com/about_en.html">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://lopezmarquezabogados.com/about.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sobre Nosotros | López Márquez Abogados">
+    <meta property="og:description" content="Descubre la historia, misión y valores de López Márquez Abogados. Somos expertos en derecho laboral, civil, penal, extranjería y administrativo.">
+    <meta property="og:image" content="https://lopezmarquezabogados.com/images/og-about.jpg">
+    <meta property="og:url" content="https://lopezmarquezabogados.com/about.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sobre Nosotros | López Márquez Abogados">
+    <meta name="twitter:description" content="Conoce más sobre nuestro despacho y los servicios que ofrecemos para brindarte la mejor asesoría legal.">
+    <meta name="twitter:image" content="https://lopezmarquezabogados.com/images/og-about.jpg">
+
+    <!-- Datos Estructurados -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "López Márquez Abogados",
+      "description": "Ofrecemos servicios legales especializados en derecho laboral, civil, penal, extranjería y administrativo.",
+      "image": "https://lopezmarquezabogados.com/images/logo.png",
+      "@id": "https://lopezmarquezabogados.com/",
+      "url": "https://lopezmarquezabogados.com/",
+      "telephone": "+34 695 802 513",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dirección de tu despacho",
+        "addressLocality": "Ciudad",
+        "postalCode": "Código Postal",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "Latitud",
+        "longitude": "Longitud"
+      }
+    }
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
             <!-- Selector de idioma -->
             <div class="language-selector">
-                <a href="../es/about.html">ES</a> |
-                <a href="../en/about.html">EN</a>
+                <a href="about.html">ES</a> |
+                <a href="about_en.html">EN</a>
             </div>
             <nav>
-                <a href="index.html"><img src="../images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
-                <!-- Botón de menú hamburguesa para móviles -->
+                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
+                <!-- Botón de menú hamburguesa -->
                 <span class="menu-icon" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
                 </span>
@@ -49,45 +102,15 @@
         <section class="contenido">
             <h1>Sobre Nosotros</h1>
             <p>
-                En López Márquez Abogados somos un despacho multidisciplinar que ofrece asesoramiento y representación legal en diversas áreas del derecho, excluyendo únicamente las ramas fiscal y mercantil. Nuestro equipo de profesionales está comprometido con brindar soluciones accesibles y eficaces a nuestros clientes en las áreas de derecho laboral, civil, penal, extranjería y administrativo.
+                En López Márquez Abogados somos un despacho con una clara misión: ofrecer asesoramiento legal especializado, cercano y de calidad en múltiples áreas del derecho, incluyendo laboral, civil, penal, extranjería y administrativo.
             </p>
             <p>
-                Con experiencia consolidada en diferentes ramas del derecho, hemos acumulado un conocimiento profundo sobre los desafíos que enfrentan tanto empresas como particulares. Esto nos permite ofrecer un servicio adaptado a cada situación, entendiendo que cada cliente y cada caso es único.
+                Nuestro equipo está compuesto por abogados con amplia experiencia y pasión por el derecho, comprometidos en ofrecer soluciones eficientes y personalizadas. Ya sea que necesites asistencia en un conflicto laboral, un asunto penal, trámites de extranjería o consultas sobre derecho administrativo, estamos aquí para ayudarte.
             </p>
             <p>
-                Somos una firma que prioriza la satisfacción y tranquilidad de nuestros clientes. Nuestro compromiso es claro: defender tus intereses, responder a tus inquietudes y asegurarnos de que cada paso que tomemos esté orientado a alcanzar los mejores resultados.
-            </p>
-            <p>
-                En López Márquez Abogados trabajamos para proteger tus derechos y ayudarte a tomar decisiones informadas. Tu tranquilidad es nuestra prioridad, y estamos aquí para acompañarte con profesionalidad, cercanía y dedicación.
+                La satisfacción y tranquilidad de nuestros clientes es nuestra prioridad. Nos tomamos el tiempo necesario para escuchar tus preocupaciones y crear estrategias que aseguren la defensa efectiva de tus derechos.
             </p>
         </section>
-
-        <!-- Reseñas -->
-        <section class="reseñas">
-            <h2>Deja tu Reseña</h2>
-            
-            <!-- Calificación con Estrellas -->
-            <div class="calificacion">
-                <span class="estrella" onclick="calificar(5)">&#9733;</span>
-                <span class="estrella" onclick="calificar(4)">&#9733;</span>
-                <span class="estrella" onclick="calificar(3)">&#9733;</span>
-                <span class="estrella" onclick="calificar(2)">&#9733;</span>
-                <span class="estrella" onclick="calificar(1)">&#9733;</span>
-            </div>            
-            
-            <!-- Formulario para la Reseña -->
-            <form id="formulario-reseña" onsubmit="enviarReseña(event)">
-                <label for="comentario">Tu Reseña:</label>
-                <textarea id="comentario" name="comentario" required></textarea>
-                <button type="submit">Enviar Reseña</button>
-            </form>
-        
-            <!-- Área para Mostrar las Reseñas -->
-            <div id="reseñas-lista">
-                <h3>Reseñas de Clientes</h3>
-                <ul id="lista-reseñas"></ul>
-            </div>
-        </section>        
     </main>
 
     <!-- Footer -->
@@ -103,6 +126,6 @@
     </footer>
 
     <!-- Vinculación de JavaScript -->
-    <script src="../scripts.js" defer></script>
+    <script src="scripts.js" defer></script>
 </body>
 </html>
