@@ -5,19 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio | López Márquez Abogados</title>
-    <meta name="description" content="Bienvenido a López Márquez Abogados. Ofrecemos servicios legales en diversas áreas del derecho en todo el territorio español.">
-
+    <meta name="description" content="Bienvenido a López Márquez Abogados. Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
+    
     <!-- SEO Multilingüe -->
     <link rel="alternate" hreflang="es" href="https://lopezmarquezabogados.com/index.html">
     <link rel="alternate" hreflang="en" href="https://lopezmarquezabogados.com/index_en.html">
-
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://lopezmarquezabogados.com/index.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Inicio | López Márquez Abogados">
+    <meta property="og:description" content="Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
+    <meta property="og:image" content="https://lopezmarquezabogados.com/images/og-image.jpg">
+    <meta property="og:url" content="https://lopezmarquezabogados.com/index.html">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Inicio | López Márquez Abogados">
+    <meta name="twitter:description" content="Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
+    <meta name="twitter:image" content="https://lopezmarquezabogados.com/images/og-image.jpg">
+    
+    <!-- Datos Estructurados -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "López Márquez Abogados",
+      "image": "https://lopezmarquezabogados.com/images/logo.png",
+      "@id": "https://lopezmarquezabogados.com/",
+      "url": "https://lopezmarquezabogados.com/",
+      "telephone": "+34 695 802 513",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Dirección de tu despacho",
+        "addressLocality": "Ciudad",
+        "postalCode": "Código Postal",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "Latitud",
+        "longitude": "Longitud"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    }
+    </script>
+    
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="preload" href="styles.css" as="style">
-
+    
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-
+    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -25,14 +77,14 @@
     <!-- Header -->
     <header>
         <div class="container">
+            <!-- Selector de idioma -->
+            <div class="language-selector">
+                <a href="index.html">ES</a> |
+                <a href="index_en.html">EN</a>
+            </div>
             <nav>
                 <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
-                <!-- Selector de idioma -->
-                <div class="language-selector">
-                    <a href="index.html">ES</a> |
-                    <a href="index_en.html">EN</a>
-                </div>
-                <!-- Botón de menú hamburguesa para móviles -->
+                <!-- Menú hamburguesa -->
                 <span class="menu-icon" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
                 </span>
@@ -55,20 +107,20 @@
             </nav>
         </div>
     </header>
-
+    
     <!-- Contenido Principal -->
     <main>
         <section class="hero contenido">
             <h1>Bienvenido a López Márquez Abogados</h1>
-            <p>Ofrecemos soluciones legales en diversas áreas del derecho en todo el territorio español.</p>
+            <p>Ofrecemos soluciones legales en diversas áreas del derecho en toda España.</p>
         </section>
-
+    
         <!-- Sección de Preguntas Frecuentes (FAQ) -->
         <section class="faq">
             <h2>Preguntas Frecuentes</h2>
             <div class="faq-item">
                 <h3>¿Cómo puedo agendar una cita?</h3>
-                <p>Puedes agendar una cita a través de nuestro <a href="contact.html">formulario de contacto</a> o llamándonos al +34 695 802 513.</p>
+                <p>Puedes agendar una cita a través de nuestro <a href="contact.html">formulario de contacto</a> o llamándonos al <a href="tel:+34695802513">+34 695 802 513</a>.</p>
             </div>
             <div class="faq-item">
                 <h3>¿Ofrecen consultas en línea?</h3>
@@ -76,7 +128,7 @@
             </div>
             <!-- Añade más preguntas y respuestas según sea necesario -->
         </section>
-
+    
         <!-- Publicaciones de LinkedIn en Carrusel -->
         <section class="publicaciones">
             <h2>Publicaciones Recientes</h2>
@@ -85,7 +137,7 @@
             <script src="https://widget.taggbox.com/embed-lite.min.js" async defer></script>
         </section>
     </main>
-
+    
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -97,7 +149,7 @@
             <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
         </div>
     </footer>
-
+    
     <!-- Vinculación de JavaScript -->
     <script src="scripts.js" defer></script>
 </body>
