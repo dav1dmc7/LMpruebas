@@ -2,7 +2,7 @@
 
 // Configuración de Supabase
 const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
-const supabaseKey = 'TU_SUPABASE_KEY'; // Asegúrate de mantener segura tu clave
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impua2x1YWJ0a3RhdHZ0c2JmYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxNTMzNTEsImV4cCI6MjA0NTcyOTM1MX0.DKGFbfq3z6-vxrg23SenSXbtBg2f4hZGvIO36ogofGY';
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Calificación y Envío de Reseñas a Supabase
@@ -102,7 +102,6 @@ function validarFormulario() {
 
     return true;
 }
-
 
 // Controlar el submenú en dispositivos móviles
 function setupSubmenuToggle() {
