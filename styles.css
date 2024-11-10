@@ -64,7 +64,7 @@ header {
 header nav {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 header .logo {
@@ -72,34 +72,15 @@ header .logo {
     margin-left: 20px;
 }
 
-/* Ajustes para dispositivos móviles */
-@media (max-width: 768px) {
-    .language-selector {
-        top: 10px;
-        right: 60px;
-    }
-    
-    header nav .logo {
-        margin-left: 15px;
-    }
-}
-.menu-icon {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-}
-
 /* Menú de navegación */
 nav ul {
     list-style: none;
     display: flex;
-    margin-left: 20px; /* Añadido para separar el menú del logo */
     align-items: center;
-    flex-wrap: nowrap; /* Evita que los elementos se vayan a la siguiente línea */
 }
 
 nav ul li {
-    margin-left: 15px;
+    margin-left: 20px;
     position: relative;
 }
 
@@ -110,8 +91,7 @@ nav ul li a {
     padding: 5px 10px;
     transition: background-color 0.3s, color 0.3s;
     border-radius: 5px;
-    font-size: 0.95em; /* Reducir ligeramente el tamaño de fuente */
-
+    font-size: 1em;
 }
 
 nav ul li a:hover {
@@ -169,6 +149,9 @@ nav ul li .submenu li a:hover {
 @media (max-width: 768px) {
     .menu-icon {
         display: block;
+        position: absolute;
+        top: 10px;
+        right: 20px;
     }
 }
 
@@ -197,24 +180,28 @@ nav ul li .submenu li a:hover {
         padding: 15px;
     }
 
+    /* Submenú en móvil */
     nav ul li .submenu {
         display: none;
-        position: static;
         background-color: #a37f3d;
+        padding-left: 15px;
     }
 
     nav ul li .submenu li a {
         padding-left: 30px;
     }
 
-/* Mostrar/ocultar submenú en móvil */
-@media (max-width: 768px) {
-    nav ul li .submenu {
-        display: none;
-    }
-
+    /* Mostrar submenú cuando tenga la clase 'show-submenu' */
     nav ul li .submenu.show-submenu {
         display: block;
+    }
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .language-selector {
+        top: 10px;
+        right: 60px;
     }
 }
 
@@ -245,6 +232,7 @@ main {
     margin-bottom: 40px;
 }
 
+.contenido h1,
 .contenido h2 {
     margin-bottom: 20px;
     color: #081050;
@@ -280,7 +268,7 @@ main {
     margin-bottom: 30px;
 }
 
-.servicio h3 {
+.servicio h2 {
     margin-bottom: 10px;
     color: #b79347;
 }
