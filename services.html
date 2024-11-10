@@ -1,26 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Metadatos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios | López Márquez Abogados</title>
-    <meta name="description" content="Descubre los servicios que ofrecemos en López Márquez Abogados en diversas áreas del derecho.">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="preload" href="../styles.css" as="style">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Descubre todos los servicios legales que ofrecemos en López Márquez Abogados.">
+
+    <!-- SEO Multilingüe -->
+    <link rel="alternate" hreflang="es" href="https://lopezmarquezabogados.com/servicios.html">
+    <link rel="alternate" hreflang="en" href="https://lopezmarquezabogados.com/servicios_en.html">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://lopezmarquezabogados.com/servicios.html">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
             <!-- Selector de idioma -->
             <div class="language-selector">
-                <a href="../es/services.html">ES</a> |
-                <a href="../en/services.html">EN</a>
+                <a href="servicios.html">ES</a> |
+                <a href="servicios_en.html">EN</a>
             </div>
             <nav>
-                <a href="index.html"><img src="../images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
-                <!-- Botón de menú hamburguesa para móviles -->
+                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
+                <!-- Menú hamburguesa -->
                 <span class="menu-icon" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
                 </span>
@@ -29,7 +43,7 @@
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="about.html">Sobre Nosotros</a></li>
                     <li class="submenu-parent">
-                        <a href="#">Servicios</a>
+                        <a href="servicios.html">Servicios</a>
                         <ul class="submenu">
                             <li><a href="laboral.html">Laboral</a></li>
                             <li><a href="civil.html">Civil</a></li>
@@ -47,17 +61,47 @@
     <!-- Contenido Principal -->
     <main>
         <section class="contenido">
-            <h2>Nuestros Servicios</h2>
-            <p>
-                En López Márquez Abogados ofrecemos asesoramiento y representación legal en diversas áreas del derecho. Selecciona una de las áreas a continuación para conocer más detalles:
-            </p>
-            <ul class="lista-servicios">
-                <li><a href="laboral.html">Derecho Laboral</a></li>
-                <li><a href="civil.html">Derecho Civil</a></li>
-                <li><a href="penal.html">Derecho Penal</a></li>
-                <li><a href="extranjeria.html">Extranjería</a></li>
-                <li><a href="administrativo.html">Derecho Administrativo</a></li>
-            </ul>
+            <h1>Servicios</h1>
+            <p>En López Márquez Abogados ofrecemos una amplia gama de servicios legales para satisfacer las necesidades de nuestros clientes. A continuación, encontrarás un resumen de cada área de práctica:</p>
+
+            <div class="servicio">
+                <h2><a href="laboral.html">Derecho Laboral</a></h2>
+                <p>Asesoramiento en despidos, reclamaciones de cantidad, accidentes laborales, y más.</p>
+            </div>
+
+            <div class="servicio">
+                <h2><a href="civil.html">Derecho Civil</a></h2>
+                <p>Contratos, familia y sucesiones, reclamaciones de deudas, y otros servicios civiles.</p>
+            </div>
+
+            <div class="servicio">
+                <h2><a href="penal.html">Derecho Penal</a></h2>
+                <p>Defensa en procesos penales, asistencia al detenido, y representación en juicios.</p>
+            </div>
+
+            <div class="servicio">
+                <h2><a href="extranjeria.html">Extranjería</a></h2>
+                <p>Trámites de residencia, nacionalidad, reagrupación familiar, y más.</p>
+            </div>
+
+            <div class="servicio">
+                <h2><a href="administrativo.html">Derecho Administrativo</a></h2>
+                <p>Recursos administrativos, reclamaciones ante organismos públicos, y asesoramiento general.</p>
+            </div>
+        </section>
+
+        <!-- Sección de Preguntas Frecuentes (FAQ) -->
+        <section class="faq">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <h3>¿Cuánto tiempo tarda un proceso laboral?</h3>
+                <p>La duración de un proceso laboral puede variar dependiendo de la complejidad del caso y la carga de trabajo de los juzgados, pero generalmente puede oscilar entre 6 meses y un año.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Qué documentos necesito para iniciar un trámite de extranjería?</h3>
+                <p>Los documentos varían según el trámite, pero comúnmente se requieren pasaporte, certificado de antecedentes penales, y documentación que acredite tu situación en España.</p>
+            </div>
+            <!-- Añade más preguntas y respuestas según sea necesario -->
         </section>
     </main>
 
@@ -73,7 +117,7 @@
         </div>
     </footer>
 
-    <!-- Vinculación de JavaScript -->
-    <script src="../scripts.js" defer></script>
+    <!-- JavaScript -->
+    <script src="scripts.js" defer></script>
 </body>
 </html>
