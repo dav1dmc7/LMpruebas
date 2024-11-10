@@ -99,6 +99,8 @@ function validarFormulario() {
 
 // scripts.js
 
+// scripts.js
+
 // Función para controlar el menú hamburguesa
 function toggleMenu() {
     const navLinks = document.getElementById('nav-links');
@@ -124,4 +126,3 @@ function setupSubmenuToggle() {
 document.addEventListener('DOMContentLoaded', function() {
     setupSubmenuToggle();
 });
-

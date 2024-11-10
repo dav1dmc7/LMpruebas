@@ -368,27 +368,6 @@ form button:hover {
     background-color: #060a3d;
 }
 
-/* Estilos para la lista de reseñas */
-#reseñas-lista {
-    text-align: left;
-    margin-top: 20px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#reseñas-lista ul {
-    list-style: none;
-    padding: 0;
-}
-
-#reseñas-lista li {
-    background-color: #f4f4f4;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
-
 /* Estilos para la sección de FAQ */
 .faq {
     padding: 20px;
