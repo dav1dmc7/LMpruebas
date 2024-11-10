@@ -367,6 +367,30 @@ form button:hover {
     margin-bottom: 10px;
     border-radius: 5px;
 }
+/* Estilos para la sección de FAQ */
+.faq {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.faq h2 {
+    margin-bottom: 20px;
+    color: #081050;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+
+.faq-item h3 {
+    font-size: 1.2em;
+    color: #b79347;
+}
+
+.faq-item p {
+    margin-top: 5px;
+    text-align: justify;
+}
 
 /* Footer */
 footer {
@@ -452,6 +476,18 @@ footer a:hover {
 
     nav ul li a {
         display: block;
+    }
+
+    nav ul li .submenu {
+        display: none;
+    }
+
+    nav ul li .submenu.show-submenu {
+        display: block;
+    }
+
+    nav ul li .submenu li a {
+        padding-left: 30px;
     }
 
     footer p {

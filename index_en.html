@@ -7,6 +7,10 @@
     <title>Home | López Márquez Abogados</title>
     <meta name="description" content="Welcome to López Márquez Abogados. We offer legal solutions in various areas of law throughout Spain.">
 
+    <!-- Multilingual SEO -->
+    <link rel="alternate" hreflang="en" href="https://lopezmarquezabogados.com/index_en.html">
+    <link rel="alternate" hreflang="es" href="https://lopezmarquezabogados.com/index.html">
+
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
     <link rel="preload" href="styles.css" as="style">
@@ -22,12 +26,12 @@
     <header>
         <div class="container">
             <nav>
+                <a href="index_en.html"><img src="images/logo.png" alt="Logo of López Márquez Abogados" class="logo"></a>
                 <!-- Language Selector -->
                 <div class="language-selector">
                     <a href="index.html">ES</a> |
                     <a href="index_en.html">EN</a>
                 </div>
-                <a href="index_en.html"><img src="images/logo.png" alt="Logo of López Márquez Abogados" class="logo"></a>
                 <!-- Hamburger menu button for mobile -->
                 <span class="menu-icon" onclick="toggleMenu()">
                     <i class="fas fa-bars"></i>
@@ -59,13 +63,27 @@
             <p>We offer legal solutions in various areas of law throughout Spain.</p>
         </section>
 
+        <!-- Frequently Asked Questions (FAQ) Section -->
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How can I schedule an appointment?</h3>
+                <p>You can schedule an appointment through our <a href="contact_en.html">contact form</a> or by calling us at +34 695 802 513.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you offer online consultations?</h3>
+                <p>Yes, we offer both in-person and online consultations to suit your needs.</p>
+            </div>
+            <!-- Add more questions and answers as needed -->
+        </section>
+
         <!-- LinkedIn Posts Carousel -->
         <section class="publicaciones">
             <h2>Recent Posts</h2>
             <!-- Taggbox Widget -->
             <div class="taggbox" data-widget-id="2136767" data-tags="false"></div>
             <script src="https://widget.taggbox.com/embed-lite.min.js" async defer></script>
-        </section>        
+        </section>
     </main>
 
     <!-- Footer -->

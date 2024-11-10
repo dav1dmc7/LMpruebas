@@ -81,36 +81,28 @@ function validarFormulario() {
     const email = document.getElementById('email').value.trim();
     const mensaje = document.getElementById('mensaje').value.trim();
 
+    // Validar campos vacíos
     if (nombre === '' || email === '' || mensaje === '') {
         alert('Por favor, completa todos los campos del formulario.');
         return false;
     }
 
-    // Puedes añadir más validaciones aquí (por ejemplo, formato del email)
+    // Validar formato del email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Por favor, ingresa un correo electrónico válido.');
+        return false;
+    }
+
+    // Validar longitud mínima del mensaje
+    if (mensaje.length < 10) {
+        alert('El mensaje debe tener al menos 10 caracteres.');
+        return false;
+    }
 
     return true;
 }
 
-// Controlar el submenú en dispositivos móviles
-function setupSubmenuToggle() {
-    const submenuParent = document.querySelector('.submenu-parent > a');
-    submenuParent.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const submenu = this.nextElementSibling;
-            submenu.classList.toggle('show');
-        }
-    });
-}
-// scripts.js
-
-// ... (código existente) ...
-
-// Función para controlar el menú hamburguesa
-function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('show');
-}
 
 // Controlar el submenú en dispositivos móviles
 function setupSubmenuToggle() {
@@ -126,11 +118,3 @@ function setupSubmenuToggle() {
         });
     });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    // ... (código existente) ...
-    setupSubmenuToggle();
-});
-
-// ... (código existente) ...
-
