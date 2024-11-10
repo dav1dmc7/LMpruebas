@@ -1,3 +1,5 @@
+// scripts.js
+
 // Configuración de Supabase
 const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
 const supabaseKey = 'TU_SUPABASE_KEY'; // Asegúrate de mantener segura tu clave
@@ -49,7 +51,10 @@ async function mostrarReseñas() {
 }
 
 // Llama a mostrarReseñas al cargar la página
-document.addEventListener('DOMContentLoaded', mostrarReseñas);
+document.addEventListener('DOMContentLoaded', function() {
+    mostrarReseñas();
+    setupSubmenuToggle();
+});
 
 // Función para calificar con estrellas
 function calificar(puntaje) {
@@ -84,4 +89,16 @@ function validarFormulario() {
     // Puedes añadir más validaciones aquí (por ejemplo, formato del email)
 
     return true;
+}
+
+// Controlar el submenú en dispositivos móviles
+function setupSubmenuToggle() {
+    const submenuParent = document.querySelector('.submenu-parent > a');
+    submenuParent.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            const submenu = this.nextElementSibling;
+            submenu.classList.toggle('show');
+        }
+    });
 }
