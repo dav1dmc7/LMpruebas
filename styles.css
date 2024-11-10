@@ -28,10 +28,12 @@ body {
     margin: 0 auto;
 }
 
-/* Barra Superior */
 /* Header */
 header {
     position: relative;
+    background-color: #b79347;
+    color: #fff;
+    padding: 10px 0;
 }
 
 /* Selector de idioma */
@@ -80,24 +82,6 @@ header .logo {
     header nav .logo {
         margin-left: 15px;
     }
-}
-
-
-/* Selector de idioma */
-.language-selector {
-    display: flex;
-    align-items: center;
-}
-
-.language-selector a {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-}
-
-.language-selector a:hover {
-    text-decoration: underline;
 }
 
 /* Menú de navegación */
@@ -166,7 +150,21 @@ nav ul li .submenu li a:hover {
     }
 }
 
-/* Mostrar/ocultar submenú en móvil */
+/* Estilos para el ícono de menú hamburguesa */
+.menu-icon {
+    display: none;
+    font-size: 1.5em;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .menu-icon {
+        display: block;
+    }
+}
+
+/* Mostrar/ocultar menú en móvil */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -203,20 +201,6 @@ nav ul li .submenu li a:hover {
 
     /* Mostrar submenú cuando tenga la clase 'show-submenu' */
     nav ul li .submenu.show-submenu {
-        display: block;
-    }
-}
-
-/* Estilos para el ícono de menú hamburguesa */
-.menu-icon {
-    display: none;
-    font-size: 1.5em;
-    color: #fff;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .menu-icon {
         display: block;
     }
 }
@@ -403,6 +387,7 @@ form button:hover {
     margin-bottom: 10px;
     border-radius: 5px;
 }
+
 /* Estilos para la sección de FAQ */
 .faq {
     padding: 20px;
@@ -485,10 +470,6 @@ footer a:hover {
         font-size: 1em;
     }
 
-    .menu-icon {
-        display: block;
-    }
-
     nav ul {
         display: none;
         flex-direction: column;
@@ -505,17 +486,19 @@ footer a:hover {
     }
 
     nav ul li {
-        margin: 10px 0;
+        margin: 0;
         text-align: center;
-        margin-left: 0;
     }
 
     nav ul li a {
         display: block;
+        padding: 15px;
     }
 
     nav ul li .submenu {
         display: none;
+        position: static;
+        background-color: #a37f3d;
     }
 
     nav ul li .submenu.show-submenu {
@@ -531,21 +514,3 @@ footer a:hover {
         justify-content: center;
     }
 }
-/* Mostrar/ocultar submenú en móvil */
-@media (max-width: 768px) {
-    nav ul li .submenu {
-        display: none;
-        position: static;
-        background-color: #a37f3d;
-    }
-
-    nav ul li .submenu li a {
-        padding-left: 30px;
-    }
-
-    /* Mostrar submenú cuando tenga la clase 'show-submenu' */
-    nav ul li .submenu.show-submenu {
-        display: block;
-    }
-}
-
