@@ -69,12 +69,6 @@ function calificar(puntaje) {
     });
 }
 
-// Función para controlar el menú hamburguesa
-function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('show');
-}
-
 // Validación del formulario de contacto
 function validarFormulario() {
     const nombre = document.getElementById('nombre').value.trim();
@@ -103,6 +97,14 @@ function validarFormulario() {
     return true;
 }
 
+// scripts.js
+
+// Función para controlar el menú hamburguesa
+function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('show');
+}
+
 // Controlar el submenú en dispositivos móviles
 function setupSubmenuToggle() {
     const submenuParents = document.querySelectorAll('.submenu-parent');
@@ -118,7 +120,8 @@ function setupSubmenuToggle() {
     });
 }
 
-// Llama a setupSubmenuToggle al cargar la página
+// Llamar a las funciones al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     setupSubmenuToggle();
 });
+
