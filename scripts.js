@@ -102,3 +102,35 @@ function setupSubmenuToggle() {
         }
     });
 }
+// scripts.js
+
+// ... (código existente) ...
+
+// Función para controlar el menú hamburguesa
+function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('show');
+}
+
+// Controlar el submenú en dispositivos móviles
+function setupSubmenuToggle() {
+    const submenuParents = document.querySelectorAll('.submenu-parent');
+    submenuParents.forEach(function (submenuParent) {
+        const submenuLink = submenuParent.querySelector('a');
+        submenuLink.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const submenu = this.nextElementSibling;
+                submenu.classList.toggle('show-submenu');
+            }
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ... (código existente) ...
+    setupSubmenuToggle();
+});
+
+// ... (código existente) ...
+
