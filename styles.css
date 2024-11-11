@@ -475,7 +475,7 @@ footer a:hover {
         padding: 15px;
     }
 
-/* Mostrar/ocultar submenú en móvil */
+/* Submenú en móvil */
 @media (max-width: 768px) {
     nav ul li .submenu {
         display: none;
@@ -490,6 +490,7 @@ footer a:hover {
     nav ul li .submenu li a {
         padding-left: 30px;
     }
+}
 
     footer p {
         text-align: center;

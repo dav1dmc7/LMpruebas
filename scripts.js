@@ -96,9 +96,6 @@ function validarFormulario() {
 
     return true;
 }
-
-// scripts.js
-
 // scripts.js
 
 // Función para controlar el menú hamburguesa
