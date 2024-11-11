@@ -173,6 +173,7 @@ nav ul li .submenu li a:hover {
 
     nav ul li {
         margin: 0;
+        text-align: center;
     }
 
     nav ul li a {
@@ -184,7 +185,7 @@ nav ul li .submenu li a:hover {
     nav ul li .submenu {
         display: none;
         background-color: #a37f3d;
-        padding-left: 15px;
+        padding-left: 0;
     }
 
     nav ul li .submenu li a {
