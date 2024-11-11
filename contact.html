@@ -21,12 +21,6 @@
     <meta property="og:url" content="https://lopezmarquezabogados.com/contact.html">
     <meta property="og:type" content="website">
     
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Contacto | López Márquez Abogados">
-    <meta name="twitter:description" content="Ponte en contacto con López Márquez Abogados para consultas y asesoramiento legal personalizado.">
-    <meta name="twitter:image" content="https://lopezmarquezabogados.com/images/og-contact.jpg">
-    
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
     
@@ -35,6 +29,9 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -76,21 +73,20 @@
         <section class="contenido">
             <h1>Contacto</h1>
             <p>Para cualquier consulta o para agendar una cita, por favor, completa el siguiente formulario:</p>
-            <form action="procesar_formulario.php" method="POST" onsubmit="return validarFormulario()">
+            <form id="contact-form" method="POST" onsubmit="return validarFormulario()">
                 <!-- Campos del formulario -->
-                <input type="hidden" name="form-name" value="contact">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" required>
-    
+
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-    
+
                 <label for="mensaje">Mensaje:</label>
                 <textarea id="mensaje" name="mensaje" required></textarea>
                 
                 <!-- reCAPTCHA -->
-                <div class="g-recaptcha" data-sitekey="TU_SITE_KEY"></div>
-    
+                <div class="g-recaptcha" data-sitekey="TU_CLAVE_DEL_SITIO"></div>
+
                 <button type="submit">Enviar</button>
             </form>
         </section>
@@ -104,13 +100,11 @@
             <p><i class="fas fa-phone-alt"></i> <a href="tel:+34695802513">+34 695 802 513</a></p>
             <!-- Redes sociales -->
             <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank" rel="noopener">@lopez_marquez_abogados</a></p>
-            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/l%C3%B3pez-m%C3%A1rquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
         </div>
     </footer>
     
     <!-- JavaScript -->
     <script src="scripts.js" defer></script>
-    <!-- reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

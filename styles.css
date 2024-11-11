@@ -475,10 +475,12 @@ footer a:hover {
         padding: 15px;
     }
 
+/* Mostrar/ocultar submenú en móvil */
+@media (max-width: 768px) {
     nav ul li .submenu {
         display: none;
-        position: static;
         background-color: #a37f3d;
+        padding-left: 15px;
     }
 
     nav ul li .submenu.show-submenu {
