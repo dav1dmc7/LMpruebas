@@ -1,0 +1,16 @@
+{
+  "name": "lmpruebas",
+  "version": "1.0.0",
+  "description": "Página de mantenimiento web de Lopez Marquez Abogados",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.46.1",
+    "node-fetch": "^3.3.2"
+  }
+}

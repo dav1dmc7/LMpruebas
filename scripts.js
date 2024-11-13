@@ -108,18 +108,30 @@ function toggleMenu() {
 function setupSubmenuToggle() {
     const submenuParents = document.querySelectorAll('.submenu-parent');
     submenuParents.forEach(function (submenuParent) {
-        const submenuLink = submenuParent.querySelector('a');
-        submenuLink.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault(); // Previene la navegación en móviles
-                const submenu = submenuParent.querySelector('.submenu');
-                submenu.classList.toggle('show-submenu');
-            }
-        });
+      const submenuLink = submenuParent.querySelector('a');
+      submenuLink.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const submenu = submenuParent.querySelector('.submenu');
+          submenu.classList.toggle('show-submenu');
+        }
+      });
     });
-}
-
-// Llamar a las funciones al cargar la página
-document.addEventListener('DOMContentLoaded', function() {
+  }
+  
+  document.addEventListener('DOMContentLoaded', function () {
     setupSubmenuToggle();
-});
+  });
+  
+  function mostrarMensajeExito(mensaje) {
+    const mensajeExito = document.createElement('div');
+    mensajeExito.classList.add('mensaje-exito');
+    mensajeExito.textContent = mensaje;
+    document.querySelector('main').prepend(mensajeExito);
+  
+    // Ocultar el mensaje después de unos segundos (opcional)
+    setTimeout(() => {
+      mensajeExito.remove();
+    }, 5000);
+  }
+  
