@@ -4,17 +4,36 @@ const fetch = require('node-fetch');
 
 exports.handler = async (event, context) => {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  const supabaseUrl = 'https://TU_SUPABASE_URL';
+  const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
+  const { createClient } = require('@supabase/supabase-js');
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
   const formData = JSON.parse(event.body);
 
   // Verificar reCAPTCHA
   const recaptchaResponse = formData['g-recaptcha-response'];
   const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${recaptchaResponse}`;
 
-  const response = await fetch(verificationUrl, { method: 'POST' });
-  const data = await response.json();
+  const recaptchaRes = await fetch(verificationUrl, { method: 'POST' });
+  const recaptchaData = await recaptchaRes.json();
 
-  if (data.success) {
-    // Procesar el formulario (enviar correo, guardar en Supabase, etc.)
+  if (recaptchaData.success) {
+    // Procesar el formulario (por ejemplo, guardar en Supabase)
+    const { nombre, email, mensaje } = formData;
+
+    // Inserta los datos en Supabase
+    const { data, error } = await supabase
+      .from('contactos')
+      .insert([{ nombre, email, mensaje }]);
+
+    if (error) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ message: 'Error al guardar en la base de datos.' }),
+      };
+    }
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Formulario enviado correctamente.' }),

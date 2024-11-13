@@ -29,6 +29,9 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
 <body>
@@ -71,7 +74,7 @@
         <section class="contenido">
             <h1>Contacto</h1>
             <p>Para cualquier consulta o para agendar una cita, por favor, completa el siguiente formulario:</p>
-            <form id="contact-form" name="contact-form" method="POST" data-netlify="true" data-netlify-recaptcha="true" onsubmit="return validarFormulario()">
+            <form id="contact-form" method="POST" action="/.netlify/functions/process-form" onsubmit="return validarFormulario()">
                 <input type="hidden" name="form-name" value="contact-form">
                 <!-- Campos del formulario -->
                 <label for="nombre">Nombre:</label>
@@ -84,11 +87,12 @@
                 <textarea id="mensaje" name="mensaje" required></textarea>
             
                 <!-- reCAPTCHA (Netlify lo manejará automáticamente) -->
-                <div data-netlify-recaptcha="true"></div>
-            
+                <div class="g-recaptcha" data-sitekey="TU_CLAVE_DEL_SITIO"></div>
                 <button type="submit">Enviar</button>
+
             </form>            
         </section>
+        <p>Para agendar una cita, visita nuestro <a href="URL_DE_TU_CALENDARIO">calendario en línea</a>.</p>
     </main>
     
     <!-- Footer -->

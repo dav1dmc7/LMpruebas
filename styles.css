@@ -228,6 +228,10 @@ main {
 }
 
 /* Sección de Contenido General */
+.subtitulo {
+    text-align: justify;
+  }  
+
 .contenido {
     padding: 20px;
     margin-bottom: 40px;
@@ -392,8 +396,18 @@ form button:hover {
 .faq-item p {
     margin-top: 5px;
     text-align: justify;
-}
+}  
 
+/* contacto */
+.mensaje-exito {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+  }
+  
 /* Footer */
 footer {
     background-color: #081050;
