@@ -111,7 +111,7 @@ function setupSubmenuToggle() {
         const submenuLink = submenuParent.querySelector('a');
         submenuLink.addEventListener('click', function(e) {
             if (window.innerWidth <= 768) {
-                e.preventDefault();
+                e.preventDefault(); // Previene la navegación en móviles
                 const submenu = submenuParent.querySelector('.submenu');
                 submenu.classList.toggle('show-submenu');
             }
