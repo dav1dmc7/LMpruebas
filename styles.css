@@ -1,364 +1,346 @@
 /* styles.css */
 
-/* Reset de estilos básicos */
+/* RESET Y ESTILOS BÁSICOS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html, body {
+  }
+  
+  html, body {
     height: 100%;
-}
-
-body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    min-height: 100vh;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Contenedor común */
-.container {
+  }
+  
+  /* CONTENEDORES */
+  .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-/* Header */
-header {
+  }
+  
+  /* HEADER */
+  header {
     position: relative;
     background-color: #b79347;
     color: #fff;
     padding: 10px 0;
-}
-
-/* Selector de idioma */
-.language-selector {
+  }
+  
+  header .logo {
+    height: 60px;
+    margin-left: 20px;
+  }
+  
+  .language-selector {
     position: absolute;
     top: 10px;
     right: 20px;
     display: flex;
     align-items: center;
-}
-
-.language-selector a {
+  }
+  
+  .language-selector a {
     margin-left: 5px;
     text-decoration: none;
     color: #fff;
     font-weight: bold;
-}
-
-.language-selector a:first-child {
-    margin-left: 0;
-}
-
-.language-selector a:hover {
+  }
+  
+  .language-selector a:hover {
     text-decoration: underline;
-}
-
-/* Ajustes en el nav */
-header nav {
+  }
+  
+  /* NAVEGACIÓN */
+  nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-header .logo {
-    height: 60px;
-    margin-left: 20px;
-}
-
-/* Menú de navegación */
-nav ul {
+  }
+  
+  nav ul {
     list-style: none;
     display: flex;
     align-items: center;
-}
-
-nav ul li {
+  }
+  
+  nav ul li {
     margin-left: 20px;
     position: relative;
-}
-
-nav ul li a {
+  }
+  
+  nav ul li a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
     padding: 5px 10px;
-    transition: background-color 0.3s, color 0.3s;
     border-radius: 5px;
     font-size: 1em;
-}
-
-nav ul li a:hover {
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  nav ul li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Estilos para el submenú */
-nav ul li .submenu {
+  }
+  
+  /* SUBMENÚ */
+  nav ul li .submenu {
     display: none;
     position: absolute;
     background-color: #b79347;
-    list-style: none;
-    padding: 0;
-    margin: 0;
     top: 100%;
     left: 0;
     min-width: 200px;
     z-index: 1000;
-}
-
-nav ul li .submenu li {
+  }
+  
+  nav ul li .submenu li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-nav ul li .submenu li:last-child {
+  }
+  
+  nav ul li .submenu li:last-child {
     border-bottom: none;
-}
-
-nav ul li .submenu li a {
+  }
+  
+  nav ul li .submenu li a {
     color: #fff;
     padding: 10px 15px;
     display: block;
-    text-decoration: none;
-}
-
-nav ul li .submenu li a:hover {
+  }
+  
+  nav ul li .submenu li a:hover {
     background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Mostrar el submenú al pasar el cursor en escritorio */
-@media (min-width: 769px) {
+  }
+  
+  /* MOSTRAR SUBMENÚ EN ESCRITORIO */
+  @media (min-width: 769px) {
     nav ul li:hover > .submenu {
-        display: block;
+      display: block;
     }
-}
-
-/* Estilos para el ícono de menú hamburguesa */
-.menu-icon {
+  }
+  
+  /* MENÚ HAMBURGUESA */
+  .menu-icon {
     display: none;
     font-size: 1.5em;
     color: #fff;
     cursor: pointer;
-}
-
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .menu-icon {
-        display: block;
-        position: absolute;
-        top: 10px;
-        right: 20px;
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 20px;
     }
-}
-
-/* Mostrar/ocultar menú en móvil */
-@media (max-width: 768px) {
+  }
+  
+  /* MENÚ EN MÓVIL */
+  @media (max-width: 768px) {
     nav ul {
-        flex-direction: column;
-        background-color: #b79347;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: -100%;
-        transition: left 0.3s ease;
+      flex-direction: column;
+      background-color: #b79347;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: -100%;
+      transition: left 0.3s ease;
     }
-
+  
     nav ul.show {
-        left: 0;
+      left: 0;
     }
-
+  
     nav ul li {
-        margin: 0;
-        text-align: center;
+      margin: 0;
+      text-align: center;
     }
-
+  
     nav ul li a {
-        display: block;
-        padding: 15px;
+      display: block;
+      padding: 15px;
     }
-
-    /* Submenú en móvil */
+  
+    /* SUBMENÚ EN MÓVIL */
     nav ul li .submenu {
-        display: none;
-        background-color: #a37f3d;
-        padding-left: 0;
+      display: none;
+      background-color: #a37f3d;
     }
-
-    nav ul li .submenu li a {
-        padding-left: 30px;
-    }
-
-    /* Mostrar submenú cuando tenga la clase 'show-submenu' */
+  
     nav ul li .submenu.show-submenu {
-        display: block;
+      display: block;
     }
-}
-
-/* Ajustes para dispositivos móviles */
-@media (max-width: 768px) {
+  
+    nav ul li .submenu li a {
+      padding-left: 30px;
+    }
+  }
+  
+  /* AJUSTES PARA DISPOSITIVOS MÓVILES */
+  @media (max-width: 768px) {
     .language-selector {
-        top: 10px;
-        right: 60px;
+      top: 10px;
+      right: 60px;
     }
-}
-
-/* Contenido Principal */
-main {
+  }
+  
+  /* CONTENIDO PRINCIPAL */
+  main {
     flex: 1;
-}
-
-.hero {
+  }
+  
+  .hero {
     padding: 50px 0;
     text-align: center;
     background-color: #f4f4f4;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.hero h1 {
+  }
+  
+  .hero h1 {
     margin-bottom: 20px;
     font-size: 2.5em;
-}
-
-.hero p {
+  }
+  
+  .hero p {
     font-size: 1.2em;
-}
-
-/* Sección de Contenido General */
-.subtitulo {
+  }
+  
+  .subtitulo {
     text-align: justify;
-  }  
-
-.contenido {
+  }
+  
+  .contenido {
     padding: 20px;
     margin-bottom: 40px;
-}
-
-.contenido h1,
-.contenido h2 {
+  }
+  
+  .contenido h1,
+  .contenido h2 {
     margin-bottom: 20px;
     color: #081050;
-}
-
-.contenido p {
+  }
+  
+  .contenido p {
     margin-bottom: 15px;
     text-align: justify;
-}
-
-.lista-servicios {
+  }
+  
+  /* LISTA DE SERVICIOS */
+  .lista-servicios {
     list-style: none;
     padding: 0;
-}
-
-.lista-servicios li {
+  }
+  
+  .lista-servicios li {
     margin-bottom: 10px;
-}
-
-.lista-servicios li a {
+  }
+  
+  .lista-servicios li a {
     color: #b79347;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2em;
-}
-
-.lista-servicios li a:hover {
+  }
+  
+  .lista-servicios li a:hover {
     text-decoration: underline;
-}
-
-/* Sección de Servicios */
-.servicio {
+  }
+  
+  /* SECCIÓN DE SERVICIOS */
+  .servicio {
     margin-bottom: 30px;
-}
-
-.servicio h2 {
+  }
+  
+  .servicio h2 {
     margin-bottom: 10px;
     color: #b79347;
-}
-
-.servicio p {
+  }
+  
+  .servicio p {
     text-align: justify;
-}
-
-/* Sección de Publicaciones */
-.publicaciones {
+  }
+  
+  /* PUBLICACIONES */
+  .publicaciones {
     padding: 20px;
     background-color: #f9f9f9;
     text-align: center;
     margin-bottom: 40px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.publicaciones h2 {
+  }
+  
+  .publicaciones h2 {
     font-size: 1.8em;
     margin-bottom: 15px;
     color: #081050;
-}
-
-.taggbox {
+  }
+  
+  .taggbox {
     width: 100%;
     min-height: 600px;
-}
-
-/* Estilos para la sección de reseñas */
-.reseñas {
+  }
+  
+  /* RESEÑAS */
+  .reseñas {
     text-align: center;
     padding: 20px;
     background-color: #f9f9f9;
     margin: 20px 0 40px 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.reseñas h2 {
+  }
+  
+  .reseñas h2 {
     color: #081050;
     margin-bottom: 10px;
-}
-
-/* Estilos para la calificación con estrellas */
-.calificacion {
+  }
+  
+  /* CALIFICACIÓN CON ESTRELLAS */
+  .calificacion {
     font-size: 2em;
     margin: 10px 0;
     direction: rtl;
     unicode-bidi: bidi-override;
     display: inline-block;
-}
-
-.estrella {
+  }
+  
+  .estrella {
     color: gray;
     transition: color 0.3s;
     cursor: pointer;
-}
-
-.estrella.seleccionada,
-.estrella:hover,
-.estrella:hover ~ .estrella {
+  }
+  
+  .estrella.seleccionada,
+  .estrella:hover,
+  .estrella:hover ~ .estrella {
     color: gold;
-}
-
-/* Estilos para el formulario de reseñas y contacto */
-form {
+  }
+  
+  /* FORMULARIOS */
+  form {
     max-width: 600px;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-}
-
-form label {
+  }
+  
+  form label {
     margin-top: 10px;
     font-weight: bold;
-}
-
-form input,
-form textarea {
+  }
+  
+  form input,
+  form textarea {
     padding: 8px;
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-form button {
+  }
+  
+  form button {
     background-color: #081050;
     color: white;
     border: none;
@@ -367,39 +349,14 @@ form button {
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-}
-
-form button:hover {
+  }
+  
+  form button:hover {
     background-color: #060a3d;
-}
-
-/* Estilos para la sección de FAQ */
-.faq {
-    padding: 20px;
-    background-color: #f9f9f9;
-}
-
-.faq h2 {
-    margin-bottom: 20px;
-    color: #081050;
-}
-
-.faq-item {
-    margin-bottom: 15px;
-}
-
-.faq-item h3 {
-    font-size: 1.2em;
-    color: #b79347;
-}
-
-.faq-item p {
-    margin-top: 5px;
-    text-align: justify;
-}  
-
-/* contacto */
-.mensaje-exito {
+  }
+  
+  /* MENSAJE DE ÉXITO */
+  .mensaje-exito {
     background-color: #d4edda;
     color: #155724;
     padding: 15px;
@@ -408,107 +365,66 @@ form button:hover {
     border-radius: 5px;
   }
   
-/* Footer */
-footer {
+  /* FOOTER */
+  footer {
     background-color: #081050;
     color: #fff;
     padding: 20px 0;
     text-align: center;
     width: 100%;
-}
-
-footer h2 {
+  }
+  
+  footer h2 {
     margin-bottom: 10px;
     font-size: 1.2em;
-}
-
-footer p {
+  }
+  
+  footer p {
     margin: 5px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.9em;
     transition: transform 0.3s ease;
-}
-
-footer p:hover {
+  }
+  
+  footer p:hover {
     transform: scale(1.05);
-}
-
-footer p i {
+  }
+  
+  footer p i {
     margin-right: 8px;
     color: #b79347;
-}
-
-footer a {
+  }
+  
+  footer a {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
-}
-
-footer a:hover {
+  }
+  
+  footer a:hover {
     color: #b79347;
-}
-
-/* Ajustes específicos para dispositivos móviles */
-@media (max-width: 768px) {
+  }
+  
+  /* AJUSTES ESPECÍFICOS PARA MÓVILES */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2em;
+    }
+  
+    .hero p {
+      font-size: 1em;
+    }
+  
     .publicaciones,
     .reseñas {
-        margin-bottom: 40px;
+      margin-bottom: 40px;
     }
-
-    .hero h1 {
-        font-size: 2em;
-    }
-
-    .hero p {
-        font-size: 1em;
-    }
-
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #b79347;
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    nav ul.show {
-        display: flex;
-    }
-
-    nav ul li {
-        margin: 0;
-        text-align: center;
-    }
-
-    nav ul li a {
-        display: block;
-        padding: 15px;
-    }
-
-/* Submenú en móvil */
-@media (max-width: 768px) {
-    nav ul li .submenu {
-        display: none;
-        background-color: #a37f3d;
-        padding-left: 15px;
-    }
-
-    nav ul li .submenu.show-submenu {
-        display: block;
-    }
-
-    nav ul li .submenu li a {
-        padding-left: 30px;
-    }
-}
-
+  
     footer p {
-        text-align: center;
-        justify-content: center;
+      flex-direction: column;
+      text-align: center;
     }
-}
+  }
+  
