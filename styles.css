@@ -218,10 +218,19 @@
     margin-bottom: 40px;
   }
   
-  .contenido h1,
+ /* Estilos específicos para la páginas de servicios */
+
+/* Cambiar color y tamaño de h1 */
+.contenido h1 {
+    color: #081050; /* Azul oscuro */
+    font-size: 2em;
+  }
+  
+  /* Cambiar color y tamaño de h2 */
   .contenido h2 {
-    margin-bottom: 20px;
-    color: #081050;
+    color: #000000; /* Negro */
+    font-size: 1.5em; /* Ajusta el tamaño según tus preferencias */
+    margin-bottom: 15px;
   }
   
   .contenido p {
