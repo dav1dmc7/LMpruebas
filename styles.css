@@ -229,7 +229,7 @@
   /* Cambiar color y tamaño de h2 */
   .contenido h2 {
     color: #000000; /* Negro */
-    font-size: 0.75em; /* Ajusta el tamaño según tus preferencias */
+    font-size: 1.25em; /* Ajusta el tamaño según tus preferencias */
     margin-bottom: 5px;
   }
   
