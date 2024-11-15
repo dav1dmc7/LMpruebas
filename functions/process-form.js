@@ -30,7 +30,7 @@ export async function handler(event, context) {
 
       // Inserta los datos en Supabase
       const { data, error } = await supabase
-        .from('contactos')
+        .from('clientes')
         .insert([{ nombre, email, mensaje }]);
 
       if (error) {
