@@ -4,15 +4,16 @@ import { createClient } from '@supabase/supabase-js';
 export async function handler(event) {
     try {
         console.log('Inicio de la función serverless');
+        console.log('Contenido de event.body:', event.body); // Depurar cómo llegan los datos
 
         // Configuración de Supabase
         const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
         const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
         const supabase = createClient(supabaseUrl, supabaseKey);
 
-        // Verificar y procesar los datos del formulario
+        // Procesar datos del formulario
         const formData = typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
-        console.log('Datos del formulario:', formData);
+        console.log('Datos del formulario procesados:', formData);
 
         // Validar reCAPTCHA
         const recaptchaResponse = formData['g-recaptcha-response'];
