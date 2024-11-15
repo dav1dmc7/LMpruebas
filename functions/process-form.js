@@ -6,7 +6,7 @@ export async function handler(event, context) {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
   const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
   const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
-  const { createClient } = requiere ('@supabase/supabase-js');
+  const { createClient } = require ('@supabase/supabase-js');
   const supabase = createClient(supabaseUrl, supabaseKey);
 
   const formData = JSON.parse(event.body);
