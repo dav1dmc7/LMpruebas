@@ -1,13 +1,13 @@
 import fetch from 'node-fetch';
 import { createClient } from '@supabase/supabase-js';
-import querystring from 'querystring'; // Para decodificar datos URL-encoded
+import querystring from 'querystring'; // Manejo de datos URL-encoded
 
 export async function handler(event) {
     try {
         console.log('Inicio de la función serverless');
         console.log('Contenido de event.body:', event.body); // Depuración
 
-        // Decodificar event.body si está en formato URL-encoded
+        // Decodificar el cuerpo del evento desde URL-encoded
         const formData = querystring.parse(event.body);
         console.log('Datos del formulario procesados:', formData);
 
