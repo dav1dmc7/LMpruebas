@@ -8,12 +8,13 @@ export async function handler(event) {
         const supabase = createClient(supabaseUrl, supabaseKey);
 
         const formData = JSON.parse(event.body);
+        console.log('Datos del formulario:', formData);
 
-        // Validar reCAPTCHA
         const recaptchaResponse = formData['g-recaptcha-response'];
         const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaResponse}`;
         const recaptchaRes = await fetch(verificationUrl, { method: 'POST' });
         const recaptchaData = await recaptchaRes.json();
+        console.log('Respuesta de reCAPTCHA:', recaptchaData);
 
         if (!recaptchaData.success) {
             return {
@@ -22,7 +23,6 @@ export async function handler(event) {
             };
         }
 
-        // Insertar datos en la tabla de Supabase
         const { nombre, email, mensaje } = formData;
         const { error } = await supabase
             .from('clientes')
