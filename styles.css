@@ -235,6 +235,9 @@
   .tab { /*Tabulación textos*/
     padding-left: 20px;
   }
+  .tab2 {
+    padding-left: 20px;
+  }
   
   .contenido p {
     margin-bottom: 15px;
