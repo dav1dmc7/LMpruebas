@@ -232,6 +232,9 @@
     font-size: 1.25em; /* Ajusta el tamaño según tus preferencias */
     margin-bottom: 5px;
   }
+  .tab { /*Tabulación textos*/
+    padding-left: 20px;
+  }
   
   .contenido p {
     margin-bottom: 15px;
