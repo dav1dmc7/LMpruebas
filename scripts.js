@@ -89,6 +89,23 @@ function validarFormulario() {
   }
 
   return true;
+  const { data: existingClient, error: selectError } = await supabase
+    .from('clientes')
+    .select('*')
+    .eq('email', email);
+
+if (existingClient.length > 0) {
+    console.log('Correo ya existente:', email);
+    return {
+        statusCode: 400,
+        body: JSON.stringify({ message: 'Este correo ya existe.' }),
+    };
+}
+
+const { error: insertError } = await supabase
+    .from('clientes')
+    .insert([{ nombre, email, mensaje }]);
+
 }
 
 // Función para controlar el menú hamburguesa
