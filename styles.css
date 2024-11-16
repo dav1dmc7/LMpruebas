@@ -164,6 +164,31 @@
       display: block;
       padding: 15px;
     }
+    /* Estilos para la flecha en móvil */
+.mobile-arrow {
+  display: none;
+  margin-left: 5px;
+}
+
+/* Mostrar la flecha solo en móvil */
+@media (max-width: 768px) {
+  .mobile-arrow {
+    display: inline-block;
+  }
+
+  /* Ocultar el submenú por defecto */
+  .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  /* Mostrar el submenú cuando esté activo */
+  .submenu.show-submenu {
+    max-height: 500px; /* Ajusta según el contenido */
+  }
+}
+
   
     /* SUBMENÚ EN MÓVIL */
     nav ul li .submenu {
@@ -222,14 +247,14 @@
 
 /* Cambiar color y tamaño de h1 */
 .contenido h1 {
-    color: #081050; /* Azul oscuro */
+    color: #081050;
     font-size: 2em;
   }
   
   /* Cambiar color y tamaño de h2 */
   .contenido h2 {
-    color: #000000; /* Negro */
-    font-size: 1.25em; /* Ajusta el tamaño según tus preferencias */
+    color: #000000; 
+    font-size: 1.25em; 
     margin-bottom: 5px;
   }
   .tab { /*Tabulación textos*/

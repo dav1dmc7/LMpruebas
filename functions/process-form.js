@@ -34,11 +34,11 @@ export async function handler(event) {
 
         const { error } = await supabase.from('clientes').insert([{ nombre, email, mensaje }]);
         if (error) {
-            console.error('Error al guardar en la base de datos:', error);
-            return {
-                statusCode: 500,
-                body: JSON.stringify({ message: 'Error al guardar en la base de datos.' }),
-            };
+        console.error('Error al guardar en la base de datos:', error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: 'Error al guardar en la base de datos.' }),
+        };
         }
 
         // Configuración de Nodemailer
