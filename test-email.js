@@ -3,21 +3,22 @@ import nodemailer from 'nodemailer';
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'TU_EMAIL@gmail.com', // Sustituye con tu correo
-        pass: 'TU_CONTRASEÑA',      // Sustituye con tu contraseña
+        user: 'lopezmarquezabogados@gmail.com',
+        pass: 'twfj edqr uhvm urdk', // Contraseña generada de aplicación
     },
 });
 
 const mailOptions = {
-    from: 'TU_EMAIL@gmail.com',
-    to: 'DESTINATARIO@gmail.com',  // Sustituye con el correo destinatario
+    from: 'lopezmarquezabogados@gmail.com',
+    to: 'lopezmarquezabogados@gmail.com',
     subject: 'Prueba de Nodemailer',
-    text: 'Este es un correo de prueba enviado desde Nodemailer.',
+    text: 'Esto es un mensaje de prueba desde Nodemailer.',
 };
 
 transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-        return console.error('Error al enviar el correo:', error);
+        console.error('Error al enviar correo:', error);
+    } else {
+        console.log('Correo enviado correctamente:', info.response);
     }
-    console.log('Correo enviado:', info.response);
 });
