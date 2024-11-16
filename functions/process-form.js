@@ -5,11 +5,8 @@ import { createClient } from '@supabase/supabase-js';
 export async function handler(event) {
     try {
         console.log('Inicio de la función serverless');
-
-        // Parsear datos del formulario
         const formData = new URLSearchParams(event.body);
-        const { nombre, email, mensaje } = Object.fromEntries(formData.entries());
-        console.log('Datos del formulario procesados:', { nombre, email, mensaje });
+        console.log('Datos del formulario procesados:', Object.fromEntries(formData.entries()));
 
         // Configuración de Supabase
         const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
@@ -30,27 +27,13 @@ export async function handler(event) {
             };
         }
 
-        // Verificar si el correo ya existe en Supabase
-        const { data: existingClient, error: selectError } = await supabase
-            .from('clientes')
-            .select('*')
-            .eq('email', email);
-
-        if (existingClient && existingClient.length > 0) {
-            console.log('Correo ya existente:', email);
-            return {
-                statusCode: 400,
-                body: JSON.stringify({ message: 'Este correo ya existe.' }),
-            };
-        }
-
         // Insertar datos en Supabase
-        const { error: insertError } = await supabase
-            .from('clientes')
-            .insert([{ nombre, email, mensaje }]);
+        const { nombre, email, mensaje } = Object.fromEntries(formData.entries());
+        console.log('Intentando insertar datos en Supabase:', { nombre, email, mensaje });
 
-        if (insertError) {
-            console.error('Error al guardar en la base de datos:', insertError);
+        const { error } = await supabase.from('clientes').insert([{ nombre, email, mensaje }]);
+        if (error) {
+            console.error('Error al guardar en la base de datos:', error);
             return {
                 statusCode: 500,
                 body: JSON.stringify({ message: 'Error al guardar en la base de datos.' }),
@@ -75,22 +58,24 @@ export async function handler(event) {
         };
 
         // Enviar el correo
-        try {
-            await transporter.sendMail(mailOptions);
-            console.log('Correo enviado correctamente.');
-        } catch (mailError) {
-            console.error('Error al enviar el correo:', mailError);
-        }
+        console.log('Intentando enviar correo...');
+        await transporter.sendMail(mailOptions);
+        console.log('Correo enviado correctamente.');
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ message: 'Formulario enviado correctamente.' }),
+            body: JSON.stringify({ message: 'Formulario enviado y correo enviado correctamente.' }),
         };
     } catch (error) {
-        console.error('Error inesperado en la función serverless:', error);
+        console.error('Error inesperado:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ message: 'Error en el servidor.' }),
         };
     }
 }
+console.log('Variables de entorno:', {
+    EMAIL_USER: process.env.EMAIL_USER,
+    EMAIL_PASS: process.env.EMAIL_PASS,
+    NOTIFICATION_EMAIL: process.env.NOTIFICATION_EMAIL,
+});
