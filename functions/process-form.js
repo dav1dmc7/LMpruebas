@@ -79,3 +79,16 @@ console.log('Variables de entorno:', {
     EMAIL_PASS: process.env.EMAIL_PASS,
     NOTIFICATION_EMAIL: process.env.NOTIFICATION_EMAIL,
 });
+try {
+    console.log('Intentando enviar correo...');
+    console.log('Configuración de transporte:', {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    });
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Correo enviado correctamente:', info.response);
+} catch (error) {
+    console.error('Error al enviar el correo:', error);
+    throw new Error('Error al enviar el correo');
+}
