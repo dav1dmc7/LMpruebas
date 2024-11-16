@@ -5,6 +5,8 @@ const fetch = require('node-fetch');
 const { createClient } = require('@supabase/supabase-js');
 
 exports.handler = async (event) => {
+  
+    
   try {
     // Verificar el método HTTP
     if (event.httpMethod !== 'POST') {

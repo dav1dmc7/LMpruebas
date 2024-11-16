@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     arrow.addEventListener('click', toggleSubMenu);
   });
 
-  
+
   // Función para validar el formulario de contacto
   function validarFormulario() {
     const nombre = document.getElementById('nombre').value.trim();
@@ -108,4 +108,4 @@ document.addEventListener('DOMContentLoaded', () => {
       contactForm.addEventListener('submit', enviarFormulario);
     }
   });
-  
+})
