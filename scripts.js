@@ -18,7 +18,7 @@ function toggleMenu() {
     submenu.classList.toggle('show-submenu');
   }
   
-  // Listeners
+  // Event Listeners
   document.addEventListener('DOMContentLoaded', () => {
     // Listener para el menú hamburguesa
     const menuIcon = document.querySelector('.menu-icon');
@@ -31,7 +31,18 @@ function toggleMenu() {
     if (mobileArrow) {
       mobileArrow.addEventListener('click', toggleSubMenu);
     }
-  });  
+  
+    // Listener para el formulario de contacto
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', enviarFormulario);
+    }
+  
+    // Mostrar reseñas si existe el elemento
+    if (document.getElementById('lista-reseñas')) {
+      mostrarReseñas();
+    }
+  });   
 
 // Enviar Reseña
 async function enviarReseña(event) {
