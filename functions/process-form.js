@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const { createClient } = require('@supabase/supabase-js');
 
 exports.handler = async (event) => {
-  
+   
     try {
         console.log('Inicio de la función serverless');
         const formData = new URLSearchParams(event.body);
