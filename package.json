@@ -6,9 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@supabase/supabase-js": "^1.35.7",
     "node-fetch": "^2.7.0",

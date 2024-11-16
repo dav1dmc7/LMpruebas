@@ -1,4 +1,4 @@
-// process-form.js
+// functions/process-form.js
 
 const nodemailer = require('nodemailer');
 const fetch = require('node-fetch');
