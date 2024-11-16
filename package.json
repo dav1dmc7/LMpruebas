@@ -1,8 +1,8 @@
 {
   "name": "lmpruebas",
   "version": "1.0.0",
-  "description": "Página de mantenimiento web de López Márquez Abogados",
-  "main": "index.js",
+  "description": "Página de mantenimiento web de Lopez Marquez Abogados",
+  "main": "scripts.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
