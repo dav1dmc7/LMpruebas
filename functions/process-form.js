@@ -1,8 +1,8 @@
-import nodemailer from 'nodemailer';
-import fetch from 'node-fetch';
-import { createClient } from '@supabase/supabase-js';
+const nodemailer = require('nodemailer');
+const fetch = require('node-fetch');
+const { createClient } = require('@supabase/supabase-js');
 
-export async function handler(event) {
+exports.handler = async (event) => {
   
     try {
         console.log('Inicio de la función serverless');
@@ -29,12 +29,12 @@ export async function handler(event) {
         }
 
         // Insertar datos en Supabase
-        const { nombre, email, mensaje } = Object.fromEntries(formData.entries());
-        console.log('Intentando insertar datos en Supabase:', { nombre, email, mensaje });
+        const nombre = formData.get('nombre');
+        const email = formData.get('email');
+        const mensaje = formData.get('mensaje');
 
         const { error } = await supabase.from('clientes').insert([{ nombre, email, mensaje }]);
         if (error) {
-        console.error('Error al guardar en la base de datos:', error);
         return {
             statusCode: 500,
             body: JSON.stringify({ message: 'Error al guardar en la base de datos.' }),
@@ -62,7 +62,7 @@ export async function handler(event) {
 
         // Enviar el correo
         console.log('Intentando enviar correo...');
-        const info = await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
         console.log('Correo enviado correctamente:', info.response);
 
         return {

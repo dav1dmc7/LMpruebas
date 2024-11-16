@@ -164,11 +164,68 @@
       display: block;
       padding: 15px;
     }
-    /* Estilos para la flecha en móvil */
+ /* Estilos para la flecha en móvil */
 .mobile-arrow {
   display: none;
   margin-left: 5px;
 }
+
+/* Ocultar flecha en escritorio */
+@media (min-width: 769px) {
+  .mobile-arrow {
+    display: none;
+  }
+}
+
+/* Mostrar flecha en móvil y ajustar el menú */
+@media (max-width: 768px) {
+  .mobile-arrow {
+    display: inline-block;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    background-color: #b79347;
+    flex-direction: column;
+    transition: left 0.3s ease;
+  }
+
+  nav ul.show {
+    left: 0;
+  }
+
+  nav ul li {
+    margin: 0;
+    text-align: center;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 15px;
+  }
+
+  /* Submenú */
+  .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .submenu.show-submenu {
+    max-height: 500px; /* Ajusta según el contenido */
+  }
+}
+
 
 /* Mostrar flecha en móvil */
 .mobile-arrow {
