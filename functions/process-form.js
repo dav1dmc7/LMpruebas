@@ -1,13 +1,15 @@
 import nodemailer from 'nodemailer';
 import fetch from 'node-fetch';
 import { createClient } from '@supabase/supabase-js';
-"type"; "module"
 
 export async function handler(event) {
     try {
         console.log('Inicio de la función serverless');
+
+        // Parsear datos del formulario
         const formData = new URLSearchParams(event.body);
-        console.log('Datos del formulario procesados:', formData);
+        const { nombre, email, mensaje } = Object.fromEntries(formData.entries());
+        console.log('Datos del formulario procesados:', { nombre, email, mensaje });
 
         // Configuración de Supabase
         const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
@@ -28,13 +30,27 @@ export async function handler(event) {
             };
         }
 
-        // Insertar datos en Supabase
-        const { nombre, email, mensaje } = Object.fromEntries(formData.entries());
-        console.log('Intentando insertar datos en Supabase:', { nombre, email, mensaje });
+        // Verificar si el correo ya existe en Supabase
+        const { data: existingClient, error: selectError } = await supabase
+            .from('clientes')
+            .select('*')
+            .eq('email', email);
 
-        const { error } = await supabase.from('clientes').insert([{ nombre, email, mensaje }]);
-        if (error) {
-            console.error('Error al guardar en la base de datos:', error);
+        if (existingClient && existingClient.length > 0) {
+            console.log('Correo ya existente:', email);
+            return {
+                statusCode: 400,
+                body: JSON.stringify({ message: 'Este correo ya existe.' }),
+            };
+        }
+
+        // Insertar datos en Supabase
+        const { error: insertError } = await supabase
+            .from('clientes')
+            .insert([{ nombre, email, mensaje }]);
+
+        if (insertError) {
+            console.error('Error al guardar en la base de datos:', insertError);
             return {
                 statusCode: 500,
                 body: JSON.stringify({ message: 'Error al guardar en la base de datos.' }),
@@ -42,36 +58,39 @@ export async function handler(event) {
         }
 
         // Configuración de Nodemailer
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-});
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
 
-// Contenido del correo
-const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.NOTIFICATION_EMAIL,
-    subject: 'Nuevo mensaje desde López Márquez Abogados',
-    text: `Has recibido un nuevo mensaje de ${nombre} (${email}):\n\n${mensaje}`,
-};
+        // Contenido del correo
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.NOTIFICATION_EMAIL,
+            subject: 'Nuevo mensaje desde López Márquez Abogados',
+            text: `Has recibido un nuevo mensaje de ${nombre} (${email}):\n\n${mensaje}`,
+        };
 
-// Enviar el correo
-console.log('Intentando enviar correo con los siguientes datos:', mailOptions);
+        // Enviar el correo
+        try {
+            await transporter.sendMail(mailOptions);
+            console.log('Correo enviado correctamente.');
+        } catch (mailError) {
+            console.error('Error al enviar el correo:', mailError);
+        }
 
-try {
-    await transporter.sendMail(mailOptions);
-    console.log('Correo enviado correctamente.');
-} catch (error) {
-    console.error('Error al enviar el correo:', error);
-}
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: 'Formulario enviado correctamente.' }),
+        };
+    } catch (error) {
+        console.error('Error inesperado en la función serverless:', error);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ message: 'Error en el servidor.' }),
+        };
     }
 }
-console.log('Configurando Nodemailer...');
-console.log('Variables de entorno:', {
-    EMAIL_USER: process.env.EMAIL_USER,
-    EMAIL_PASS: process.env.EMAIL_PASS,
-    NOTIFICATION_EMAIL: process.env.NOTIFICATION_EMAIL,
-});
