@@ -1,8 +1,9 @@
-const nodemailer = require('nodemailer');
-const fetch = require('node-fetch');
-const { createClient } = require('@supabase/supabase-js');
+import nodemailer from 'nodemailer';
+import fetch from 'node-fetch';
+import { createClient } from '@supabase/supabase-js';
 
-exports.handler = async (event) => {
+export async function handler(event) {
+  
     try {
         console.log('Inicio de la función serverless');
         const formData = new URLSearchParams(event.body);
