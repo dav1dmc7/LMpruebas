@@ -14,18 +14,25 @@ function toggleMenu() {
   // Función para toggle del submenú
   function toggleSubMenu(event) {
     event.preventDefault();
-    const submenuParent = event.currentTarget.parentElement;
-    const submenu = submenuParent.querySelector('.submenu');
+    const submenu = this.parentElement.querySelector('.submenu');
     submenu.classList.toggle('show-submenu');
   }
   
-  // Event Listener para la flecha en "Servicios" en móvil
+  // Listeners
   document.addEventListener('DOMContentLoaded', () => {
+    // Listener para el menú hamburguesa
+    const menuIcon = document.querySelector('.menu-icon');
+    if (menuIcon) {
+      menuIcon.addEventListener('click', toggleMenu);
+    }
+  
+    // Listener para la flecha en "Servicios"
     const mobileArrow = document.querySelector('.mobile-arrow');
     if (mobileArrow) {
       mobileArrow.addEventListener('click', toggleSubMenu);
     }
   });
+  
   
 
 // Enviar Reseña
