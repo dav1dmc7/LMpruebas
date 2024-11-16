@@ -1,8 +1,8 @@
-import nodemailer from 'nodemailer';
-import fetch from 'node-fetch';
-import { createClient } from '@supabase/supabase-js';
+const nodemailer = require('nodemailer');
+const fetch = require('node-fetch');
+const { createClient } = require('@supabase/supabase-js');
 
-export async function handler(event) {
+exports.handler = async (event) => {
     try {
         console.log('Inicio de la función serverless');
         const formData = new URLSearchParams(event.body);
@@ -59,8 +59,8 @@ export async function handler(event) {
 
         // Enviar el correo
         console.log('Intentando enviar correo...');
-        await transporter.sendMail(mailOptions);
-        console.log('Correo enviado correctamente.');
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Correo enviado correctamente:', info.response);
 
         return {
             statusCode: 200,
@@ -73,22 +73,4 @@ export async function handler(event) {
             body: JSON.stringify({ message: 'Error en el servidor.' }),
         };
     }
-}
-console.log('Variables de entorno:', {
-    EMAIL_USER: process.env.EMAIL_USER,
-    EMAIL_PASS: process.env.EMAIL_PASS,
-    NOTIFICATION_EMAIL: process.env.NOTIFICATION_EMAIL,
-});
-try {
-    console.log('Intentando enviar correo...');
-    console.log('Configuración de transporte:', {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    });
-
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Correo enviado correctamente:', info.response);
-} catch (error) {
-    console.error('Error al enviar el correo:', error);
-    throw new Error('Error al enviar el correo');
-}
+};
