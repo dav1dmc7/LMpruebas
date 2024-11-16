@@ -42,12 +42,14 @@ exports.handler = async (event) => {
 
         // Configuración de Nodemailer
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com', // Este es el host correcto
+            port: 465,             // Puerto para conexiones seguras
+            secure: true,          // Usar SSL para conexiones seguras
             auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
+                user: process.env.EMAIL_USER, // Correo de tu cuenta Gmail
+                pass: process.env.EMAIL_PASS, // Contraseña de la aplicación
             },
-        });
+        });        
 
         // Contenido del correo
         const mailOptions = {
