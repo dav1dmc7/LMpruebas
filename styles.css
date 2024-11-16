@@ -170,11 +170,51 @@
   margin-left: 5px;
 }
 
-/* Mostrar la flecha solo en móvil */
+/* Mostrar flecha en móvil */
+.mobile-arrow {
+  display: none;
+  margin-left: 5px;
+}
+
 @media (max-width: 768px) {
   .mobile-arrow {
     display: inline-block;
   }
+
+  /* Estilos para el menú móvil */
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    background-color: #b79347;
+    flex-direction: column;
+    transition: left 0.3s ease;
+  }
+
+  nav ul.show {
+    left: 0;
+  }
+
+  /* Submenú */
+  .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .submenu.show-submenu {
+    max-height: 500px; /* Ajusta según el contenido */
+  }
+}
+
+/* Ocultar flecha en escritorio */
+@media (min-width: 769px) {
+  .mobile-arrow {
+    display: none;
+  }
+}
+
 
   /* Ocultar el submenú por defecto */
   .submenu {
