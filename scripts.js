@@ -5,6 +5,29 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 let calificacionSeleccionada = 0;
 
+// Función para toggle del menú principal
+function toggleMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('show');
+  }
+  
+  // Función para toggle del submenú
+  function toggleSubMenu(event) {
+    event.preventDefault();
+    const submenuParent = event.currentTarget.parentElement;
+    const submenu = submenuParent.querySelector('.submenu');
+    submenu.classList.toggle('show-submenu');
+  }
+  
+  // Event Listener para la flecha en "Servicios" en móvil
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileArrow = document.querySelector('.mobile-arrow');
+    if (mobileArrow) {
+      mobileArrow.addEventListener('click', toggleSubMenu);
+    }
+  });
+  
+
 // Enviar Reseña
 async function enviarReseña(event) {
     event.preventDefault();
