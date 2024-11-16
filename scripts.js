@@ -2,16 +2,31 @@
 
 // Función para toggle del menú principal
 function toggleMenu() {
-    const navLinks = document.getElementById('nav-links');
-    navLinks.classList.toggle('show');
+  const navLinks = document.getElementById('nav-links');
+  navLinks.classList.toggle('show');
+}
+
+// Función para toggle del submenú
+function toggleSubMenu(event) {
+  event.preventDefault();
+  const submenu = this.parentElement.querySelector('.submenu');
+  submenu.classList.toggle('show-submenu');
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  // Listener para el menú hamburguesa
+  const menuIcon = document.querySelector('.menu-icon');
+  if (menuIcon) {
+    menuIcon.addEventListener('click', toggleMenu);
   }
-  
-  // Función para toggle del submenú
-  function toggleSubMenu(event) {
-    event.preventDefault();
-    const submenu = this.parentElement.querySelector('.submenu');
-    submenu.classList.toggle('show-submenu');
-  }
+
+  // Listener para la flecha en "Servicios"
+  const mobileArrows = document.querySelectorAll('.mobile-arrow');
+  mobileArrows.forEach((arrow) => {
+    arrow.addEventListener('click', toggleSubMenu);
+  });
+
   
   // Función para validar el formulario de contacto
   function validarFormulario() {
