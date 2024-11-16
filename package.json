@@ -3,16 +3,22 @@
   "version": "1.0.0",
   "description": "Página de mantenimiento web de Lopez Marquez Abogados",
   "main": "scripts.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node functions/process-form.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon functions/process-form.mjs"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["abogados", "web", "supabase", "recaptcha", "nodemailer"],
+  "author": "David Márquez",
   "license": "ISC",
   "dependencies": {
     "@supabase/supabase-js": "^2.46.1",
     "node-fetch": "^2.7.0",
     "nodemailer": "^6.9.16",
     "querystring": "^0.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
