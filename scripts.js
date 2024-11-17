@@ -2,16 +2,34 @@
 
 // Función para toggle del menú principal
 function toggleMenu() {
-  const navLinks = document.getElementById('nav-links');
+  const navLinks = document.querySelector('nav ul');
   navLinks.classList.toggle('show');
 }
 
-// Función para toggle del submenú
+// Función para toggle del submenú en móvil
 function toggleSubMenu(event) {
   event.preventDefault();
-  const submenu = this.parentElement.querySelector('.submenu');
-  submenu.classList.toggle('show-submenu');
+  const parent = this.parentElement;
+  parent.classList.toggle('show-submenu');
 }
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  // Listener para el menú hamburguesa
+  const menuIcon = document.querySelector('.menu-icon');
+  if (menuIcon) {
+    menuIcon.addEventListener('click', toggleMenu);
+  }
+
+  // Listener para los elementos del menú que tienen submenú
+  const submenuParents = document.querySelectorAll('nav ul li a[href="servicios.html"]');
+  submenuParents.forEach((parentLink) => {
+    parentLink.addEventListener('click', toggleSubMenu);
+  });
+
+  // Resto de tu código...
+});
+
 
 // Función para validar el formulario de contacto
 function validarFormulario() {
