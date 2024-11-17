@@ -1,8 +1,8 @@
 // functions/process-form.js
 
 const nodemailer = require('nodemailer');
-const fetch = require('node-fetch'); // Asegúrate de tener node-fetch versión 2.x
-const { createClient } = require('@supabase/supabase-js'); // Usa la versión 1.x
+const fetch = require('node-fetch');
+const { createClient } = require('@supabase/supabase-js');
 
 exports.handler = async (event) => {
   try {
@@ -62,16 +62,13 @@ exports.handler = async (event) => {
     console.log('Datos guardados en Supabase correctamente');
 
     // Configuración de Nodemailer
-    console.log('Configuración de Nodemailer iniciada');
-
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS, 
+        user: process.env.EMAIL_USER, // Tu correo de Gmail
+        pass: process.env.EMAIL_PASS, // Tu App Password
       },
     });
-    console.log('Transporte de Nodemailer configurado');
 
     // Contenido del correo
     const mailOptions = {
