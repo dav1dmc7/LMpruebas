@@ -49,7 +49,7 @@ async function enviarFormulario(event) {
   try {
     const response = await fetch(form.action, {
       method: 'POST',
-      body: formData,
+      body: new URLSearchParams(formData), // Convertir FormData a URLSearchParams
     });
 
     const result = await response.json();
