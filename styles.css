@@ -165,32 +165,17 @@ nav ul li .submenu li a:hover {
     padding: 15px;
   }
 
-  /* Mostrar flecha en móvil */
-  .mobile-arrow {
-    display: inline-block;
-    margin-left: 5px;
-  }
-
   /* Submenú en móvil */
   nav ul li .submenu {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-
-  nav ul li .submenu.show-submenu {
-    max-height: 500px; /* Ajusta según el contenido */
+    display: none;
   }
 
   nav ul li .submenu li a {
     padding-left: 30px;
   }
-}
 
-/* Ocultar flecha en escritorio */
-@media (min-width: 769px) {
-  .mobile-arrow {
-    display: none;
+  nav ul li.show-submenu .submenu {
+    display: block;
   }
 }
 

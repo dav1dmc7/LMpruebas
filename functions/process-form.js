@@ -1,15 +1,16 @@
 // functions/process-form.js
 
 const nodemailer = require('nodemailer');
-const fetch = require('node-fetch');
-const { createClient } = require('@supabase/supabase-js');
+const fetch = require('node-fetch'); // Asegúrate de tener node-fetch versión 2.x
+const { createClient } = require('@supabase/supabase-js'); // Usa la versión 1.x
 
 exports.handler = async (event) => {
-  
-    
   try {
+    console.log('Iniciando función process-form');
+
     // Verificar el método HTTP
     if (event.httpMethod !== 'POST') {
+      console.log('Método no permitido:', event.httpMethod);
       return {
         statusCode: 405,
         body: JSON.stringify({ message: 'Método no permitido' }),
@@ -22,6 +23,7 @@ exports.handler = async (event) => {
     // Validar reCAPTCHA
     const recaptchaResponse = formData.get('g-recaptcha-response');
     const verificationUrl = 'https://www.google.com/recaptcha/api/siteverify';
+
     const recaptchaRes = await fetch(verificationUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -57,14 +59,14 @@ exports.handler = async (event) => {
       };
     }
 
+    console.log('Datos guardados en Supabase correctamente');
+
     // Configuración de Nodemailer
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
+      service: 'Gmail',
       auth: {
-        user: process.env.EMAIL_USER, // Correo electrónico
-        pass: process.env.EMAIL_PASS, // Contraseña o App Password
+        user: process.env.EMAIL_USER, // Tu correo de Gmail
+        pass: process.env.EMAIL_PASS, // Tu App Password
       },
     });
 
@@ -78,6 +80,8 @@ exports.handler = async (event) => {
 
     // Enviar el correo
     await transporter.sendMail(mailOptions);
+
+    console.log('Correo enviado correctamente');
 
     return {
       statusCode: 200,
