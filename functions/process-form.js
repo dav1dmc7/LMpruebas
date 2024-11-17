@@ -62,13 +62,16 @@ exports.handler = async (event) => {
     console.log('Datos guardados en Supabase correctamente');
 
     // Configuración de Nodemailer
+    console.log('Configuración de Nodemailer iniciada');
+
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: process.env.EMAIL_USER, // Tu correo de Gmail
-        pass: process.env.EMAIL_PASS, // Tu App Password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS, 
       },
     });
+    console.log('Transporte de Nodemailer configurado');
 
     // Contenido del correo
     const mailOptions = {
