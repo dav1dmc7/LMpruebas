@@ -1,10 +1,31 @@
 // scripts.js
 
-// Función para toggle del menú principal
+// Menú hamburguesa para dispositivos móviles
 function toggleMenu() {
-  const navLinks = document.querySelector('#nav-links');
+  const navLinks = document.getElementById('nav-links');
   navLinks.classList.toggle('show');
 }
+
+// Función para controlar el submenú de servicios en móvil
+function setupSubmenuToggle() {
+  const submenuParents = document.querySelectorAll('.submenu-parent');
+  submenuParents.forEach(function (submenuParent) {
+    const submenuLink = submenuParent.querySelector('a');
+    submenuLink.addEventListener('click', function (e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const submenu = submenuParent.querySelector('.submenu');
+        submenu.classList.toggle('show-submenu');
+      }
+    });
+  });
+}
+
+// Llamar a las funciones cuando la página cargue
+document.addEventListener('DOMContentLoaded', function () {
+  setupSubmenuToggle();
+});
+
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
