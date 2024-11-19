@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
 // Event listeners
 document.addEventListener('DOMContentLoaded', () => {
   // Listener para el menú hamburguesa
