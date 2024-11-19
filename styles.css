@@ -39,10 +39,10 @@ header .logo {
   right: 20px;
   display: flex;
   align-items: center;
+  gap: 5px; /* Añadido espacio entre idiomas */
 }
 
 .language-selector a {
-  margin-left: 5px;
   text-decoration: none;
   color: #fff;
   font-weight: bold;
@@ -99,7 +99,7 @@ nav ul li a:hover {
   .menu-icon {
     display: block;
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 20px;
   }
 
@@ -120,7 +120,6 @@ nav ul li a:hover {
 
   nav ul li {
     margin: 0;
-    position: relative;
     text-align: left;
     width: 100%;
   }
@@ -136,16 +135,17 @@ nav ul li a:hover {
     position: absolute;
     right: 10px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(0deg);
     background: none;
     border: none;
     color: #fff;
-    font-size: 1em;
+    font-size: 1.2em;
     cursor: pointer;
+    transition: transform 0.3s ease;
   }
 
-  .submenu-toggle i {
-    transition: transform 0.3s ease;
+  nav ul li.show-submenu .submenu-toggle {
+    transform: translateY(-50%) rotate(180deg);
   }
 
   nav ul li .submenu {
@@ -156,10 +156,6 @@ nav ul li a:hover {
 
   nav ul li.show-submenu .submenu {
     display: block;
-  }
-
-  nav ul li.show-submenu .submenu-toggle i {
-    transform: rotate(90deg);
   }
 
   nav ul li .submenu li a {
