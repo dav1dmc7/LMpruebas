@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (contactForm) {
     contactForm.addEventListener('submit', enviarFormulario);
   }
-});
 
 // Función para validar el formulario de contacto
 function validarFormulario() {
