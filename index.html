@@ -6,37 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio | López Márquez Abogados</title>
     <meta name="description" content="Bienvenido a López Márquez Abogados. Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
-    <meta name="google-site-verification" content="tu-google-site-verification">
- 
+
     <!-- SEO Multilingüe -->
     <link rel="alternate" hreflang="es" href="https://lopezmarquezabogados.com/index.html">
     <link rel="alternate" hreflang="en" href="https://lopezmarquezabogados.com/index_en.html">
-    
+
     <!-- Canonical -->
     <link rel="canonical" href="https://lopezmarquezabogados.com/index.html">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="Inicio | López Márquez Abogados">
     <meta property="og:description" content="Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
     <meta property="og:image" content="https://lopezmarquezabogados.com/images/og-image.jpg">
     <meta property="og:url" content="https://lopezmarquezabogados.com/index.html">
     <meta property="og:type" content="website">
-    
+
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Inicio | López Márquez Abogados">
     <meta name="twitter:description" content="Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
     <meta name="twitter:image" content="https://lopezmarquezabogados.com/images/og-image.jpg">
-    
-    <!-- Datos Estructurados -->
-    <!-- Añade tus datos estructurados aquí si es necesario -->
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -46,31 +42,36 @@
         <div class="container">
             <!-- Selector de idioma -->
             <div class="language-selector">
-                <a href="index.html">ES</a> |
-                <a href="index_en.html">EN</a>
+                <a href="index.html" lang="es">ES</a> |
+                <a href="index_en.html" lang="en">EN</a>
             </div>
-            <nav>
-                <a href="index.html"><img src="images/logo.png" alt="Logo" class="logo"></a>
+            <nav aria-label="Menú principal">
+                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
                 <!-- Menú hamburguesa -->
-                <span class="menu-icon">
-                  <i class="fas fa-bars"></i>
-                </span>
+                <button class="menu-icon" aria-label="Abrir menú de navegación">
+                  <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
                 <!-- Menú de navegación -->
-                <ul id="nav-links">
+                <ul id="nav-links" class="nav-links" aria-expanded="false">
                   <li><a href="index.html">Inicio</a></li>
                   <li><a href="about.html">Sobre Nosotros</a></li>
                   <li class="submenu-parent">
-                    <a href="servicios.html">Servicios</a>
+                    <a href="servicios.html" aria-haspopup="true" aria-expanded="false">Servicios</a>
+                    <button class="submenu-toggle mobile-only" aria-label="Mostrar servicios">
+                      <span class="mobile-arrow">&#9654;</span>
+                    </button>
                     <ul class="submenu">
                       <!-- Enlaces del submenú -->
-                      <li><a href="servicio1.html">Servicio 1</a></li>
-                      <li><a href="servicio2.html">Servicio 2</a></li>
-                      <!-- Agrega más servicios según sea necesario -->
+                      <li><a href="administrativo.html">Administrativo</a></li>
+                      <li><a href="civil.html">Civil</a></li>
+                      <li><a href="extranjeria.html">Extranjería</a></li>
+                      <li><a href="laboral.html">Laboral</a></li>
+                      <li><a href="penal.html">Penal</a></li>
                     </ul>
                   </li>
                   <li><a href="contact.html">Contacto</a></li>
                 </ul>
-              </nav>                                     
+              </nav>                                      
         </div>
     </header>
 
@@ -86,7 +87,7 @@
             <h2>Publicaciones Recientes</h2>
             <!-- Widget de Taggbox -->
             <div class="taggbox" style="width:100%;height:100%" data-widget-id="2138020" data-tags="false"></div>
-            <script src="https://widget.taggbox.com/embed-lite.min.js"></script>
+            <script src="https://widget.taggbox.com/embed-lite.min.js" async></script>
         </section>
     </main>
     
@@ -101,7 +102,10 @@
             <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
         </div>
     </footer>
-    
+
+    <!-- Incluye la biblioteca de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js" defer></script>
+
     <!-- JavaScript -->
     <script src="scripts.js" defer></script>
 </body>
