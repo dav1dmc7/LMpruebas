@@ -1,4 +1,4 @@
-// Scripts.js
+// scripts.js
 
 // Menú hamburguesa para dispositivos móviles
 function toggleMenu() {
@@ -17,16 +17,7 @@ function setupSubmenuToggle() {
       e.preventDefault();
       const parent = toggle.closest('.submenu-parent');
       if (parent) {
-        const submenu = parent.querySelector('.submenu');
-        if (submenu) {
-          parent.classList.toggle('show-submenu');
-          // Ajuste para alternar la visibilidad del submenú
-          if (submenu.style.maxHeight) {
-            submenu.style.maxHeight = null; // Colapsa el submenú
-          } else {
-            submenu.style.maxHeight = submenu.scrollHeight + "px"; // Expande el submenú
-          }
-        }
+        parent.classList.toggle('show-submenu');
       }
     });
   });
