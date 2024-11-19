@@ -39,6 +39,7 @@ header .logo {
   right: 20px;
   display: flex;
   align-items: center;
+  z-index: 12;
 }
 
 .language-selector a {
@@ -84,7 +85,7 @@ nav ul li a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Menú hamburguesa */
+/* MENÚ HAMBURGUESA */
 .menu-icon {
   display: none;
   font-size: 2em;
@@ -92,15 +93,16 @@ nav ul li a:hover {
   cursor: pointer;
   background: none;
   border: none;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 11;
 }
 
-/* Ajustes para el menú de navegación móvil */
+/* AJUSTES PARA EL MENÚ DE NAVEGACIÓN MÓVIL */
 @media (max-width: 768px) {
   .menu-icon {
     display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
   }
 
   nav ul {
@@ -131,7 +133,7 @@ nav ul li a:hover {
     padding: 15px;
   }
 
-  /* Submenú */
+  /* SUBMENÚ */
   .submenu-toggle {
     position: absolute;
     right: 10px;
@@ -148,10 +150,13 @@ nav ul li a:hover {
     display: none;
     padding-left: 20px;
     background-color: #b79347;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
   }
 
   nav ul li.show-submenu .submenu {
-    display: block;
+    max-height: 500px;
   }
 
   nav ul li .submenu li a {
@@ -164,35 +169,34 @@ nav ul li a:hover {
   }
 }
 
-
-/* Estilos para el submenú en escritorio */
+/* ESTILOS PARA EL SUBMENÚ EN ESCRITORIO */
 @media (min-width: 769px) {
   nav ul li:hover > .submenu {
-      display: block;
+    display: block;
   }
 
   .submenu-toggle {
-      display: none;
+    display: none;
   }
 
   nav ul li .submenu {
-      display: none;
-      position: absolute;
-      background-color: #b79347;
-      top: 100%;
-      left: 0;
-      min-width: 200px;
-      z-index: 1000;
+    display: none;
+    position: absolute;
+    background-color: #b79347;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    z-index: 1000;
   }
 
   nav ul li .submenu li a {
-      color: #fff;
-      padding: 10px 15px;
-      display: block;
+    color: #fff;
+    padding: 10px 15px;
+    display: block;
   }
 
   nav ul li:hover > .submenu {
-      display: block;
+    display: block;
   }
 }
 
@@ -226,22 +230,19 @@ main {
   margin-bottom: 40px;
 }
 
-/* Estilos específicos para las páginas de servicios */
-
-/* Cambiar color y tamaño de h1 */
+/* ESTILOS ESPECÍFICOS PARA LAS PÁGINAS DE SERVICIOS */
 .contenido h1 {
   color: #081050;
   font-size: 2em;
 }
 
-/* Cambiar color y tamaño de h2 */
 .contenido h2 {
   color: #000000;
   font-size: 1.25em;
   margin-bottom: 5px;
 }
 
-.tab { /* Tabulación textos */
+.tab {
   padding-left: 20px;
 }
 
