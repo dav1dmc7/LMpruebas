@@ -47,3 +47,20 @@ export async function handler(event) {
     return { statusCode: 500, body: JSON.stringify({ message: 'Error en el servidor.' }) };
   }
 }
+
+  // Validar reCAPTCHA
+  const verificationUrl = 'https://www.google.com/recaptcha/api/siteverify';
+  const recaptchaRes = await fetch(verificationUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaResponse}`,
+  });
+
+  const recaptchaData = await recaptchaRes.json();
+  if (!recaptchaData.success) {
+    console.error('Fallo en reCAPTCHA:', recaptchaData['error-codes']);
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'Error en reCAPTCHA.' }),
+    };
+  }
