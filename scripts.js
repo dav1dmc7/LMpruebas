@@ -1,5 +1,3 @@
-// scripts.js
-
 // Menú hamburguesa para dispositivos móviles
 function toggleMenu() {
   const navLinks = document.getElementById('nav-links');
@@ -11,22 +9,13 @@ function toggleMenu() {
 
 // Función para controlar el submenú de servicios en móvil
 function setupSubmenuToggle() {
-  const submenuParents = document.querySelectorAll('.submenu-parent');
-  submenuParents.forEach(function (submenuParent) {
-    const submenuLink = submenuParent.querySelector('a');
-    const mobileArrow = document.createElement('span');
-    mobileArrow.className = 'mobile-arrow';
-    mobileArrow.innerHTML = '&#9654;';
-    submenuLink.appendChild(mobileArrow);
-
-    submenuLink.addEventListener('click', function (e) {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        const submenu = submenuParent.querySelector('.submenu');
-        if (submenu) {
-          submenu.classList.toggle('show-submenu');
-          mobileArrow.classList.toggle('rotated');
-        }
+  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+  submenuToggles.forEach(function (toggle) {
+    toggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      const parent = toggle.closest('.submenu-parent');
+      if (parent) {
+        parent.classList.toggle('show-submenu');
       }
     });
   });
