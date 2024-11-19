@@ -5,6 +5,7 @@ function toggleMenu() {
   const navLinks = document.getElementById('nav-links');
   if (navLinks) {
     navLinks.classList.toggle('show');
+    document.body.classList.toggle('no-scroll'); // Evita el desplazamiento de fondo cuando el menú está abierto
   }
 }
 
@@ -13,12 +14,18 @@ function setupSubmenuToggle() {
   const submenuParents = document.querySelectorAll('.submenu-parent');
   submenuParents.forEach(function (submenuParent) {
     const submenuLink = submenuParent.querySelector('a');
+    const mobileArrow = document.createElement('span');
+    mobileArrow.className = 'mobile-arrow';
+    mobileArrow.innerHTML = '&#9654;';
+    submenuLink.appendChild(mobileArrow);
+
     submenuLink.addEventListener('click', function (e) {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         const submenu = submenuParent.querySelector('.submenu');
         if (submenu) {
           submenu.classList.toggle('show-submenu');
+          mobileArrow.classList.toggle('rotated');
         }
       }
     });
@@ -34,14 +41,13 @@ document.addEventListener('DOMContentLoaded', function () {
   if (menuIcon) {
     menuIcon.addEventListener('click', toggleMenu);
   }
-});
-
 
   // Listener para el formulario de contacto
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', enviarFormulario);
   }
+});
 
 // Función para validar el formulario de contacto
 function validarFormulario() {
@@ -50,18 +56,18 @@ function validarFormulario() {
   const mensaje = document.getElementById('mensaje').value.trim();
 
   if (!nombre || !email || !mensaje) {
-    alert('Por favor, completa todos los campos.');
+    mostrarAlerta('Por favor, completa todos los campos.');
     return false;
   }
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    alert('Por favor, ingresa un correo electrónico válido.');
+    mostrarAlerta('Por favor, ingresa un correo electrónico válido.');
     return false;
   }
 
   if (mensaje.length < 10) {
-    alert('El mensaje debe tener al menos 10 caracteres.');
+    mostrarAlerta('El mensaje debe tener al menos 10 caracteres.');
     return false;
   }
 
@@ -79,6 +85,9 @@ async function enviarFormulario(event) {
   try {
     const response = await fetch(form.action, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
       body: new URLSearchParams(formData),
     });
 
@@ -87,10 +96,10 @@ async function enviarFormulario(event) {
       mostrarMensajeExito(result.message);
       form.reset();
     } else {
-      alert('Error: ' + result.message);
+      mostrarAlerta('Error: ' + result.message);
     }
   } catch (error) {
-    alert('Error al enviar el formulario: ' + error.message);
+    mostrarAlerta('Error al enviar el formulario: ' + error.message);
   }
 }
 
@@ -101,4 +110,13 @@ function mostrarMensajeExito(mensaje) {
   mensajeExito.textContent = mensaje;
   document.querySelector('main').appendChild(mensajeExito);
   setTimeout(() => mensajeExito.remove(), 5000);
+}
+
+// Función para mostrar alertas personalizadas
+function mostrarAlerta(mensaje) {
+  const alerta = document.createElement('div');
+  alerta.className = 'alerta';
+  alerta.textContent = mensaje;
+  document.querySelector('main').appendChild(alerta);
+  setTimeout(() => alerta.remove(), 5000);
 }
