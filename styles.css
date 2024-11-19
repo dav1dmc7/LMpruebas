@@ -39,7 +39,6 @@ header .logo {
   right: 20px;
   display: flex;
   align-items: center;
-  z-index: 12;
 }
 
 .language-selector a {
@@ -85,7 +84,7 @@ nav ul li a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* MENÚ HAMBURGUESA */
+/* Menú hamburguesa */
 .menu-icon {
   display: none;
   font-size: 2em;
@@ -93,16 +92,15 @@ nav ul li a:hover {
   cursor: pointer;
   background: none;
   border: none;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 11;
 }
 
-/* AJUSTES PARA EL MENÚ DE NAVEGACIÓN MÓVIL */
+/* Ajustes para el menú de navegación móvil */
 @media (max-width: 768px) {
   .menu-icon {
     display: block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
   }
 
   nav ul {
@@ -133,7 +131,7 @@ nav ul li a:hover {
     padding: 15px;
   }
 
-  /* SUBMENÚ */
+  /* Submenú */
   .submenu-toggle {
     position: absolute;
     right: 10px;
@@ -146,17 +144,22 @@ nav ul li a:hover {
     cursor: pointer;
   }
 
+  .submenu-toggle i {
+    transition: transform 0.3s ease;
+  }
+
   nav ul li .submenu {
     display: none;
     padding-left: 20px;
     background-color: #b79347;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.3s ease;
   }
 
   nav ul li.show-submenu .submenu {
-    max-height: 500px;
+    display: block;
+  }
+
+  nav ul li.show-submenu .submenu-toggle i {
+    transform: rotate(90deg);
   }
 
   nav ul li .submenu li a {
@@ -169,7 +172,7 @@ nav ul li a:hover {
   }
 }
 
-/* ESTILOS PARA EL SUBMENÚ EN ESCRITORIO */
+/* Estilos para el submenú en escritorio */
 @media (min-width: 769px) {
   nav ul li:hover > .submenu {
     display: block;
@@ -230,19 +233,22 @@ main {
   margin-bottom: 40px;
 }
 
-/* ESTILOS ESPECÍFICOS PARA LAS PÁGINAS DE SERVICIOS */
+/* Estilos específicos para las páginas de servicios */
+
+/* Cambiar color y tamaño de h1 */
 .contenido h1 {
   color: #081050;
   font-size: 2em;
 }
 
+/* Cambiar color y tamaño de h2 */
 .contenido h2 {
   color: #000000;
   font-size: 1.25em;
   margin-bottom: 5px;
 }
 
-.tab {
+.tab { /* Tabulación textos */
   padding-left: 20px;
 }
 
