@@ -1,5 +1,3 @@
-// scripts.js
-
 // Menú hamburguesa para dispositivos móviles
 function toggleMenu() {
   const navLinks = document.getElementById('nav-links');
@@ -15,9 +13,13 @@ function setupSubmenuToggle() {
   submenuToggles.forEach(function (toggle) {
     toggle.addEventListener('click', function (e) {
       e.preventDefault();
-      const parent = toggle.closest('.submenu-parent');
-      if (parent) {
+      const parent = toggle.parentElement;
+      if (parent.classList.contains('submenu-parent')) {
         parent.classList.toggle('show-submenu');
+        const submenu = parent.querySelector('.submenu');
+        if (submenu) {
+          submenu.classList.toggle('submenu-show'); // Asegura que el submenú se muestre al hacer clic
+        }
       }
     });
   });
@@ -31,12 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuIcon = document.querySelector('.menu-icon');
   if (menuIcon) {
     menuIcon.addEventListener('click', toggleMenu);
-  }
-
-  // Listener para el formulario de contacto
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', enviarFormulario);
   }
 });
 
