@@ -30,6 +30,7 @@ header {
 }
 
 header .logo {
+  position: sticky;
   height: 60px;
   margin-left: 20px;
 }
@@ -102,7 +103,7 @@ nav ul li a:hover {
 @media (max-width: 768px) {
   .menu-icon {
     display: flex;
-    top: 15px; /* Ubicación del icono del menú */
+    top: 30px; /* Ubicación del icono del menú */
     right: 20px; /* Espacio desde el borde derecho */
   }
 
@@ -110,12 +111,18 @@ nav ul li a:hover {
  /* Ajustar la posición del menú de navegación */
   nav ul {
     display:none;/* Asegura que esté encima de otros elementos */
+
+    transition: left 0.3s ease;
+    z-index: 10;
   }
 
   nav ul.show {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin: 10px 0;
+    text-align: left;
+    width: 100%;
+    position: static;
   }
 
 
@@ -129,16 +136,7 @@ nav ul li a:hover {
   nav ul li a {
     color: #fff;
   }
-  /* Posicionar el selector de idioma en la esquina superior derecha */
-  .language-selector {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    z-index: 12;
-  }
+  
   /* Estilos para el submenú */
   .submenu-toggle {
     position: absolute;
