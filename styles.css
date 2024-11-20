@@ -1,4 +1,3 @@
-
 /* RESET Y ESTILOS BÁSICOS */
 * {
   margin: 0;
@@ -23,10 +22,11 @@ html, body {
 
 /* HEADER */
 header {
-  position: relative;
+  position: sticky;
   background-color: #b79347;
   color: #fff;
   padding: 10px 0;
+  z-index: 15;
 }
 
 header .logo {
@@ -37,10 +37,11 @@ header .logo {
 .language-selector {
   position: absolute;
   top: 5px;
-  right: 10px;
+  right: 20px;
   display: flex;
   align-items: center;
   gap: 5px;
+  z-index: 12;
 }
 
 .language-selector a {
@@ -85,13 +86,10 @@ nav ul li a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Menú hamburguesa */
-/* Ajuste para evitar solapamiento del menú hamburguesa y selector de idioma */
+/* MENÚ HAMBURGUESA */
 .menu-icon {
   display: none; /* Ocultar por defecto en versiones grandes */
   position: absolute;
-  top: 10px;
-  right: 10px;
   font-size: 2em;
   color: #fff;
   cursor: pointer;
@@ -100,45 +98,53 @@ nav ul li a:hover {
   z-index: 11; /* Asegurarse de que esté sobre otros elementos */
 }
 
-/* Mostrar menú hamburguesa solo en móvil */
+/* Ajustes para el menú de navegación móvil */
 @media (max-width: 768px) {
   .menu-icon {
-    display: block;
+    display: flex;
+    top: 15px; /* Ubicación del icono del menú */
+    right: 20px; /* Espacio desde el borde derecho */
   }
 
+
+ /* Ajustar la posición del menú de navegación */
   nav ul {
-    flex-direction: column;
-    background-color: #b79347;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: -100%;
-    transition: left 0.3s ease;
-    z-index: 10;
+    display:none;/* Asegura que esté encima de otros elementos */
   }
 
   nav ul.show {
-    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
+
   nav ul li {
-    margin: 0;
+    margin: 10px 0;
     text-align: left;
     width: 100%;
+    position: static;
   }
 
   nav ul li a {
-    display: block;
-    width: calc(100% - 40px);
-    padding: 15px;
+    color: #fff;
   }
-
-  /* Submenú */
+  /* Posicionar el selector de idioma en la esquina superior derecha */
+  .language-selector {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 12;
+  }
+  /* Estilos para el submenú */
   .submenu-toggle {
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 50%;
-    transform: translateY(-50%) rotate(0deg); /* Inicialmente apunta hacia abajo */
+    transform: translateY(-50%);
     background: none;
     border: none;
     color: #fff;
@@ -147,31 +153,33 @@ nav ul li a:hover {
     transition: transform 0.3s ease;
   }
 
-  .submenu-toggle i {
-    transform: rotate(90deg); /* Apunta inicialmente hacia abajo */
-  }
-
-  nav ul li.show-submenu .submenu-toggle i {
-    transform: rotate(270deg); /* Cambia la dirección de la flecha al abrir */
-  }
-
   nav ul li .submenu {
     display: none;
-    padding-left: 20px;
     background-color: #b79347;
+    padding-left: 20px;
   }
 
   nav ul li.show-submenu .submenu {
     display: block;
   }
 
-  nav ul li .submenu li a {
-    padding: 10px 15px;
-    color: #fff;
+  /* Rotación de la flecha del submenú */
+  .submenu-toggle i {
+    transition: transform 0.3s ease;
   }
 
-  nav ul li.show-submenu + li {
-    margin-top: 15px;
+  nav ul li.show-submenu .submenu-toggle i {
+    transform: rotate(180deg);
+  }
+
+  /* Estilos para el submenú desplegable */
+  nav ul li .submenu li {
+    margin: 0;
+  }
+
+  nav ul li .submenu li a {
+    padding: 10px 20px;
+    width: calc(100% - 40px);
   }
 }
 
@@ -186,7 +194,7 @@ nav ul li a:hover {
   }
 
   .submenu-toggle {
-    display: none; /* Ocultar la flecha en escritorio */
+    display: none;
   }
 
   nav ul li .submenu {
@@ -240,22 +248,19 @@ main {
   margin-bottom: 40px;
 }
 
-/* Estilos específicos para las páginas de servicios */
-
-/* Cambiar color y tamaño de h1 */
+/* ESTILOS ESPECÍFICOS PARA LAS PÁGINAS DE SERVICIOS */
 .contenido h1 {
   color: #081050;
   font-size: 2em;
 }
 
-/* Cambiar color y tamaño de h2 */
 .contenido h2 {
   color: #000000;
   font-size: 1.25em;
   margin-bottom: 5px;
 }
 
-.tab { /* Tabulación textos */
+.tab {
   padding-left: 20px;
 }
 
@@ -465,4 +470,20 @@ footer a:hover {
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* EVITAR DESPLAZAMIENTO DE FONDO CUANDO EL MENÚ ESTÁ ABIERTO */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* ESTILOS PARA LAS ALERTAS PERSONALIZADAS */
+.alerta {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  margin: 15px auto;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  max-width: 600px;
 }
