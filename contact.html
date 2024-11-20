@@ -11,25 +11,43 @@
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <div class="container">
-      <div class="language-selector">
-        <a href="contact.html">ES</a> | <a href="contact_en.html">EN</a>
-      </div>
-      <nav>
-        <a href="index.html"><img src="images/logo.png" alt="Logo" class="logo"></a>
-        <span class="menu-icon">
-          <i class="fas fa-bars"></i>
-        </span>
-        <ul id="nav-links">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="about.html">Sobre Nosotros</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="contact.html">Contacto</a></li>
-        </ul>
-      </nav>                      
+        <!-- Selector de idioma -->
+        <div class="language-selector">
+            <a href="contact.html" lang="es">ES</a> |
+            <a href="contact_en.html" lang="en">EN</a>
+        </div>
+        <nav aria-label="Menú principal">
+            <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
+            <!-- Menú hamburguesa -->
+            <button class="menu-icon" aria-label="Abrir menú de navegación">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <!-- Menú de navegación -->
+            <ul id="nav-links" class="nav-links" aria-expanded="false">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre Nosotros</a></li>
+                <li class="submenu-parent">
+                    <a href="servicios.html">Servicios</a>
+                    <button class="submenu-toggle" aria-label="Mostrar servicios">
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ul class="submenu">
+                      <li><a href="administrativo.html">Administrativo</a></li>
+                      <li><a href="civil.html">Civil</a></li>
+                      <li><a href="extranjeria.html">Extranjería</a></li>
+                      <li><a href="laboral.html">Laboral</a></li>
+                      <li><a href="penal.html">Penal</a></li>
+                    </ul>
+                  </li>                                           
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+        </nav>
     </div>
-  </header>
+</header>    
+
 
   <main>
     <section class="contenido">
