@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes | López Márquez Abogados</title>
+    <meta name="description" content="Preguntas frecuentes sobre nuestros servicios legales en España.">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Estilos para las preguntas frecuentes */
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: #b79347;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-left: 10px;
+        }
+
+        .faq-answer.open {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav aria-label="Menú principal">
+                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
+                <ul id="nav-links" class="nav-links" aria-expanded="false">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li class="submenu-parent">
+                        <a href="servicios.html">Servicios</a>
+                        <button class="submenu-toggle" aria-label="Mostrar servicios">
+                          <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <ul class="submenu">
+                          <li><a href="administrativo.html">Administrativo</a></li>
+                          <li><a href="civil.html">Civil</a></li>
+                          <li><a href="extranjeria.html">Extranjería</a></li>
+                          <li><a href="laboral.html">Laboral</a></li>
+                          <li><a href="penal.html">Penal</a></li>
+                        </ul>
+                      </li>                                            
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>    
+
+    <!-- Contenido Principal -->
+    <main>
+        <ul class="contenido"> 
+            <h1>Preguntas Frecuentes</h1>
+        <div class="container">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Cómo puedo agendar una consulta legal?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Puedes hacerlo de manera rápida y sencilla:</p>
+                    <ul class="tab">
+                        <p>
+                            • Ve a la sección "<a href="contact.html">Contacto</a>" en nuestra página web.
+                        </p>
+                        <p>
+                            • Selecciona la fecha y hora disponibles.
+                        </p>
+                        <p>
+                            • Completa el formulario con una breve descripción de tu caso.
+                        </p>
+                        <p>
+                            • Una vez confirmada tu cita, recibirás un correo electrónico con los detalles.
+                        </p>
+                    </ul>  
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Cómo puedo contactar con mi abogado?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Una vez que tu caso esté en marcha, podrás comunicarte directamente con tu abogado a través de:</p>
+                    <ul class="tab">
+                        <p>
+                            • El chat de WhatsApp.
+                        </p>
+                        <p>
+                            • Correos electrónicos enviados a nuestro correo corporativo.
+                        </p>
+                        <p>
+                            • Videollamadas programadas desde el calendario del perfil.
+                        </p>
+                        <p>
+                            • Cita presencial programada desde el calendario de la aplicacion o concertadas directamente con tu abogado.
+                        </p>
+                    </ul> 
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Qué servicios ofrece López Márquez?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Puedes acceder a los servicios del despacho a través de esta página web. Si te diriges a servicios y haces clic encima de cada jurisdicción te aparecerá un desplegable con servicios que ofrecemos.</p>
+                    <p>Si tus necesidades no aparecen en la web, ¡No te preocupes! Agenda una consulta inicial y evaluaremos tu situación para ofrecerte las mejores alternativas. Estamos aquí para orientarte desde el primer momento.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Puedo acceder a sus servicios si estoy fuera de España?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Sí, nuestros servicios están disponibles para clientes nacionales e internacionales. Si necesitas asistencia legal relacionada con España, puedes contactarnos desde cualquier parte del mundo.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Tienen una política de cancelación para las consultas agendadas?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Sí, puedes cancelar o reprogramar tu consulta con un mínimo de 24 horas de antelación. Si necesitas cancelar, dirígete a tu panel de usuario o ponte en contacto con nuestro equipo.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Qué métodos de pago aceptan?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Aceptamos las principales formas de pago:</p>
+                    <ul class="tab">
+                        <p>
+                            • Tarjetas de crédito y débito.
+                        </p>
+                        <p>
+                            • Transferencias bancarias.
+                        </p>
+                        <p>
+                            • Bizum.
+                        </p>
+                    </ul>
+                    <p>En caso de necesitar ayuda con el pago, no dudes en contactarnos.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>¿Todavía tienes dudas?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Si no encuentras la respuesta que buscas aquí, no dudes en contactarnos:</p>
+                    <p>
+                        • Teléfono: <a href="tel:+34695802513">+34 695 802 513</a>
+                    </p>
+                    <p>
+                        • Correo electrónico: <a href="mailto:lopezmarquezabogados@gmail.com">lopezmarquezabogados@gmail.com</a>
+                    </p>
+                    <p>
+                        • Formulario en línea: Disponible en nuestra página web.
+                    </p>
+                    <p>Estamos aquí para ayudarte y acompañarte en todo el proceso legal.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2><a href="contact.html">Contacto</a></h2>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:lopezmarquezabogados@gmail.com">lopezmarquezabogados@gmail.com</a></p>
+            <p><i class="fas fa-phone-alt"></i> <a href="tel:+34695802513">+34 695 802 513</a></p>
+            <!-- Redes sociales -->
+            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank" rel="noopener">@lopez_marquez_abogados</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/l%C3%B3pez-m%C3%A1rquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="scripts.js" defer></script>
+</body>
+</html>

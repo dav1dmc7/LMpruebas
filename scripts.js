@@ -107,3 +107,16 @@ function mostrarAlerta(mensaje) {
   document.querySelector('main').appendChild(alerta);
   setTimeout(() => alerta.remove(), 5000);
 }
+
+
+// Preguntas frecuentas
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      
+      answer.classList.toggle('open');
+      icon.classList.toggle('fa-chevron-down');
+      icon.classList.toggle('fa-chevron-up');
+  });
+});
