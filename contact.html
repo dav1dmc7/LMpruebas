@@ -53,7 +53,8 @@
     <section class="contenido">
       <h1>Contacto</h1>
       <p>Para cualquier consulta o para agendar una cita, por favor, completa el siguiente formulario:</p>
-      <form id="contact-form" method="POST" action="/.netlify/functions/process-form" onsubmit="return validarFormulario()">
+      <form id="contact-form" method="POST">
+        <!-- Campos del formulario -->
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
         <label for="email">Email:</label>
@@ -63,7 +64,7 @@
         <br>
         <div class="g-recaptcha" data-sitekey="6LegqXsqAAAAAEu1efHONoRbkpL5t-tE-7jJlt0I"></div>
         <button type="submit">Solicitar Consulta</button>
-      </form>
+      </form>      
     </section>
 
     <section class="contenido">
