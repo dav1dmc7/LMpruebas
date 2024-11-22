@@ -32,14 +32,14 @@ exports.handler = async (event) => {
       body: JSON.stringify({ message: 'Correo enviado correctamente' }),
     };
   } catch (error) {
-    console.error('Error al enviar el correo:', error);
+    console.error('Error al enviar el correo:', error.message, error.stack);
     return {
       statusCode: 500,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
-      body: JSON.stringify({ message: 'Error al enviar el correo' }),
+      body: JSON.stringify({ message: `Error al enviar el correo: ${error.message}` }),
     };
   }
 };
