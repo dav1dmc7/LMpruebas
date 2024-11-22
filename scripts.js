@@ -85,7 +85,7 @@ async function submitContactForm(data) {
   try {
     // Guardar los datos en la base de datos de Supabase
     const { error } = await supabase
-      .from('contactos') // Asegúrate de que este sea el nombre correcto de la tabla en Supabase
+      .from('clientes') // Asegúrate de que este sea el nombre correcto de la tabla en Supabase
       .insert([data]);
 
     if (error) {
