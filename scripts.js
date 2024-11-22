@@ -134,27 +134,40 @@ function mostrarAlerta(mensaje) {
   setTimeout(() => alerta.remove(), 5000);
 }
 
-// Función para validar el formulario de contacto (opcional, ya la tenías)
-function validarFormulario() {
-  const nombre = document.getElementById('nombre').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const mensaje = document.getElementById('mensaje').value.trim();
+// Función para validar y enviar el formulario de contacto
+async function submitContactForm(data) {
+  try {
+    // Guardar los datos en la base de datos de Supabase
+    const { data: insertedData, error } = await supabase
+      .from('clientes') // Asegúrate de que este sea el nombre correcto de la tabla en Supabase
+      .insert([data]);
 
-  if (!nombre || !email || !mensaje) {
-    mostrarAlerta('Por favor, completa todos los campos.');
-    return false;
+    if (error) {
+      console.error('Error al guardar en Supabase:', error.message);
+      throw new Error('Error al guardar en la base de datos');
+    }
+
+    // Enviar el correo de notificación al administrador
+    const response = await fetch('/.netlify/functions/process-form', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    console.log('Respuesta del correo:', response); // Agrega esta línea para ver la respuesta
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Error al enviar el correo:', errorText);
+      throw new Error('Error al enviar el correo electrónico.');
+    }
+
+    // Mensaje de éxito
+    mostrarMensajeExito('¡Formulario enviado y datos guardados correctamente! Pronto nos pondremos en contacto contigo.');
+    document.getElementById('contact-form').reset(); // Limpiar el formulario después de enviar
+  } catch (error) {
+    console.error('Error al procesar el formulario:', error);
+    mostrarAlerta('Error al procesar el formulario. Por favor, intenta más tarde.');
   }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    mostrarAlerta('Por favor, ingresa un correo electrónico válido.');
-    return false;
-  }
-
-  if (mensaje.length < 10) {
-    mostrarAlerta('El mensaje debe tener al menos 10 caracteres.');
-    return false;
-  }
-
-  return true;
 }
