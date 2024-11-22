@@ -84,12 +84,13 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 async function submitContactForm(data) {
   try {
     // Guardar los datos en la base de datos de Supabase
-    const { error } = await supabase
+    const { data: insertedData, error } = await supabase
       .from('clientes') // Asegúrate de que este sea el nombre correcto de la tabla en Supabase
       .insert([data]);
 
     if (error) {
-      throw new Error('Error al guardar en Supabase: ' + error.message);
+      console.error('Error al guardar en Supabase:', error.message);
+      throw new Error('Error al guardar en la base de datos');
     }
 
     // Enviar el correo de notificación al administrador
@@ -102,6 +103,7 @@ async function submitContactForm(data) {
     });
 
     if (!response.ok) {
+      console.error('Error al enviar el correo:', await response.text());
       throw new Error('Error al enviar el correo electrónico.');
     }
 
