@@ -26,7 +26,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': '*', // Permitir acceso desde cualquier origen
+        'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
       body: JSON.stringify({ message: 'Correo enviado correctamente' }),
@@ -35,6 +35,10 @@ exports.handler = async (event) => {
     console.error('Error al enviar el correo:', error);
     return {
       statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: JSON.stringify({ message: 'Error al enviar el correo' }),
     };
   }
