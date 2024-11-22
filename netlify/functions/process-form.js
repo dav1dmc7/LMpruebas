@@ -1,13 +1,9 @@
-require('dotenv').config();
-
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body);
     const { nombre, email, mensaje } = data;
-
-    console.log('Datos recibidos:', data); // Imprimir datos recibidos
 
     // Configurar Nodemailer para enviar correo con Gmail
     const transporter = nodemailer.createTransport({
@@ -16,15 +12,6 @@ exports.handler = async (event) => {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
       },
-    });
-
-    // Verificar conexión antes de enviar el correo
-    transporter.verify(function (error, success) {
-      if (error) {
-        console.error('Error de conexión con el servidor de correo:', error);
-      } else {
-        console.log('Servidor listo para enviar correos');
-      }
     });
 
     const mailOptions = {
