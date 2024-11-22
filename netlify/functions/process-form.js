@@ -1,9 +1,22 @@
-const nodemailer = require('nodemailer');
+const fetch = require('node-fetch'); // Asegúrate de incluir esta importación si no está ya
 
 exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body);
-    const { nombre, email, mensaje } = data;
+    const { nombre, email, mensaje, 'g-recaptcha-response': recaptchaResponse } = data;
+
+    // Verificar reCAPTCHA antes de enviar el correo
+    const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
+    const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecretKey}&response=${recaptchaResponse}`;
+
+    const recaptchaValidation = await fetch(recaptchaUrl, {
+      method: 'POST',
+    });
+    const recaptchaJson = await recaptchaValidation.json();
+
+    if (!recaptchaJson.success) {
+      throw new Error('Verificación de reCAPTCHA fallida.');
+    }
 
     // Configurar Nodemailer para enviar correo con Gmail
     const transporter = nodemailer.createTransport({
