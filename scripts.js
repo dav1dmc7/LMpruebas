@@ -34,59 +34,63 @@ document.addEventListener('DOMContentLoaded', function () {
   if (menuIcon) {
     menuIcon.addEventListener('click', toggleMenu);
   }
+
+  // Listener para el formulario de contacto
+  const form = document.querySelector('#contact-form');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // Evitar el envío tradicional del formulario
+
+      // Capturar los datos del formulario
+      const formData = new FormData(form);
+      const data = {
+        nombre: formData.get('nombre'),
+        email: formData.get('email'),
+        mensaje: formData.get('mensaje'),
+      };
+
+      // Llamar a la función para manejar los datos (guardar en Supabase y enviar correo)
+      await submitContactForm(data);
+    });
+  }
 });
 
-// Función para validar el formulario de contacto
-function validarFormulario() {
-  const nombre = document.getElementById('nombre').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const mensaje = document.getElementById('mensaje').value.trim();
+// Inicializar el cliente de Supabase
+const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impua2x1YWJ0a3RhdHZ0c2JmYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxNTMzNTEsImV4cCI6MjA0NTcyOTM1MX0.DKGFbfq3z6-vxrg23SenSXbtBg2f4hZGvIO36ogofGY';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-  if (!nombre || !email || !mensaje) {
-    mostrarAlerta('Por favor, completa todos los campos.');
-    return false;
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    mostrarAlerta('Por favor, ingresa un correo electrónico válido.');
-    return false;
-  }
-
-  if (mensaje.length < 10) {
-    mostrarAlerta('El mensaje debe tener al menos 10 caracteres.');
-    return false;
-  }
-
-  return true;
-}
-
-// Función para enviar el formulario de contacto
-async function enviarFormulario(event) {
-  event.preventDefault();
-  if (!validarFormulario()) return;
-
-  const form = event.target;
-  const formData = new FormData(form);
-
+// Función para validar y enviar el formulario de contacto
+async function submitContactForm(data) {
   try {
-    const response = await fetch(form.action, {
+    // Guardar los datos en la base de datos de Supabase
+    const { error } = await supabase
+      .from('contactos') // Asegúrate de que este sea el nombre correcto de la tabla en Supabase
+      .insert([data]);
+
+    if (error) {
+      throw new Error('Error al guardar en Supabase: ' + error.message);
+    }
+
+    // Enviar el correo de notificación al administrador
+    const response = await fetch('/.netlify/functions/process-form', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json',
       },
-      body: new URLSearchParams(formData),
+      body: JSON.stringify(data),
     });
 
-    const result = await response.json();
-    if (response.ok) {
-      mostrarMensajeExito(result.message);
-      form.reset();
-    } else {
-      mostrarAlerta('Error: ' + result.message);
+    if (!response.ok) {
+      throw new Error('Error al enviar el correo electrónico.');
     }
+
+    // Mensaje de éxito
+    mostrarMensajeExito('¡Formulario enviado y datos guardados correctamente! Pronto nos pondremos en contacto contigo.');
+    document.getElementById('contact-form').reset(); // Limpiar el formulario después de enviar
   } catch (error) {
-    mostrarAlerta('Error al enviar el formulario: ' + error.message);
+    console.error('Error al procesar el formulario:', error);
+    mostrarAlerta('Error al procesar el formulario. Por favor, intenta más tarde.');
   }
 }
 
@@ -108,15 +112,19 @@ function mostrarAlerta(mensaje) {
   setTimeout(() => alerta.remove(), 5000);
 }
 
-
-// Preguntas frecuentas
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
+// Preguntas frecuentes
+function setupFaqToggle() {
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
       const answer = button.nextElementSibling;
       const icon = button.querySelector('i');
-      
       answer.classList.toggle('open');
       icon.classList.toggle('fa-chevron-down');
       icon.classList.toggle('fa-chevron-up');
+    });
   });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  setupFaqToggle();
 });
