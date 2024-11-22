@@ -25,6 +25,24 @@ function setupSubmenuToggle() {
   });
 }
 
+// Función para manejar las preguntas frecuentes
+function setupFaqToggle() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach((button) => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector('i');
+      if (answer) {
+        answer.classList.toggle('open');
+      }
+      if (icon) {
+        icon.classList.toggle('fa-chevron-down');
+        icon.classList.toggle('fa-chevron-up');
+      }
+    });
+  });
+}
+
 // Llamar a las funciones cuando la página cargue
 document.addEventListener('DOMContentLoaded', function () {
   setupSubmenuToggle();
@@ -53,6 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
       await submitContactForm(data);
     });
   }
+
+  setupFaqToggle();
 });
 
 // Inicializar el cliente de Supabase
@@ -112,19 +132,27 @@ function mostrarAlerta(mensaje) {
   setTimeout(() => alerta.remove(), 5000);
 }
 
-// Preguntas frecuentes
-function setupFaqToggle() {
-  document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-      const answer = button.nextElementSibling;
-      const icon = button.querySelector('i');
-      answer.classList.toggle('open');
-      icon.classList.toggle('fa-chevron-down');
-      icon.classList.toggle('fa-chevron-up');
-    });
-  });
-}
+// Función para validar el formulario de contacto (opcional, ya la tenías)
+function validarFormulario() {
+  const nombre = document.getElementById('nombre').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const mensaje = document.getElementById('mensaje').value.trim();
 
-document.addEventListener('DOMContentLoaded', function () {
-  setupFaqToggle();
-});
+  if (!nombre || !email || !mensaje) {
+    mostrarAlerta('Por favor, completa todos los campos.');
+    return false;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    mostrarAlerta('Por favor, ingresa un correo electrónico válido.');
+    return false;
+  }
+
+  if (mensaje.length < 10) {
+    mostrarAlerta('El mensaje debe tener al menos 10 caracteres.');
+    return false;
+  }
+
+  return true;
+}
