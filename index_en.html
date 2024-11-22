@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio | López Márquez Abogados</title>
+    <meta name="description" content="Bienvenido a López Márquez Abogados. Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
+
+    <!-- SEO Multilingüe -->
+    <link rel="alternate" hreflang="es" href="https://lopezmarquezabogados.com/index.html">
+    <link rel="alternate" hreflang="en" href="https://lopezmarquezabogados.com/index_en.html">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://lopezmarquezabogados.com/index.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Inicio | López Márquez Abogados">
+    <meta property="og:description" content="Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
+    <meta property="og:image" content="https://lopezmarquezabogados.com/images/og-image.jpg">
+    <meta property="og:url" content="https://lopezmarquezabogados.com/index.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Inicio | López Márquez Abogados">
+    <meta name="twitter:description" content="Ofrecemos servicios legales en diversas áreas del derecho en toda España.">
+    <meta name="twitter:image" content="https://lopezmarquezabogados.com/images/og-image.jpg">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <!-- Selector de idioma -->
+            <div class="language-selector">
+                <a href="index.html" lang="es">ES</a> |
+                <a href="index_en.html" lang="en">EN</a>
+            </div>
+            <nav aria-label="Menú principal">
+                <a href="index.html"><img src="images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
+                <!-- Menú hamburguesa -->
+                <button class="menu-icon" aria-label="Abrir menú de navegación">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+                <!-- Menú de navegación -->
+                <ul id="nav-links" class="nav-links" aria-expanded="false">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Sobre Nosotros</a></li>
+                    <li class="submenu-parent">
+                        <a href="servicios.html">Servicios</a>
+                        <button class="submenu-toggle" aria-label="Mostrar servicios">
+                          <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <ul class="submenu">
+                          <li><a href="administrativo.html">Administrativo</a></li>
+                          <li><a href="civil.html">Civil</a></li>
+                          <li><a href="extranjeria.html">Extranjería</a></li>
+                          <li><a href="laboral.html">Laboral</a></li>
+                          <li><a href="penal.html">Penal</a></li>
+                        </ul>
+                      </li>                                           
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>    
+
+    <!-- Contenido Principal -->
+    <main>
+        <section class="hero contenido">
+            <h1>Bienvenido a López Márquez Abogados</h1>
+            <p class="subtitulo">Ofrecemos soluciones legales en diversas áreas del derecho en todo el territorio español.</p>
+        </section>
+
+        <!-- Publicaciones de LinkedIn en Carrusel -->
+        <section class="publicaciones">
+            <h2>Publicaciones Recientes</h2>
+            <!-- Widget de Taggbox -->
+            <div class="taggbox" style="width:100%;height:100%" data-widget-id="2139115" data-tags="false"  ></div>
+            <script src="https://widget.taggbox.com/embed-lite.min.js" type="text/javascript"></script>
+         </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2><a href="contact.html">Contacto</a></h2>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:lopezmarquezabogados@gmail.com">lopezmarquezabogados@gmail.com</a></p>
+            <p><i class="fas fa-phone-alt"></i> <a href="tel:+34695802513">+34 695 802 513</a></p>
+            <!-- Redes sociales -->
+            <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank" rel="noopener">@lopez_marquez_abogados</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
+            <h2><a href="faqs.html">¿Preguntas Frecuentes?</a></h2>
+        </div>
+    </footer>
+
+    <!-- Incluye la biblioteca de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js" defer></script>
+
+    <!-- JavaScript -->
+    <script src="scripts.js" defer></script>
+</body>
+</html>
