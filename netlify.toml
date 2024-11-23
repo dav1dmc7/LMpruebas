@@ -1,5 +1,9 @@
 [build]
   functions = "netlify/functions"
+  
+  [functions]
+  external_node_modules = ["dotenv"]
+
 
 [functions]
   node_bundler = "esbuild"
