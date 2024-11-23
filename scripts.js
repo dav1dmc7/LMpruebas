@@ -63,19 +63,23 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('#contact-form');
   if (form) {
     form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // Evitar el envío tradicional del formulario
+      e.preventDefault();
     
-      // Capturar los datos del formulario
       const formData = new FormData(form);
+      const recaptchaResponse = grecaptcha.getResponse(); // Captura el valor del reCAPTCHA
       const data = {
         nombre: formData.get('nombre'),
         email: formData.get('email'),
         mensaje: formData.get('mensaje'),
-        'g-recaptcha-response': grecaptcha.getResponse() // Captura el valor del reCAPTCHA
+        'g-recaptcha-response': recaptchaResponse
       };
     
-      // Llamar a la función para manejar los datos (guardar en Supabase y enviar correo)
-      await submitContactForm(data);    
+      if (!recaptchaResponse) {
+        mostrarAlerta('Por favor, verifica que no eres un robot.');
+        return;
+      }
+    
+      await submitContactForm(data);
     });
   }    
 
