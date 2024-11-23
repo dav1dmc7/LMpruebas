@@ -1,3 +1,9 @@
+// Inicializar el cliente de Supabase
+const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impua2x1YWJ0a3RhdHZ0c2JmYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxNTMzNTEsImV4cCI6MjA0NTcyOTM1MX0.DKGFbfq3z6-vxrg23SenSXbtBg2f4hZGvIO36ogofGY';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+
 // Menú hamburguesa para dispositivos móviles
 function toggleMenu() {
   const navLinks = document.getElementById('nav-links');
@@ -58,27 +64,23 @@ document.addEventListener('DOMContentLoaded', function () {
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault(); // Evitar el envío tradicional del formulario
-
+    
       // Capturar los datos del formulario
       const formData = new FormData(form);
       const data = {
         nombre: formData.get('nombre'),
         email: formData.get('email'),
         mensaje: formData.get('mensaje'),
+        'g-recaptcha-response': formData.get('g-recaptcha-response'), // Agregar el valor del reCAPTCHA
       };
-
+    
       // Llamar a la función para manejar los datos (guardar en Supabase y enviar correo)
       await submitContactForm(data);
     });
-  }
+  }    
 
   setupFaqToggle();
 });
-
-// Inicializar el cliente de Supabase
-const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impua2x1YWJ0a3RhdHZ0c2JmYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxNTMzNTEsImV4cCI6MjA0NTcyOTM1MX0.DKGFbfq3z6-vxrg23SenSXbtBg2f4hZGvIO36ogofGY';
-const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Función para validar y enviar el formulario de contacto
 async function submitContactForm(data) {
