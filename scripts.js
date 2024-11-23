@@ -59,31 +59,32 @@ document.addEventListener('DOMContentLoaded', function () {
     menuIcon.addEventListener('click', toggleMenu);
   }
 
-  // Listener para el formulario de contacto
-  const form = document.querySelector('#contact-form');
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+// Listener para el formulario de contacto
+const form = document.querySelector('#contact-form');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); 
     
-      const formData = new FormData(form);
-      const recaptchaResponse = grecaptcha.getResponse(); // Captura el valor del reCAPTCHA
-      const data = {
-        nombre: formData.get('nombre'),
-        email: formData.get('email'),
-        mensaje: formData.get('mensaje'),
-        'g-recaptcha-response': recaptchaResponse
-      };
-    
-      if (!recaptchaResponse) {
-        mostrarAlerta('Por favor, verifica que no eres un robot.');
-        return;
-      }
-    
-      await submitContactForm(data);
-    });
-  }    
+    // Capturar los datos del formulario
+    const formData = new FormData(form);
+    const recaptchaResponse = grecaptcha.getResponse(); // Obtener el valor de reCAPTCHA
 
-  setupFaqToggle();
+    if (!recaptchaResponse) {
+      mostrarAlerta('Por favor, verifica que no eres un robot.');
+      return;
+    }
+
+    const data = {
+      nombre: formData.get('nombre'),
+      email: formData.get('email'),
+      mensaje: formData.get('mensaje'),
+      'g-recaptcha-response': recaptchaResponse, // Agregar el valor del reCAPTCHA
+    };
+
+    await submitContactForm(data);
+  });
+}
+
 });
 
 // Función para validar y enviar el formulario de contacto
