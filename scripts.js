@@ -3,7 +3,6 @@ const supabaseUrl = 'https://jnkluabtktatvtsbfamn.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impua2x1YWJ0a3RhdHZ0c2JmYW1uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzAxNTMzNTEsImV4cCI6MjA0NTcyOTM1MX0.DKGFbfq3z6-vxrg23SenSXbtBg2f4hZGvIO36ogofGY';
 const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-
 // Menú hamburguesa para dispositivos móviles
 function toggleMenu() {
   const navLinks = document.getElementById('nav-links');
@@ -59,32 +58,31 @@ document.addEventListener('DOMContentLoaded', function () {
     menuIcon.addEventListener('click', toggleMenu);
   }
 
-// Listener para el formulario de contacto
-const form = document.querySelector('#contact-form');
-if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault(); 
-    
-    // Capturar los datos del formulario
-    const formData = new FormData(form);
-    const recaptchaResponse = grecaptcha.getResponse(); // Obtener el valor de reCAPTCHA
+  // Listener para el formulario de contacto
+  const form = document.querySelector('#contact-form');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); 
+      
+      // Capturar los datos del formulario
+      const formData = new FormData(form);
+      const recaptchaResponse = grecaptcha.getResponse(); // Obtener el valor de reCAPTCHA
 
-    if (!recaptchaResponse) {
-      mostrarAlerta('Por favor, verifica que no eres un robot.');
-      return;
-    }
+      if (!recaptchaResponse) {
+        mostrarAlerta('Por favor, verifica que no eres un robot.');
+        return;
+      }
 
-    const data = {
-      nombre: formData.get('nombre'),
-      email: formData.get('email'),
-      mensaje: formData.get('mensaje'),
-      'g-recaptcha-response': recaptchaResponse, // Agregar el valor del reCAPTCHA
-    };
+      const data = {
+        nombre: formData.get('nombre'),
+        email: formData.get('email'),
+        mensaje: formData.get('mensaje'),
+        'g-recaptcha-response': recaptchaResponse, // Agregar el valor del reCAPTCHA
+      };
 
-    await submitContactForm(data);
-  });
-}
-
+      await submitContactForm(data);
+    });
+  }
 });
 
 // Función para validar y enviar el formulario de contacto
@@ -139,42 +137,4 @@ function mostrarAlerta(mensaje) {
   alerta.textContent = mensaje;
   document.querySelector('main').appendChild(alerta);
   setTimeout(() => alerta.remove(), 5000);
-}
-
-// Función para validar y enviar el formulario de contacto
-async function submitContactForm(data) {
-  try {
-    // Guardar los datos en la base de datos de Supabase
-    const { data: insertedData, error } = await supabase
-      .from('clientes') // Asegúrate de que este sea el nombre correcto de la tabla en Supabase
-      .insert([data]);
-
-    if (error) {
-      console.error('Error al guardar en Supabase:', error.message);
-      throw new Error('Error al guardar en la base de datos');
-    }
-
-    // Enviar el correo de notificación al administrador
-    const response = await fetch('/.netlify/functions/process-form', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    console.log('Respuesta del correo:', response); // Agrega esta línea para ver la respuesta
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Error al enviar el correo:', errorText);
-      throw new Error('Error al enviar el correo electrónico.');
-    }
-
-    // Mensaje de éxito
-    mostrarMensajeExito('¡Formulario enviado y datos guardados correctamente! Pronto nos pondremos en contacto contigo.');
-    document.getElementById('contact-form').reset(); // Limpiar el formulario después de enviar
-  } catch (error) {
-    console.error('Error al procesar el formulario:', error);
-    mostrarAlerta('Error al procesar el formulario. Por favor, intenta más tarde.');
-  }
 }
