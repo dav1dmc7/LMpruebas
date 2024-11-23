@@ -71,11 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
         nombre: formData.get('nombre'),
         email: formData.get('email'),
         mensaje: formData.get('mensaje'),
-        'g-recaptcha-response': formData.get('g-recaptcha-response'), // Agregar el valor del reCAPTCHA
+        'g-recaptcha-response': grecaptcha.getResponse() // Captura el valor del reCAPTCHA
       };
     
       // Llamar a la función para manejar los datos (guardar en Supabase y enviar correo)
-      await submitContactForm(data);
+      await submitContactForm(data);    
     });
   }    
 
