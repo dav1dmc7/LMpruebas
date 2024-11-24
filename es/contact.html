@@ -117,7 +117,7 @@
     <section class="contenido">
       <h1>Contacto</h1>
       <p>Para cualquier consulta o para agendar una cita, por favor, completa el siguiente formulario:</p>
-      <form id="contact-form" method="POST" action="/submit-form">
+      <form id="contact-form" method="POST" action="/.netlify/functions/process-form">
         <!-- Campos del formulario -->
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
