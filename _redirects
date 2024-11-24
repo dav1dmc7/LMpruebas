@@ -1,29 +1,29 @@
 # Sitemap dinámico
 /sitemap.xml  /.netlify/functions/sitemap  200
 
-# Rutas específicas para las páginas en español (en la carpeta /en/)
-/                    /en/index.html           200
-/about               /en/about.html           200
-/servicios           /en/servicios.html       200
-/administrativo      /en/administrativo.html  200
-/civil               /en/civil.html           200
-/extranjeria         /en/extranjeria.html     200
-/laboral             /en/laboral.html         200
-/penal               /en/penal.html           200
-/contact             /en/contact.html         200
-/faqs                /en/faqs.html            200
+# Rutas específicas para las páginas en español (en la carpeta /es/)
+/                   /es/index.html           200
+/about              /es/about.html           200
+/servicios          /es/servicios.html       200
+/administrativo     /es/administrativo.html  200
+/civil              /es/civil.html           200
+/extranjeria        /es/extranjeria.html     200
+/laboral            /es/laboral.html         200
+/penal              /es/penal.html           200
+/contact            /es/contact.html         200
+/faqs               /es/faqs.html            200
 
 # Rutas específicas para las páginas en inglés (en la carpeta /en/)
-/en                  /en/index_n.html           200
-/en/about            /en/about_n.html           200
-/en/servicios        /en/servicios_n.html       200
-/en/administrativo   /en/administrativo_n.html  200
-/en/civil            /en/civil_n.html           200
-/en/extranjeria      /en/extranjeria_n.html     200
-/en/laboral          /en/laboral_n.html         200
-/en/penal            /en/penal_n.html           200
-/en/contact          /en/contact_n.html         200
-/en/faqs             /en/faqs_n.html            200
+/en                 /en/index_n.html           200
+/en/about           /en/about_n.html           200
+/en/servicios       /en/servicios_n.html       200
+/en/administrativo  /en/administrativo_n.html  200
+/en/civil           /en/civil_n.html           200
+/en/extranjeria     /en/extranjeria_n.html     200
+/en/laboral         /en/laboral_n.html         200
+/en/penal           /en/penal_n.html           200
+/en/contact         /en/contact_n.html         200
+/en/faqs            /en/faqs_n.html            200
 
 # Redirección global para rutas no encontradas
-/*                  /en/index.html            404
+/*                  /es/index.html            404
