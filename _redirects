@@ -1,7 +1,7 @@
 # Sitemap dinámico
 /sitemap.xml  /.netlify/functions/sitemap  200
 
-# Rutas específicas para todas las páginas
+# Rutas específicas para las páginas en español
 /                    /index.html           200
 /about               /about.html           200
 /servicios           /servicios.html       200
@@ -13,5 +13,17 @@
 /contact             /contact.html         200
 /faqs                /faqs.html            200
 
-# Redirección global para manejar rutas no encontradas (opcional)
+# Rutas específicas para las páginas en inglés
+/en                  /en/index_n.html           200
+/en/about            /en/about_n.html           200
+/en/servicios        /en/servicios_n.html       200
+/en/administrativo   /en/administrativo_n.html  200
+/en/civil            /en/civil_n.html           200
+/en/extranjeria      /en/extranjeria_n.html     200
+/en/laboral          /en/laboral_n.html         200
+/en/penal            /en/penal_n.html           200
+/en/contact          /en/contact_n.html         200
+/en/faqs             /en/faqs_n.html            200
+
+# Redirección global para rutas no encontradas
 /*                  /index.html            404
