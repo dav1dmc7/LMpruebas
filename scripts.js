@@ -8,120 +8,89 @@ function toggleMenu() {
   const navLinks = document.getElementById('nav-links');
   if (navLinks) {
     navLinks.classList.toggle('show');
-    document.body.classList.toggle('no-scroll'); // Evita el desplazamiento de fondo cuando el menú está abierto
+    document.body.classList.toggle('no-scroll'); // Evita el desplazamiento del fondo
   }
 }
 
-// Función para controlar el submenú de servicios en móvil
+// Configuración del submenú para móvil
 function setupSubmenuToggle() {
   const submenuToggles = document.querySelectorAll('.submenu-toggle');
-  submenuToggles.forEach(function (toggle) {
-    toggle.addEventListener('click', function (e) {
+  submenuToggles.forEach((toggle) => {
+    toggle.addEventListener('click', (e) => {
       e.preventDefault();
       const parent = toggle.parentElement;
-      if (parent.classList.contains('submenu-parent')) {
-        parent.classList.toggle('show-submenu');
-        const submenu = parent.querySelector('.submenu');
-        if (submenu) {
-          submenu.classList.toggle('submenu-show'); // Asegura que el submenú se muestre al hacer clic
+      const submenu = parent.querySelector('.submenu');
+
+      // Cierra otros submenús
+      document.querySelectorAll('.submenu-parent').forEach((item) => {
+        if (item !== parent) {
+          item.classList.remove('show-submenu');
+          const otherSubmenu = item.querySelector('.submenu');
+          if (otherSubmenu) {
+            otherSubmenu.classList.remove('submenu-show');
+          }
         }
-      }
+      });
+
+      // Alterna el submenú actual
+      parent.classList.toggle('show-submenu');
+      if (submenu) submenu.classList.toggle('submenu-show');
     });
   });
 }
 
-// Función para manejar las preguntas frecuentes
+// Configuración de las preguntas frecuentes
 function setupFaqToggle() {
   const faqQuestions = document.querySelectorAll('.faq-question');
   faqQuestions.forEach((button) => {
     button.addEventListener('click', () => {
       const answer = button.nextElementSibling;
       const icon = button.querySelector('i');
-      if (answer) {
-        answer.classList.toggle('open');
-      }
-      if (icon) {
-        icon.classList.toggle('fa-chevron-down');
-        icon.classList.toggle('fa-chevron-up');
-      }
+
+      // Alternar visibilidad
+      answer?.classList.toggle('open');
+      icon?.classList.toggle('fa-chevron-down');
+      icon?.classList.toggle('fa-chevron-up');
     });
   });
 }
 
-// Llamar a las funciones cuando la página cargue
-document.addEventListener('DOMContentLoaded', function () {
-  setupSubmenuToggle();
-
-  // Listener para el menú hamburguesa
-  const menuIcon = document.querySelector('.menu-icon');
-  if (menuIcon) {
-    menuIcon.addEventListener('click', toggleMenu);
-  }
-
-  // Listener para el formulario de contacto
-  const form = document.querySelector('#contact-form');
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); 
-      
-      // Capturar los datos del formulario
-      const formData = new FormData(form);
-      const recaptchaResponse = grecaptcha.getResponse(); // Obtener el valor de reCAPTCHA
-
-      if (!recaptchaResponse) {
-        mostrarAlerta('Por favor, verifica que no eres un robot.');
-        return;
-      }
-
-      const data = {
-        nombre: formData.get('nombre'),
-        email: formData.get('email'),
-        mensaje: formData.get('mensaje'),
-        'g-recaptcha-response': recaptchaResponse, // Agregar el valor del reCAPTCHA
-      };
-
-      await submitContactForm(data);
-    });
-  }
-});
-
-// Función para validar y enviar el formulario de contacto
+// Función principal para el envío del formulario
 async function submitContactForm(data) {
   try {
-    // Guardar los datos en la base de datos de Supabase
-    const { data: insertedData, error } = await supabase
-      .from('clientes') // Asegúrate de que este sea el nombre correcto de la tabla en Supabase
-      .insert([data]);
+    // Insertar datos en Supabase
+    const { error } = await supabase.from('clientes').insert([data]);
 
-    if (error) {
-      console.error('Error al guardar en Supabase:', error.message);
-      throw new Error('Error al guardar en la base de datos');
-    }
+    if (error) throw new Error(`Supabase error: ${error.message}`);
 
-    // Enviar el correo de notificación al administrador
+    // Enviar correo al administrador
     const response = await fetch('/.netlify/functions/process-form', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
 
-    if (!response.ok) {
-      console.error('Error al enviar el correo:', await response.text());
-      throw new Error('Error al enviar el correo electrónico.');
-    }
+    if (!response.ok) throw new Error(`Error en correo: ${await response.text()}`);
 
-    // Mensaje de éxito
-    mostrarMensajeExito('¡Formulario enviado y datos guardados correctamente! Pronto nos pondremos en contacto contigo.');
-    document.getElementById('contact-form').reset(); // Limpiar el formulario después de enviar
+    // Mostrar mensaje de éxito
+    mostrarMensajeExito('¡Formulario enviado correctamente!');
+    document.getElementById('contact-form').reset();
   } catch (error) {
     console.error('Error al procesar el formulario:', error);
-    mostrarAlerta('Error al procesar el formulario. Por favor, intenta más tarde.');
+    mostrarAlerta('Error al procesar el formulario. Intenta nuevamente.');
   }
 }
 
-// Función para mostrar mensaje de éxito
+// Mostrar alertas personalizadas
+function mostrarAlerta(mensaje) {
+  const alerta = document.createElement('div');
+  alerta.className = 'alerta';
+  alerta.textContent = mensaje;
+  document.querySelector('main').appendChild(alerta);
+  setTimeout(() => alerta.remove(), 5000);
+}
+
+// Mostrar mensaje de éxito
 function mostrarMensajeExito(mensaje) {
   const mensajeExito = document.createElement('div');
   mensajeExito.className = 'mensaje-exito';
@@ -130,11 +99,33 @@ function mostrarMensajeExito(mensaje) {
   setTimeout(() => mensajeExito.remove(), 5000);
 }
 
-// Función para mostrar alertas personalizadas
-function mostrarAlerta(mensaje) {
-  const alerta = document.createElement('div');
-  alerta.className = 'alerta';
-  alerta.textContent = mensaje;
-  document.querySelector('main').appendChild(alerta);
-  setTimeout(() => alerta.remove(), 5000);
-}
+// Inicializar las funciones al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  setupSubmenuToggle();
+  setupFaqToggle();
+
+  const menuIcon = document.querySelector('.menu-icon');
+  menuIcon?.addEventListener('click', toggleMenu);
+
+  const form = document.querySelector('#contact-form');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const recaptchaResponse = grecaptcha.getResponse();
+
+    if (!recaptchaResponse) {
+      mostrarAlerta('Por favor, verifica que no eres un robot.');
+      return;
+    }
+
+    const data = {
+      nombre: formData.get('nombre'),
+      email: formData.get('email'),
+      mensaje: formData.get('mensaje'),
+      'g-recaptcha-response': recaptchaResponse,
+    };
+
+    await submitContactForm(data);
+  });
+});
