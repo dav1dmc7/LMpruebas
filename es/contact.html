@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Metadatos -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | López Márquez Abogados</title>
+  <meta name="description" content="Ponte en contacto con López Márquez Abogados. Consulta con expertos legales y agenda tu cita en Barcelona o en línea.">
+  <meta name="keywords" content="contacto abogados, consulta legal, abogados en Barcelona, contacto López Márquez Abogados">
+  <meta name="author" content="López Márquez Abogados">
+
+  <!-- SEO Multilingüe -->
+  <link rel="alternate" hreflang="es" href="https://lopezmarquezabogados.com/es/contact.html">
+  <link rel="alternate" hreflang="en" href="https://lopezmarquezabogados.com/en/contact.html">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://lopezmarquezabogados.com/es/contact.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contacto | López Márquez Abogados">
+  <meta property="og:description" content="Consulta con abogados expertos en derecho laboral, civil, penal y más. Contáctanos para agendar tu cita.">
+  <meta property="og:image" content="https://lopezmarquezabogados.com/images/og-contact.jpg">
+  <meta property="og:url" content="https://lopezmarquezabogados.com/es/contact.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contacto | López Márquez Abogados">
+  <meta name="twitter:description" content="Consulta con abogados expertos en derecho laboral, civil, penal y más. Contáctanos para agendar tu cita.">
+  <meta name="twitter:image" content="https://lopezmarquezabogados.com/images/og-contact.jpg">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="preload" href="../styles.css" as="style">
+
+  <!-- Favicon -->
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- Datos Estructurados -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "López Márquez Abogados",
+    "description": "Contacta con expertos legales para consultas y asesoramiento personalizado. Agenda tu cita en Barcelona o en línea.",
+    "image": "https://lopezmarquezabogados.com/images/logo.png",
+    "@id": "https://lopezmarquezabogados.com/",
+    "url": "https://lopezmarquezabogados.com/es/contact.html",
+    "telephone": "+34 695 802 513",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle dels Madrazo, 6",
+      "addressLocality": "Barcelona",
+      "addressRegion": "Barcelona",
+      "postalCode": "08006",
+      "addressCountry": "ES"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "41.3977",
+      "longitude": "2.1425"
+    },
+    "areaServed": ["España", "Barcelona", "Madrid"],
+    "sameAs": [
+      "https://www.instagram.com/lopez_marquez_abogados",
+      "https://www.linkedin.com/company/lópez-márquez-abogados"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+        <!-- Selector de idioma -->
+        <div class="language-selector">
+            <a href="contact.html" lang="es">ES</a> |
+            <a href="../en/contact.html" lang="en">EN</a>
+        </div>
+        <nav aria-label="Menú principal">
+            <a href="../index.html"><img src="../images/logo.png" alt="Logo de López Márquez Abogados" class="logo"></a>
+            <!-- Menú hamburguesa -->
+            <button class="menu-icon" aria-label="Abrir menú de navegación">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <!-- Menú de navegación -->
+            <ul id="nav-links" class="nav-links" aria-expanded="false">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="about.html">Sobre Nosotros</a></li>
+                <li class="submenu-parent">
+                    <a href="servicios.html">Servicios</a>
+                    <button class="submenu-toggle" aria-label="Mostrar servicios">
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ul class="submenu">
+                      <li><a href="administrativo.html">Administrativo</a></li>
+                      <li><a href="civil.html">Civil</a></li>
+                      <li><a href="extranjeria.html">Extranjería</a></li>
+                      <li><a href="laboral.html">Laboral</a></li>
+                      <li><a href="penal.html">Penal</a></li>
+                    </ul>
+                  </li>                                           
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+  </header>    
+
+  <!-- Contenido Principal -->
+  <main>
+    <section class="contenido">
+      <h1>Contacto</h1>
+      <p>Para cualquier consulta o para agendar una cita, por favor, completa el siguiente formulario:</p>
+      <form id="contact-form" method="POST" action="/submit-form">
+        <!-- Campos del formulario -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" required></textarea>
+        <br>
+        <div class="g-recaptcha" data-sitekey="6LegqXsqAAAAAEu1efHONoRbkpL5t-tE-7jJlt0I"></div>
+        <button type="submit">Enviar Consulta</button>
+      </form>      
+    </section>
+
+    <section class="contenido">
+      <p>Para agendar una cita, visita nuestro <a href="https://calendly.com/lopezmarquezabogados" target="_blank" rel="noopener">calendario en línea</a>.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+        <h2><a href="contact.html">Contacto</a></h2>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:lopezmarquezabogados@gmail.com">lopezmarquezabogados@gmail.com</a></p>
+        <p><i class="fas fa-phone-alt"></i> <a href="tel:+34695802513">+34 695 802 513</a></p>
+        <!-- Redes sociales -->
+        <p><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/lopez_marquez_abogados" target="_blank" rel="noopener">@lopez_marquez_abogados</a></p>
+        <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/company/lópez-márquez-abogados" target="_blank" rel="noopener">López Márquez Abogados</a></p>
+        <h2><a href="faqs.html">¿Preguntas Frecuentes?</a></h2>
+    </div>
+  </footer>
+
+  <!-- Incluye la biblioteca de Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- JavaScript -->
+  <script src="../scripts.js" defer></script>
+
+</body>
+</html>
