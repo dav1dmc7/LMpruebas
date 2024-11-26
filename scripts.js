@@ -5,10 +5,13 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Menú hamburguesa para dispositivos móviles
 function toggleMenu() {
+  console.log("Menú hamburguesa activado");
   const navLinks = document.getElementById('nav-links');
   if (navLinks) {
-    navLinks.classList.toggle('show');
-    document.body.classList.toggle('no-scroll'); // Evita el desplazamiento del fondo
+      navLinks.classList.toggle('show');
+      document.body.classList.toggle('no-scroll');
+      console.log("Menú hamburguesa activado");
+
   }
 }
 
