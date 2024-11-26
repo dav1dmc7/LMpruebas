@@ -201,7 +201,6 @@ nav ul li a:hover {
   nav ul {
       display: none;
   }
-}
 
   nav ul li:hover > .submenu {
     display: block;
