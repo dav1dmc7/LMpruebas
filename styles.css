@@ -194,10 +194,9 @@ nav ul li a:hover {
 }
 
 /* Estilos para el submenú en escritorio */
-@media (max-width: 768px) {
- 
+@media (min-width: 769px) {
   nav ul {
-      display: flex;
+    display: flex;
   }
 
   nav ul li:hover > .submenu {
