@@ -11,7 +11,6 @@ function toggleMenu() {
       navLinks.classList.toggle('show');
       document.body.classList.toggle('no-scroll');
       console.log("Menú hamburguesa activado");
-
   }
 }
 
@@ -131,4 +130,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     await submitContactForm(data);
   });
+
+  // Mostrar las reseñas de Google
+  mostrarResenasGoogle();
 });
+
+// Mostrar reseñas de Google en el footer
+async function mostrarResenasGoogle() {
+  const placeId = 'g/11y8v_vngh';
+  const apiKey = 'AIzaSyAWTIBof7-BrQIwPLM5MYqlZy1aflOsHZc';
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating&key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.status !== 'OK') {
+      throw new Error('No se pudieron obtener las reseñas de Google');
+    }
+
+    const reseñas = data.result.reviews;
+    const reseñasContainer = document.querySelector('.reseñas');
+
+    if (reseñas && reseñas.length > 0) {
+      reseñas.forEach((resena) => {
+        const reseñaElemento = document.createElement('div');
+        reseñaElemento.classList.add('reseña');
+        reseñaElemento.innerHTML = `
+          <p class="nombre">${resena.author_name}</p>
+          <p class="texto">${resena.text}</p>
+          <div class="calificacion">${generarEstrellas(resena.rating)}</div>
+        `;
+        reseñasContainer.appendChild(reseñaElemento);
+      });
+    }
+  } catch (error) {
+    console.error('Error al obtener reseñas de Google:', error);
+  }
+}
+
+// Generar estrellas de calificación para las reseñas
+function generarEstrellas(rating) {
+  let estrellas = '';
+  for (let i = 1; i <= 5; i++) {
+    if (i <= rating) {
+      estrellas += '<i class="fas fa-star estrella seleccionada"></i>';
+    } else {
+      estrellas += '<i class="fas fa-star estrella"></i>';
+    }
+  }
+  return estrellas;
+}  
