@@ -72,7 +72,6 @@ nav ul {
   list-style: none;
   display: flex;
   align-items: center;
-  
 }
 
 nav ul li {
@@ -114,15 +113,14 @@ nav ul li a:hover {
     right: 20px; /* Espacio desde el borde derecho */
   }
 
- /* Ajustar la posición del menú de navegación */
   nav ul {
-    display:none;
+    display: none;
     transition: left 0.3s ease;
     z-index: 10;
   }
 
   nav ul.show {
-    display: flex;    
+    display: flex;
     position: absolute;
     margin-top: 100%;
     flex-direction: column;
@@ -142,7 +140,7 @@ nav ul li a:hover {
   nav ul li a {
     color: #fff;
   }
-  
+
   /* Estilos para el submenú */
   .submenu-toggle {
     position: absolute;
@@ -168,7 +166,7 @@ nav ul li a:hover {
 
   nav ul li.show-submenu .submenu {
     display: block;
-    max-height: 500px; 
+    max-height: 500px;
   }
 
   /* Rotación de la flecha del submenú */
@@ -339,24 +337,18 @@ main {
 /* RESEÑAS */
 .reseñas {
   text-align: center;
-  padding: 20px;
-  background-color: transparent;
-  margin: 20px 0 40px 0;
-  box-shadow: none;
+  padding: 20px 0;
 }
 
 .reseñas h3 {
-  color: #ffffff;
-  font-size: 1.5em;
+  color: #fff;
+  font-size: 1.6em;
   margin-bottom: 10px;
 }
 
-/* CALIFICACIÓN CON ESTRELLAS */
 .calificacion {
   font-size: 2em;
   margin: 10px 0;
-  direction: rtl;
-  unicode-bidi: bidi-override;
   display: inline-block;
 }
 
@@ -370,6 +362,16 @@ main {
 .estrella:hover,
 .estrella:hover ~ .estrella {
   color: gold;
+}
+
+.review-link {
+  color: #b79347;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.review-link:hover {
+  text-decoration: underline;
 }
 
 /* FORMULARIOS */
@@ -407,10 +409,12 @@ form button {
 form button:hover {
   background-color: #060a3d;
 }
+
 /* Estilos para las preguntas frecuentes */
 .faq-item {
   margin-bottom: 20px;
 }
+
 .contenido h1 {
   color: #081050;
   font-size: 2em;
@@ -467,50 +471,42 @@ footer {
 
 .footer-columns {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
 }
 
-.footer-column h2 {
-  margin-bottom: 10px;
-  font-size: 1.4em;
-  color: #ffffff;
+.footer-column {
+  flex: 1;
+  margin: 10px;
+  min-width: 280px;
 }
 
-.footer-column p {
-  margin: 5px 0;
+.left-column p, .right-column p {
+  font-size: 1.1em;
   display: flex;
   align-items: center;
-  font-size: 1.1em;
-  transition: transform 0.3s ease;
+  justify-content: left;
+  line-height: 1.8;
 }
 
-.footer-column p:hover {
-  transform: scale(1.05);
-}
-
-.footer-column p i {
-  margin-right: 8px;
+.left-column p i {
+  margin-right: 10px;
   color: #b79347;
 }
 
-.footer-column a {
+footer a {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-column a:hover {
+footer a:hover {
   color: #b79347;
 }
 
-/* Ajuste de alineación de iconos y texto en la columna de contacto */
-.footer-column.left-column p {
+.reseñas .calificacion {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: left;
+  justify-content: center;
 }
 
 /* AJUSTES ESPECÍFICOS PARA MÓVILES */
@@ -530,11 +526,12 @@ footer {
 
   .footer-columns {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
-  .footer-column {
-    margin-bottom: 20px;
+  .left-column p {
+    justify-content: center;
   }
 }
 
