@@ -114,7 +114,6 @@ nav ul li a:hover {
     right: 20px; /* Espacio desde el borde derecho */
   }
 
-
  /* Ajustar la posición del menú de navegación */
   nav ul {
     display:none;
@@ -132,7 +131,6 @@ nav ul li a:hover {
     width: 100%;
     position: static;
   }
-
 
   nav ul li {
     margin: 10px 0;
@@ -342,13 +340,14 @@ main {
 .reseñas {
   text-align: center;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: transparent;
   margin: 20px 0 40px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
-.reseñas h2 {
-  color: #081050;
+.reseñas h3 {
+  color: #ffffff;
+  font-size: 1.5em;
   margin-bottom: 10px;
 }
 
@@ -461,42 +460,57 @@ form button:hover {
 footer {
   background-color: #081050;
   color: #fff;
-  padding: 20px 0;
+  padding: 40px 0;
   text-align: center;
   width: 100%;
 }
 
-footer h2 {
-  margin-bottom: 10px;
-  font-size: 1.2em;
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
 }
 
-footer p {
+.footer-column h2 {
+  margin-bottom: 10px;
+  font-size: 1.4em;
+  color: #ffffff;
+}
+
+.footer-column p {
   margin: 5px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 0.9em;
+  font-size: 1.1em;
   transition: transform 0.3s ease;
 }
 
-footer p:hover {
+.footer-column p:hover {
   transform: scale(1.05);
 }
 
-footer p i {
+.footer-column p i {
   margin-right: 8px;
   color: #b79347;
 }
 
-footer a {
+.footer-column a {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-footer a:hover {
+.footer-column a:hover {
   color: #b79347;
+}
+
+/* Ajuste de alineación de iconos y texto en la columna de contacto */
+.footer-column.left-column p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: left;
 }
 
 /* AJUSTES ESPECÍFICOS PARA MÓVILES */
@@ -514,9 +528,13 @@ footer a:hover {
     margin-bottom: 40px;
   }
 
-  footer p {
+  .footer-columns {
     flex-direction: column;
     text-align: center;
+  }
+
+  .footer-column {
+    margin-bottom: 20px;
   }
 }
 
