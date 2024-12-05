@@ -109,8 +109,8 @@ nav ul li a:hover {
 @media (max-width: 768px) {
   .menu-icon {
     display: flex;
-    top: 30px; /* Ubicación del icono del menú */
-    right: 20px; /* Espacio desde el borde derecho */
+    top: 30px;
+    right: 20px;
   }
 
   nav ul {
@@ -337,18 +337,21 @@ main {
 /* RESEÑAS */
 .reseñas {
   text-align: center;
-  padding: 20px 0;
+  padding: 20px;
+  margin: 20px 0;
 }
 
 .reseñas h3 {
-  color: #fff;
-  font-size: 1.6em;
+  color: #ffffff;
   margin-bottom: 10px;
+  font-size: 1.5em;
 }
 
 .calificacion {
   font-size: 2em;
   margin: 10px 0;
+  direction: ltr;
+  unicode-bidi: bidi-override;
   display: inline-block;
 }
 
@@ -368,10 +371,11 @@ main {
   color: #b79347;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
 .review-link:hover {
-  text-decoration: underline;
+  color: #d4a73c;
 }
 
 /* FORMULARIOS */
@@ -410,46 +414,6 @@ form button:hover {
   background-color: #060a3d;
 }
 
-/* Estilos para las preguntas frecuentes */
-.faq-item {
-  margin-bottom: 20px;
-}
-
-.contenido h1 {
-  color: #081050;
-  font-size: 2em;
-}
-
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  font-size: 1.2em;
-  cursor: pointer;
-  font-weight: bold;
-  transition: color 0.3s;
-  background: none;
-  border: none;
-  text-align: left;
-  width: 100%;
-}
-
-.faq-question:hover {
-  color: #b79347; /* Color dorado para el hover */
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  padding-left: 10px;
-}
-
-.faq-answer.open {
-  max-height: 500px;
-}
-
 /* MENSAJE DE ÉXITO */
 .mensaje-exito {
   background-color: #d4edda;
@@ -464,29 +428,34 @@ form button:hover {
 footer {
   background-color: #081050;
   color: #fff;
-  padding: 40px 0;
+  padding: 30px 0;
   text-align: center;
   width: 100%;
 }
 
-.footer-columns {
+footer .footer-columns {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .footer-column {
-  flex: 1;
-  margin: 10px;
-  min-width: 280px;
+  width: 100%;
+  max-width: 45%;
 }
 
-.left-column p, .right-column p {
-  font-size: 1.1em;
+.left-column h2 {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.left-column p {
   display: flex;
   align-items: center;
-  justify-content: left;
-  line-height: 1.8;
+  margin-bottom: 10px;
+  font-size: 1.1em;
 }
 
 .left-column p i {
@@ -494,43 +463,49 @@ footer {
   color: #b79347;
 }
 
-footer a {
+.left-column a {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-footer a:hover {
+.left-column a:hover {
   color: #b79347;
 }
 
-.reseñas .calificacion {
+.right-column h2 {
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.right-column .reseñas {
+  padding: 10px;
+  background-color: transparent;
+}
+
+.right-column .calificacion {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
+}
+
+.right-column .review-link {
+  font-size: 1.1em;
 }
 
 /* AJUSTES ESPECÍFICOS PARA MÓVILES */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2em;
-  }
-
-  .hero p {
-    font-size: 1em;
-  }
-
-  .publicaciones,
-  .reseñas {
-    margin-bottom: 40px;
-  }
-
   .footer-columns {
     flex-direction: column;
     align-items: center;
-    text-align: center;
   }
 
-  .left-column p {
+  .footer-column {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .reseñas .calificacion {
     justify-content: center;
   }
 }
@@ -549,4 +524,19 @@ footer a:hover {
   border: 1px solid #f5c6cb;
   border-radius: 5px;
   max-width: 600px;
+}
+
+/* ESTILOS GENERALES PARA ALINEACIÓN Y CENTRADO */
+.center-text {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
