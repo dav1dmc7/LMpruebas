@@ -109,10 +109,11 @@ nav ul li a:hover {
 @media (max-width: 768px) {
   .menu-icon {
     display: flex;
-    top: 30px;
-    right: 20px;
+    top: 30px; /* Ubicación del icono del menú */
+    right: 20px; /* Espacio desde el borde derecho */
   }
 
+  /* Ajustar la posición del menú de navegación */
   nav ul {
     display: none;
     transition: left 0.3s ease;
@@ -121,18 +122,16 @@ nav ul li a:hover {
 
   nav ul.show {
     display: flex;
-    position: absolute;
-    margin-top: 100%;
     flex-direction: column;
     margin: 10px 0;
-    text-align: left;
+    text-align: center;
     width: 100%;
     position: static;
   }
 
   nav ul li {
     margin: 10px 0;
-    text-align: left;
+    text-align: center;
     width: 100%;
     position: static;
   }
@@ -338,44 +337,44 @@ main {
 .reseñas {
   text-align: center;
   padding: 20px;
-  margin: 20px 0;
+  background-color: transparent;
+  margin: 20px 0 40px 0;
 }
 
-.reseñas h3 {
-  color: #ffffff;
+.reseñas h2, .reseñas h3 {
+  color: #fff;
   margin-bottom: 10px;
   font-size: 1.5em;
 }
 
+/* CALIFICACIÓN CON ESTRELLAS */
 .calificacion {
   font-size: 2em;
   margin: 10px 0;
   direction: ltr;
   unicode-bidi: bidi-override;
   display: inline-block;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
 }
 
 .estrella {
-  color: gray;
-  transition: color 0.3s;
+  font-size: 30px;
+  color: #c3c3c3;
   cursor: pointer;
+  transition: color 0.3s;
 }
 
-.estrella.seleccionada,
 .estrella:hover,
 .estrella:hover ~ .estrella {
-  color: gold;
+  color: #b79347; /* Cambiar a dorado al pasar el ratón */
 }
 
-.review-link {
-  color: #b79347;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.review-link:hover {
-  color: #d4a73c;
+.estrella.selected,
+.estrella.selected ~ .estrella {
+  color: #b79347; /* Mantener dorado al seleccionar */
 }
 
 /* FORMULARIOS */
@@ -414,6 +413,41 @@ form button:hover {
   background-color: #060a3d;
 }
 
+/* Estilos para las preguntas frecuentes */
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+}
+
+.faq-question:hover {
+  color: #b79347; /* Color dorado para el hover */
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding-left: 10px;
+}
+
+.faq-answer.open {
+  max-height: 500px;
+}
+
 /* MENSAJE DE ÉXITO */
 .mensaje-exito {
   background-color: #d4edda;
@@ -424,119 +458,99 @@ form button:hover {
   border-radius: 5px;
 }
 
-/* FOOTER */
+/* CSS Footer Mejorado para Versiones PC y Móvil */
 footer {
-  background-color: #081050;
-  color: #fff;
-  padding: 30px 0;
-  text-align: center;
-  width: 100%;
+  background-color: #0c1f52;
+  color: #ffffff;
+  padding: 40px 20px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-footer .footer-columns {
+.footer-columns {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .footer-column {
-  width: 100%;
-  max-width: 45%;
+  flex: 1;
+  padding: 20px;
 }
 
-.left-column h2 {
-  margin-bottom: 15px;
-  font-size: 1.5em;
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
 }
 
-.left-column p {
+.left-column {
+  align-items: flex-start;
+}
+
+.right-column {
+  align-items: center;
+}
+
+h2, h3 {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-column a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  color: #b79347;
+  transition: color 0.3s;
+}
+
+.footer-column p {
+  margin: 5px 0;
+  font-size: 16px;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-  font-size: 1.1em;
 }
 
-.left-column p i {
+.footer-column p i {
   margin-right: 10px;
   color: #b79347;
 }
 
-.left-column a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.left-column a:hover {
-  color: #b79347;
-}
-
-.right-column h2 {
-  margin-bottom: 15px;
-  font-size: 1.5em;
-}
-
-.right-column .reseñas {
-  padding: 10px;
-  background-color: transparent;
-}
-
-.right-column .calificacion {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-}
-
-.right-column .review-link {
-  font-size: 1.1em;
-}
-
-/* AJUSTES ESPECÍFICOS PARA MÓVILES */
+/* Versión móvil */
 @media (max-width: 768px) {
   .footer-columns {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
   .footer-column {
-    max-width: 100%;
-    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
   }
 
-  .reseñas .calificacion {
-    justify-content: center;
+  .left-column {
+    align-items: center;
+  }
+
+  .right-column {
+    margin-top: 20px;
   }
 }
 
-/* EVITAR DESPLAZAMIENTO DE FONDO CUANDO EL MENÚ ESTÁ ABIERTO */
-.no-scroll {
-  overflow: hidden;
-}
-
-/* ESTILOS PARA LAS ALERTAS PERSONALIZADAS */
-.alerta {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 15px;
-  margin: 15px auto;
-  border: 1px solid #f5c6cb;
-  border-radius: 5px;
-  max-width: 600px;
-}
-
-/* ESTILOS GENERALES PARA ALINEACIÓN Y CENTRADO */
-.center-text {
-  text-align: center;
-}
-
-.align-left {
-  text-align: left;
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Mejorar interacción de las estrellas en móvil y escritorio */
+.estrella:hover,
+.estrella:hover ~ .estrella,
+.estrella.selected,
+.estrella.selected ~ .estrella {
+  color: #b79347;
+  transition: color 0.3s ease;
 }
