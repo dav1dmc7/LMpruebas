@@ -5,11 +5,11 @@ const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 // Menú hamburguesa para dispositivos móviles
 function toggleMenu() {
-  console.log("Menú hamburguesa activado");
   const navLinks = document.getElementById('nav-links');
   if (navLinks) {
-    navLinks.classList.toggle('show');
-    document.body.classList.toggle('no-scroll');  // Evitar el desplazamiento cuando el menú esté abierto
+    const isExpanded = navLinks.classList.toggle('show');
+    document.body.classList.toggle('no-scroll'); // Evitar el desplazamiento cuando el menú esté abierto
+    navLinks.setAttribute('aria-expanded', isExpanded);
   }
 }
 
@@ -20,21 +20,10 @@ function setupSubmenuToggle() {
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       const parent = toggle.parentElement;
-
-      // Alterna el submenú actual
       parent.classList.toggle('show-submenu');
     });
   });
 }
-
-// Inicializar las funciones al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-  setupSubmenuToggle();
-
-  const menuIcon = document.querySelector('.menu-icon');
-  menuIcon?.addEventListener('click', toggleMenu);
-});
-
 
 // Configuración de las preguntas frecuentes
 function setupFaqToggle() {
@@ -57,7 +46,6 @@ async function submitContactForm(data) {
   try {
     // Insertar datos en Supabase
     const { error } = await supabase.from('clientes').insert([data]);
-
     if (error) throw new Error(`Supabase error: ${error.message}`);
 
     // Enviar correo al administrador
@@ -96,10 +84,46 @@ function mostrarMensajeExito(mensaje) {
   setTimeout(() => mensajeExito.remove(), 5000);
 }
 
+// Mostrar reseñas de Google en el footer
+async function mostrarResenasGoogle() {
+  const placeId = 'g/11y8v_vngh';
+  const apiKey = 'AIzaSyAWTIBof7-BrQIwPLM5MYqlZy1aflOsHZc';
+  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating&key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (data.status !== 'OK') {
+      throw new Error('No se pudieron obtener las reseñas de Google');
+    }
+
+    const reseñas = data.result.reviews;
+    const reseñasContainer = document.querySelector('.google-reviews-container');
+
+    if (reseñas && reseñas.length > 0) {
+      reseñas.forEach((resena) => {
+        const reseñaElemento = document.createElement('div');
+        reseñaElemento.classList.add('google-review');
+        reseñaElemento.innerHTML = `
+          <p class="google-review-author">${resena.author_name}</p>
+          <p class="google-review-text">${resena.text}</p>
+        `;
+        reseñasContainer.appendChild(reseñaElemento);
+      });
+    } else {
+      reseñasContainer.innerHTML = `<p>No hay reseñas disponibles en este momento.</p>`;
+    }
+  } catch (error) {
+    console.error('Error al obtener reseñas de Google:', error);
+  }
+}
+
 // Inicializar las funciones al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
   setupSubmenuToggle();
   setupFaqToggle();
+  mostrarResenasGoogle();
 
   const menuIcon = document.querySelector('.menu-icon');
   menuIcon?.addEventListener('click', toggleMenu);
@@ -126,77 +150,29 @@ document.addEventListener('DOMContentLoaded', () => {
     await submitContactForm(data);
   });
 
-  // Mostrar las reseñas de Google
-  mostrarResenasGoogle();
-});
-
-// Mostrar reseñas de Google en el footer
-async function mostrarResenasGoogle() {
-  const placeId = 'g/11y8v_vngh';
-  const apiKey = 'API_KEY_GOOGLE_MAPS';
-  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating&key=${apiKey}`;
-
-  try {
-      const response = await fetch(url);
-      const data = await response.json();
-
-      if (data.status !== 'OK') {
-          throw new Error('No se pudieron obtener las reseñas de Google');
-      }
-
-      const reseñas = data.result.reviews;
-      const reseñasContainer = document.querySelector('.google-reviews-container');
-
-      if (reseñas && reseñas.length > 0) {
-          reseñas.forEach((resena) => {
-              const reseñaElemento = document.createElement('div');
-              reseñaElemento.classList.add('google-review');
-              reseñaElemento.innerHTML = `
-                  <p class="google-review-author">${resena.author_name}</p>
-                  <p class="google-review-text">${resena.text}</p>
-              `;
-              reseñasContainer.appendChild(reseñaElemento);
-          });
-      } else {
-          reseñasContainer.innerHTML = `<p>No hay reseñas disponibles en este momento.</p>`;
-      }
-  } catch (error) {
-      console.error('Error al obtener reseñas de Google:', error);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  mostrarResenasGoogle();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
   const estrellas = document.querySelectorAll('.estrella');
   let calificacionSeleccionada = 0;
 
   estrellas.forEach((estrella, index) => {
-    // Evento para rellenar las estrellas al pasar el ratón
     estrella.addEventListener('mouseover', () => {
       estrellas.forEach((e, i) => {
         e.style.color = i <= index ? '#f4c842' : '#c3c3c3';
       });
     });
 
-    // Evento para quitar el relleno cuando el ratón salga del contenedor
     estrella.addEventListener('mouseout', () => {
       estrellas.forEach((e, i) => {
         e.style.color = i < calificacionSeleccionada ? '#f4c842' : '#c3c3c3';
       });
     });
 
-    // Evento para seleccionar la calificación al hacer clic
     estrella.addEventListener('click', () => {
       calificacionSeleccionada = index + 1;
       estrellas.forEach((e, i) => {
         e.style.color = i < calificacionSeleccionada ? '#f4c842' : '#c3c3c3';
       });
 
-      // Redirigir al usuario para dejar la reseña en Google
-      window.open('https://www.google.com/maps/place/L%C3%B3pez+M%C3%A1rquez+Abogados/', '_blank');
+      window.open('https://g.page/lopez-marquez-abogados/review?gm', '_blank');
     });
   });
 });
