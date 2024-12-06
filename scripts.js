@@ -28,15 +28,28 @@ function setupSubmenuToggle() {
 // Configuración de las preguntas frecuentes
 function setupFaqToggle() {
   const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  if (faqQuestions.length === 0) {
+    console.error("No se encontraron elementos con la clase '.faq-question'. Revisa el HTML para confirmar la clase.");
+  }
+  
   faqQuestions.forEach((button) => {
     button.addEventListener('click', () => {
       const answer = button.nextElementSibling;
       const icon = button.querySelector('i');
 
-      // Alternar visibilidad
-      answer?.classList.toggle('open');
-      icon?.classList.toggle('fa-chevron-down');
-      icon?.classList.toggle('fa-chevron-up');
+      if (answer) {
+        // Alternar la visibilidad de la respuesta
+        answer.classList.toggle('open');
+        
+        // Alternar la rotación del ícono
+        if (icon) {
+          icon.classList.toggle('fa-chevron-down');
+          icon.classList.toggle('fa-chevron-up');
+        }
+      } else {
+        console.error("No se encontró un elemento siguiente a la pregunta. Revisa el HTML para confirmar la estructura.");
+      }
     });
   });
 }
