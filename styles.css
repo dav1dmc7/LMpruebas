@@ -524,15 +524,7 @@ h2, h3 {
   color: #b79347;
 }
 
-/* Estilos para la sección de reseñas */
-.reseñas {
-  background-color: transparent;
-  padding: 15px;
-  text-align: center;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
+/* Calificación con estrellas */
 .calificacion {
   display: flex;
   justify-content: center;
@@ -542,30 +534,16 @@ h2, h3 {
 
 .estrella {
   font-size: 30px;
-  color: #c3c3c3;
+  color: #f4c842; /* Amarillo Google para las estrellas sin seleccionar */
   cursor: pointer;
-  transition: color 0.3s;
-}
-
-.estrella:hover,
-.estrella:hover ~ .estrella,
-.estrella.selected,
-.estrella.selected ~ .estrella {
-  color: #b79347;
   transition: color 0.3s ease;
 }
 
-.review-link {
-  color: #b79347;
-  margin-top: 10px;
-  display: inline-block;
+.estrella.selected {
+  color: #f4c842; /* Color para las estrellas seleccionadas */
 }
 
-.review-link:hover {
-  color: #ffffff;
-}
-
-/* Contenedor de reseñas dinámicas */
+/* Estilo para el contenedor de reseñas dinámicas */
 .google-reviews-container {
   margin-top: 20px;
   padding: 15px;
@@ -576,18 +554,24 @@ h2, h3 {
   text-align: left;
 }
 
-.google-review {
-  margin-bottom: 15px;
-}
-
-.google-review-author {
-  font-weight: bold;
+.google-reviews-container p {
   color: #081050;
 }
 
-.google-review-text {
-  color: #333;
-  margin-top: 5px;
+/* Alinear mejor los elementos */
+.footer-column h3 {
+  margin-bottom: 15px;
+}
+
+.review-link {
+  color: #f4c842;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.review-link:hover {
+  color: #ffffff;
+  transition: color 0.3s;
 }
 
 /* Versión móvil */

@@ -8,9 +8,8 @@ function toggleMenu() {
   console.log("Menú hamburguesa activado");
   const navLinks = document.getElementById('nav-links');
   if (navLinks) {
-      navLinks.classList.toggle('show');
-      document.body.classList.toggle('no-scroll');
-      console.log("Menú hamburguesa activado");
+    navLinks.classList.toggle('show');
+    document.body.classList.toggle('no-scroll');  // Evitar el desplazamiento cuando el menú esté abierto
   }
 }
 
@@ -21,25 +20,21 @@ function setupSubmenuToggle() {
     toggle.addEventListener('click', (e) => {
       e.preventDefault();
       const parent = toggle.parentElement;
-      const submenu = parent.querySelector('.submenu');
-
-      // Cierra otros submenús
-      document.querySelectorAll('.submenu-parent').forEach((item) => {
-        if (item !== parent) {
-          item.classList.remove('show-submenu');
-          const otherSubmenu = item.querySelector('.submenu');
-          if (otherSubmenu) {
-            otherSubmenu.classList.remove('submenu-show');
-          }
-        }
-      });
 
       // Alterna el submenú actual
       parent.classList.toggle('show-submenu');
-      if (submenu) submenu.classList.toggle('submenu-show');
     });
   });
 }
+
+// Inicializar las funciones al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  setupSubmenuToggle();
+
+  const menuIcon = document.querySelector('.menu-icon');
+  menuIcon?.addEventListener('click', toggleMenu);
+});
+
 
 // Configuración de las preguntas frecuentes
 function setupFaqToggle() {
@@ -172,4 +167,36 @@ async function mostrarResenasGoogle() {
 
 document.addEventListener('DOMContentLoaded', () => {
   mostrarResenasGoogle();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const estrellas = document.querySelectorAll('.estrella');
+  let calificacionSeleccionada = 0;
+
+  estrellas.forEach((estrella, index) => {
+    // Evento para rellenar las estrellas al pasar el ratón
+    estrella.addEventListener('mouseover', () => {
+      estrellas.forEach((e, i) => {
+        e.style.color = i <= index ? '#f4c842' : '#c3c3c3';
+      });
+    });
+
+    // Evento para quitar el relleno cuando el ratón salga del contenedor
+    estrella.addEventListener('mouseout', () => {
+      estrellas.forEach((e, i) => {
+        e.style.color = i < calificacionSeleccionada ? '#f4c842' : '#c3c3c3';
+      });
+    });
+
+    // Evento para seleccionar la calificación al hacer clic
+    estrella.addEventListener('click', () => {
+      calificacionSeleccionada = index + 1;
+      estrellas.forEach((e, i) => {
+        e.style.color = i < calificacionSeleccionada ? '#f4c842' : '#c3c3c3';
+      });
+
+      // Redirigir al usuario para dejar la reseña en Google
+      window.open('https://www.google.com/maps/place/L%C3%B3pez+M%C3%A1rquez+Abogados/', '_blank');
+    });
+  });
 });
