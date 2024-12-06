@@ -116,17 +116,19 @@ nav ul li a:hover {
   /* Ajustar la posición del menú de navegación */
   nav ul {
     display: none;
-    transition: left 0.3s ease;
-    z-index: 10;
+    transition: all 0.3s ease;
   }
 
   nav ul.show {
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
-    text-align: center;
+    background-color: #b79347;  /* Color de fondo del menú desplegable */
     width: 100%;
-    position: static;
+    position: absolute;
+    top: 100%;  /* Mostrar justo debajo del header */
+    left: 0;
+    z-index: 10;
+    padding: 10px 0;
   }
 
   nav ul li {
