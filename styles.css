@@ -444,10 +444,12 @@ form button:hover {
   overflow: hidden;
   transition: max-height 0.4s ease-out;
   padding-left: 10px;
+  padding-top: 0;
 }
 
 .faq-answer.open {
   max-height: 500px;
+  padding-top: 10px; 
 }
 
 /* MENSAJE DE ÉXITO */
