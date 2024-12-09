@@ -1,77 +1,65 @@
-const express = require('express');
-const axios = require('axios');
 const nodemailer = require('nodemailer');
-const app = express();
-require('dotenv').config();
+const fetch = require('node-fetch');
 
-// Middleware para parsear JSON
-app.use(express.json());
-
-// Endpoint para procesar formulario
-app.post('/.netlify/functions/process-form', async (req, res) => {
-    try {
-        console.info('Método HTTP recibido:', req.method);
-        console.info('Cuerpo recibido:', req.body);
-
-        const { nombre, email, mensaje, 'g-recaptcha-response': recaptchaToken } = req.body;
-
-        if (!recaptchaToken) {
-            console.error('Token de reCAPTCHA ausente');
-            return res.status(400).json({ error: 'Token de reCAPTCHA ausente' });
-        }
-
-        console.info('Verificando reCAPTCHA...');
-
-        // Verificar token de reCAPTCHA
-        const recaptchaResponse = await axios.post(
-            'https://www.google.com/recaptcha/api/siteverify',
-            {},
-            {
-                params: {
-                    secret: process.env.RECAPTCHA_SECRET_KEY,
-                    response: recaptchaToken,
-                },
-            }
-        );
-
-        console.info('Respuesta de reCAPTCHA:', recaptchaResponse.data);
-
-        if (!recaptchaResponse.data.success) {
-            throw new Error(
-                'Verificación de reCAPTCHA fallida: ' + recaptchaResponse.data['error-codes']
-            );
-        }
-
-        // Configuración del transporte de Nodemailer
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
-        });
-
-        // Opciones del correo
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
-            subject: `Nuevo mensaje de contacto de ${nombre}`,
-            text: `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`,
-        };
-
-        // Enviar correo
-        await transporter.sendMail(mailOptions);
-
-        console.info('Correo enviado exitosamente.');
-        res.status(200).json({ message: 'Formulario procesado correctamente' });
-    } catch (error) {
-        console.error('Error procesando el formulario:', error.message);
-        res.status(500).json({ error: 'Error al procesar el formulario', details: error.message });
+exports.handler = async (event) => {
+  try {
+    console.log("Método HTTP recibido:", event.httpMethod);
+    if (event.httpMethod !== 'POST') {
+      return {
+        statusCode: 405,
+        headers: { 'Allow': 'POST' },
+        body: JSON.stringify({ message: 'Método no permitido' }),
+      };
     }
-});
 
-// Escuchar en el puerto configurado
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.info(`Servidor ejecutándose en el puerto ${PORT}`);
-});
+    // Parsear los datos
+    const data = JSON.parse(event.body);
+    const { nombre, email, mensaje, 'g-recaptcha-response': recaptchaResponse } = data;
+
+    // Validar campos requeridos
+    if (!nombre || !email || !mensaje || !recaptchaResponse) {
+      throw new Error('Todos los campos son obligatorios');
+    }
+
+    // Verificar reCAPTCHA
+    const recaptchaValidation = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaResponse}`,
+      { method: 'POST' }
+    );
+    const recaptchaJson = await recaptchaValidation.json();
+    if (!recaptchaJson.success) {
+      throw new Error('Verificación de reCAPTCHA fallida');
+    }
+
+    // Configurar Nodemailer
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_USER,
+      subject: `Nueva consulta de ${nombre}`,
+      text: `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    return {
+      statusCode: 200,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      body: JSON.stringify({ message: 'Correo enviado correctamente' }),
+    };
+  } catch (error) {
+    console.error("Error procesando formulario:", error.message);
+    return {
+      statusCode: 500,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      body: JSON.stringify({ message: 'Error procesando formulario', details: error.message }),
+    };
+  }
+};
