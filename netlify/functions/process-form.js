@@ -1,81 +1,77 @@
+const express = require('express');
+const axios = require('axios');
 const nodemailer = require('nodemailer');
-const fetch = require('node-fetch');
+const app = express();
+require('dotenv').config();
 
-exports.handler = async (event) => {
-  try {
-    // Verificar que la solicitud sea POST
-    console.log("Método HTTP recibido:", event.httpMethod);
-    if (event.httpMethod !== 'POST') {
-      return {
-        statusCode: 405,
-        headers: { 'Allow': 'POST' },
-        body: JSON.stringify({ message: 'Método no permitido' }),
-      };
+// Middleware para parsear JSON
+app.use(express.json());
+
+// Endpoint para procesar formulario
+app.post('/.netlify/functions/process-form', async (req, res) => {
+    try {
+        console.info('Método HTTP recibido:', req.method);
+        console.info('Cuerpo recibido:', req.body);
+
+        const { nombre, email, mensaje, 'g-recaptcha-response': recaptchaToken } = req.body;
+
+        if (!recaptchaToken) {
+            console.error('Token de reCAPTCHA ausente');
+            return res.status(400).json({ error: 'Token de reCAPTCHA ausente' });
+        }
+
+        console.info('Verificando reCAPTCHA...');
+
+        // Verificar token de reCAPTCHA
+        const recaptchaResponse = await axios.post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            {},
+            {
+                params: {
+                    secret: process.env.RECAPTCHA_SECRET_KEY,
+                    response: recaptchaToken,
+                },
+            }
+        );
+
+        console.info('Respuesta de reCAPTCHA:', recaptchaResponse.data);
+
+        if (!recaptchaResponse.data.success) {
+            throw new Error(
+                'Verificación de reCAPTCHA fallida: ' + recaptchaResponse.data['error-codes']
+            );
+        }
+
+        // Configuración del transporte de Nodemailer
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
+            },
+        });
+
+        // Opciones del correo
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER,
+            subject: `Nuevo mensaje de contacto de ${nombre}`,
+            text: `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`,
+        };
+
+        // Enviar correo
+        await transporter.sendMail(mailOptions);
+
+        console.info('Correo enviado exitosamente.');
+        res.status(200).json({ message: 'Formulario procesado correctamente' });
+    } catch (error) {
+        console.error('Error procesando el formulario:', error.message);
+        res.status(500).json({ error: 'Error al procesar el formulario', details: error.message });
     }
+});
 
-    // Parsear los datos del cuerpo de la solicitud
-    console.log("Cuerpo recibido:", event.body);
-    const data = JSON.parse(event.body);
-    const { nombre, email, mensaje, 'g-recaptcha-response': recaptchaResponse } = data;
-
-    // Validar que los campos requeridos estén presentes
-    if (!nombre || !email || !mensaje || !recaptchaResponse) {
-      console.error("Campos faltantes:", { nombre, email, mensaje, recaptchaResponse });
-      throw new Error('Todos los campos son obligatorios');
-    }
-
-    // Verificar reCAPTCHA
-    console.log("Verificando reCAPTCHA...");
-    const recaptchaSecretKey = process.env.RECAPTCHA_SECRET_KEY;
-    const recaptchaUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecretKey}&response=${recaptchaResponse}`;
-
-    const recaptchaValidation = await fetch(recaptchaUrl, { method: 'POST' });
-    const recaptchaJson = await recaptchaValidation.json();
-    console.log("Respuesta de reCAPTCHA:", recaptchaJson);
-
-    if (!recaptchaJson.success) {
-      throw new Error('Verificación de reCAPTCHA fallida');
-    }
-
-    // Configurar Nodemailer
-    console.log("Configurando Nodemailer...");
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.NOTIFICATION_EMAIL,
-      subject: 'Nueva solicitud de contacto',
-      text: `Has recibido una nueva solicitud de contacto:\n\nNombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`,
-    };
-
-    // Enviar correo
-    console.log("Enviando correo...");
-    await transporter.sendMail(mailOptions);
-    console.log("Correo enviado exitosamente");
-
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-      body: JSON.stringify({ message: 'Correo enviado correctamente' }),
-    };
-  } catch (error) {
-    console.error("Error procesando el formulario:", error.message);
-    return {
-      statusCode: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-      body: JSON.stringify({ message: 'Error al procesar el formulario' }),
-    };
-  }
-};
+// Escuchar en el puerto configurado
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.info(`Servidor ejecutándose en el puerto ${PORT}`);
+});
