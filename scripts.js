@@ -115,39 +115,14 @@ function setupFaqToggle() {
   });
 }
 
-// Función para mostrar reseñas de Google
-async function mostrarResenasGoogle() {
-  const placeId = 'g/11y8v_vngh';
-  const apiKey = '[REDACTED]';
-  const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=reviews,rating&key=${apiKey}`;
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-
-    if (data.status !== 'OK') {
-      throw new Error('No se pudieron obtener las reseñas de Google');
-    }
-
-    const reseñas = data.result.reviews;
-    const reseñasContainer = document.querySelector('.google-reviews-container');
-
-    if (reseñas && reseñas.length > 0) {
-      reseñas.forEach((resena) => {
-        const reseñaElemento = document.createElement('div');
-        reseñaElemento.classList.add('google-review');
-        reseñaElemento.innerHTML = `
-          <p class="google-review-author">${resena.author_name}</p>
-          <p class="google-review-text">${resena.text}</p>
-        `;
-        reseñasContainer.appendChild(reseñaElemento);
-      });
-    } else {
-      reseñasContainer.innerHTML = `<p>No hay reseñas disponibles en este momento.</p>`;
-    }
-  } catch (error) {
-    console.error('Error al obtener reseñas de Google:', error);
-  }
+// The legacy Google Places integration was removed because its API key was
+// exposed in the public repository. Keep an honest fallback on archived pages.
+function mostrarResenasGoogle() {
+  document.querySelectorAll('.google-reviews-container').forEach((container) => {
+    const message = document.createElement('p');
+    message.textContent = 'Las reseñas no están disponibles aquí por el momento.';
+    container.replaceChildren(message);
+  });
 }
 
 // Función para mostrar un mensaje de alerta personalizado
